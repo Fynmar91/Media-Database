@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MediaClass;
+using Serializing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,42 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MediaList mediaList = new MediaList();
+        private JSONSerializer json = new JSONSerializer();
+
         public MainWindow()
         {
             InitializeComponent();
+            Load();
+            List_Media.ItemsSource = this.mediaList;
+            Refresh();
+        }
+
+        public void Refresh()
+        {
+            List_Media.Items.Refresh();
+        }
+
+        private void Load()
+        {
+            mediaList = json.Deserialize();
+            mediaList.Sort((x, y) => y.MyTitle.CompareTo(x.MyTitle));
+        }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+            Add add = new Add(mediaList, this);
+            add.Show();
+        }
+
+        private void List_Media_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void List_Media_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
