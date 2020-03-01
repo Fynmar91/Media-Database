@@ -32,16 +32,17 @@
     </Page.Resources>
 
     <Grid>
-        <TextBox x:Name="Box_myTitle" HorizontalAlignment="Left" Margin="42,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="343" FontSize="20"/>
+        <TextBox x:Name="Box_myTitle" HorizontalAlignment="Left" Margin="42,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343" FontSize="20"/>
         <CheckBox x:Name="checkBox_myIsWatched" Content="CheckBox" HorizontalAlignment="Left" Margin="42,85,0,0" VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20"/>
-        <DatePicker x:Name="Date_myReleaseDate" HorizontalAlignment="Left" Margin="42,116,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <DatePicker x:Name="Date_myFirstWatchDate" HorizontalAlignment="Left" Margin="42,156,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="Box_myRating" HorizontalAlignment="Left" Margin="42,196,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147" FontSize="20"/>
+        <DatePicker x:Name="Date_myReleaseDate" HorizontalAlignment="Left" Margin="42,116,0,0" VerticalAlignment="Top" FontSize="20" Width="198" FirstDayOfWeek="Monday"/>
+        <DatePicker x:Name="Date_myFirstWatchDate" HorizontalAlignment="Left" Margin="42,156,0,0" VerticalAlignment="Top" FontSize="20" Width="198" FirstDayOfWeek="Monday"/>
+        <TextBox x:Name="Box_myRating" HorizontalAlignment="Left" Margin="42,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" FontSize="20"/>
 
-        <TextBox x:Name="Box_myAuthor" HorizontalAlignment="Left" Margin="407,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="332" FontSize="20"/>
+        <TextBox x:Name="Box_myAuthor" HorizontalAlignment="Left" Margin="407,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="332" FontSize="20"/>
 
         <Button x:Name="Button_Check" Content="Kontrollieren" HorizontalAlignment="Left" Margin="120,307,0,0" VerticalAlignment="Top" Width="120" Click="Button_Check_Click" Style="{StaticResource SameBackgroundButton}"/>
         <Button x:Name="Button_Add" Content="Hinzufügen" HorizontalAlignment="Left" Margin="120,339,0,0" VerticalAlignment="Top" Width="120" Click="Button_Add_Click" Style="{StaticResource SameBackgroundButton}"/>
+        <ComboBox x:Name="comboBox_MediaChoice" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" Width="178" FontSize="20"/>
 
     </Grid>
 </Page>

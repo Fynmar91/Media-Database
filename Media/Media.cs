@@ -7,21 +7,67 @@ using System.Threading.Tasks;
 namespace MediaClass
 {
     [Serializable]
-    public abstract class Media
+    public class Media
     {
-        protected Media(string myTitle, bool myIsWatched, DateTime myReleaseDate)
+        public string MyType { get; set; }
+        public string MyTitle { get; set; }
+        public string MyAuthor { get; set; }
+        public string MyStudio { get; set; }
+        public bool MyIsWatched { get; set; }
+        public int MyTotalRewatches { get; set; }
+        public string MyRating { get; set; }
+        public int MyLastPage { get; set; }
+        public int MyPercentageRead { get; set; }
+
+        public DateTime MyReleaseDate { get; set; }
+        public string MyReleaseDateS
         {
-            MyTitle = myTitle;
-            MyIsWatched = myIsWatched;
-            MyReleaseDate = myReleaseDate;
+            get
+            {
+                if (MyReleaseDate != DateTime.MinValue)
+                {
+
+                    return MyReleaseDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    return "";
+                }
+            }
         }
 
-        public string MyTitle { get; set; }
-        public bool MyIsWatched { get; set; }
-        public DateTime MyReleaseDate { get; set; }
         public DateTime MyFirstWatchDate { get; set; }
+        public string MyFirstWatchDateS
+        {
+            get
+            {
+                if (MyFirstWatchDate != DateTime.MinValue)
+                {
+
+                    return MyReleaseDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
         public DateTime MyLastWatchDate { get; set; }
-        public int MyTotalRewatches { get; set; }
-        public int MyRating { get; set; }
+        public string MyLastWatchDateS
+        {
+            get
+            {
+                if (MyLastWatchDate != DateTime.MinValue)
+                {
+
+                    return MyReleaseDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
     }
 }

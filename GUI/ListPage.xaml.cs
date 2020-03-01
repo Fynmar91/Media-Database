@@ -21,14 +21,17 @@ namespace GUI
     /// </summary>
     public partial class ListPage : Page, PageInterface
     {
+        public static ListPage MyListPage { get; set; }
+
         public ListPage()
         {
-            InitializeComponent();
-            List_Media.ItemsSource = MainWindow.MyMainwindow.mediaList;
+            MyListPage = this;
+            InitializeComponent();            
             Refresh();
         }
         public void Refresh()
         {
+            List_Media.ItemsSource = MainWindow.MyMainwindow.displayList;
             List_Media.Items.Refresh();
         }
 

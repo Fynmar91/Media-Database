@@ -5,48 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1200"
       Title="ListPage">
 
     <Page.Resources>
         <Style x:Key="GridViewColumnHeaderGripper" TargetType="Thumb">
-            <Setter Property="Width" Value="18" />
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0"
-                       EndPoint="0,1">
-                        <LinearGradientBrush.GradientStops>
-                            <GradientStopCollection>
-                                <GradientStop Color="{DynamicResource BorderLightColor}"
-                      Offset="0.0" />
-                                <GradientStop Color="{DynamicResource BorderDarkColor}"
-                      Offset="1.0" />
-                            </GradientStopCollection>
-                        </LinearGradientBrush.GradientStops>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Width" Value="18"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Border Padding="{TemplateBinding Padding}"
-            Background="Transparent">
-                            <Rectangle HorizontalAlignment="Center"
-                 Width="1"
-                 Fill="{TemplateBinding Background}" />
+                        <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                            <Rectangle HorizontalAlignment="Center" Width="1" Fill="{TemplateBinding Background}" />
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="BorderBrush">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1"
-                       StartPoint="0.5,0">
-                        <GradientStop Color="Black"
-                  Offset="0" />
-                        <GradientStop Color="White"
-                  Offset="1" />
-                    </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -79,16 +50,27 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Titel"  Width="400" DisplayMemberBinding="{Binding Path=MyTitle}" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
-                    <GridViewColumn Header="Zuletzt" Width="200" DisplayMemberBinding="{Binding Path=MyLastWatchDate}" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
+                    <GridViewColumn Header="Erschienen" Width="200" DisplayMemberBinding="{Binding Path=MyReleaseDateS}" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
+                    <GridViewColumn Header="Zuletzt" Width="200" DisplayMemberBinding="{Binding Path=MyLastWatchDateS}" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
                     <GridViewColumn Header="Wertung" Width="100" DisplayMemberBinding="{Binding Path=MyRating}" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
-                    <GridViewColumn Header="" Width="10000" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
+                    <GridViewColumn Header="Typ" Width="200" DisplayMemberBinding="{Binding Path=MyType}" HeaderContainerStyle="{StaticResource SameBackgroundHeader}"/>
                 </GridView>
             </ListView.View>
             <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="FontSize" Value="14" />
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="FontSize" Value="20" />
                     <Setter Property="Foreground" Value="#FFF0F0F0" />
                     <Setter Property="FontWeight" Value="Bold" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger>                        
+                    </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>

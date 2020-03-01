@@ -59,8 +59,13 @@
 
         <DockPanel Grid.Row="1" Grid.Column="0">
             <StackPanel VerticalAlignment="Bottom">
+                <Button x:Name="Button_All" Content="Alles" Click="Button_All_Click" Style="{StaticResource SameBackgroundButton}"/>
                 <Button x:Name="Button_Book" Content="Bücher" Click="Button_Book_Click" Style="{StaticResource SameBackgroundButton}"/>
                 <Button x:Name="Button_WebNovel" Content="Web Novels" Click="Button_WebNovel_Click" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_Movies" Content="Filme" Click="Button_Movies_Click" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_Shows" Content="Serien" Click="Button_Shows_Click" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_Anime" Content="Anime" Click="Button_Anime_Click" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_Anime_Movies" Content="Anime-Filme" Click="Button_Anime_Movies_Click" Style="{StaticResource SameBackgroundButton}"/>
             </StackPanel>
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="0">
@@ -68,8 +73,7 @@
                 <Button x:Name="Button_Add" Content="Hinzufügen" Click="Button_Add_Click" Style="{StaticResource SameBackgroundButton}"/>
                 <Button x:Name="Button_Save" Content="Speichern" Click="Button_Save_Click" Style="{StaticResource SameBackgroundButton}"/>
             </StackPanel>
-        </DockPanel>
-
+        </DockPanel>        
 
         <Frame x:Name="PageView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" NavigationUIVisibility="Hidden"/>
 

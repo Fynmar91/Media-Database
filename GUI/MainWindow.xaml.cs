@@ -25,19 +25,25 @@ namespace GUI
         public static MainWindow MyMainwindow { get; set; }
 
         public MediaList mediaList = new MediaList();
+        public MediaList displayList;
         private JSONSerializer json = new JSONSerializer();
         private Page activePage;
 
         public MainWindow()
         {
+            MyMainwindow = this;
             InitializeComponent();
             Load();
+            displayList = mediaList;
             Refresh();
-            MyMainwindow = this;
         }
 
         public void Refresh()
         {
+            if (ListPage.MyListPage != null)
+            {
+                ListPage.MyListPage.Refresh();
+            }
         }
 
         private void Load()
@@ -55,17 +61,7 @@ namespace GUI
         private void Button_Tile_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Button_Book_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }      
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
@@ -76,6 +72,98 @@ namespace GUI
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             json.Serialize(mediaList);
+        }
+
+
+
+        private void Button_All_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = mediaList;
+            Refresh();
+        }
+
+        private void Button_Book_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = new MediaList();
+
+            foreach (var item in mediaList)
+            {
+                if (item.MyType == "Buch")
+                {
+                    displayList.Add(item);
+                }
+            }
+            Refresh();
+        }
+
+        private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = new MediaList();
+
+            foreach (var item in mediaList)
+            {
+                if (item.MyType == "Web Novel")
+                {
+                    displayList.Add(item);
+                }
+            }
+            Refresh();
+        }
+
+        private void Button_Movies_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = new MediaList();
+
+            foreach (var item in mediaList)
+            {
+                if (item.MyType == "Film")
+                {
+                    displayList.Add(item);
+                }
+            }
+            Refresh();
+        }
+
+        private void Button_Shows_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = new MediaList();
+
+            foreach (var item in mediaList)
+            {
+                if (item.MyType == "Serie")
+                {
+                    displayList.Add(item);
+                }
+            }
+            Refresh();
+        }
+
+        private void Button_Anime_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = new MediaList();
+
+            foreach (var item in mediaList)
+            {
+                if (item.MyType == "Anime")
+                {
+                    displayList.Add(item);
+                }
+            }
+            Refresh();
+        }
+
+        private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
+        {
+            displayList = new MediaList();
+
+            foreach (var item in mediaList)
+            {
+                if (item.MyType == "Anime-Film")
+                {
+                    displayList.Add(item);
+                }
+            }
+            Refresh();
         }
     }
 }
