@@ -48,7 +48,7 @@ namespace GUI
 
         private void Button_List_Click(object sender, RoutedEventArgs e)
         {
-            activePage = new ListPage(mediaList);
+            activePage = new ListPage();
             PageView.Content = activePage;
         }
 
@@ -69,7 +69,7 @@ namespace GUI
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            activePage = new AddPage(mediaList);
+            activePage = new AddPage();
             PageView.Content = activePage;
         }
 

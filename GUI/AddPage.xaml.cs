@@ -21,12 +21,9 @@ namespace GUI
     /// </summary>
     public partial class AddPage : Page, PageInterface
     {
-        MediaList mediaListRef;
-
-        public AddPage(MediaList mediaList)
+        public AddPage()
         {
             InitializeComponent();
-            mediaListRef = mediaList;
             Refresh();
         }
 
