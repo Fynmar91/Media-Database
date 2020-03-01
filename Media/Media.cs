@@ -9,6 +9,13 @@ namespace MediaClass
     [Serializable]
     public abstract class Media
     {
+        protected Media(string myTitle, bool myIsWatched, DateTime myReleaseDate)
+        {
+            MyTitle = myTitle;
+            MyIsWatched = myIsWatched;
+            MyReleaseDate = myReleaseDate;
+        }
+
         public string MyTitle { get; set; }
         public bool MyIsWatched { get; set; }
         public DateTime MyReleaseDate { get; set; }

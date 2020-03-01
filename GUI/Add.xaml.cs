@@ -71,12 +71,12 @@ namespace GUI
             {
                 result.Text = "Erfolgreich hinzugefügt";
 
-                Book b = new Book
-                {
-                    MyTitle = Input_Title.Text.ToString(),
-                    MyAuthor = Input_Author.Text.ToString()
-                };
-                list.Add(b);
+                //Book b = new Book
+                //{
+                //    MyTitle = Input_Title.Text.ToString(),
+                //    MyAuthor = Input_Author.Text.ToString()
+                //};
+                //list.Add(b);
             }
 
             Refresh();

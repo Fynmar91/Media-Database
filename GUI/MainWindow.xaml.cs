@@ -29,13 +29,11 @@ namespace GUI
         {
             InitializeComponent();
             Load();
-            List_Media.ItemsSource = this.mediaList;
             Refresh();
         }
 
         public void Refresh()
         {
-            List_Media.Items.Refresh();
         }
 
         private void Load()
@@ -44,20 +42,29 @@ namespace GUI
             mediaList.Sort((x, y) => y.MyTitle.CompareTo(x.MyTitle));
         }
 
+        private void Button_List_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ListViewModel();
+        }
+
+        private void Button_Tile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            Add add = new Add(mediaList, this);
-            add.Show();
+           
         }
 
-        private void List_Media_KeyDown(object sender, KeyEventArgs e)
+        private void Button_Book_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
-        private void List_Media_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+           
+        }        
     }
 }

@@ -9,6 +9,11 @@ namespace MediaClass
     [Serializable]
     public class Book : Media
     {
+        public Book(string myAuthor, string myTitle, bool myIsWatched, DateTime myReleaseDate) : base(myTitle, myIsWatched, myReleaseDate)
+        {
+            MyAuthor = myAuthor;
+        }
+
         public string MyAuthor { get; set; }
         public int MyLastPage { get; set; }
         public int MyPercentageRead { get; set; }

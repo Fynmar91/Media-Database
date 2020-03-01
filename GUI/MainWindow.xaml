@@ -5,17 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Medien" Height="450" Width="800">
-    <Grid>
-        <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" Margin="0,37,0,0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Titel"  Width="320" DisplayMemberBinding="{Binding Path=MyTitle}"/>
-                    <GridViewColumn Header="Zuletzt" Width="160" DisplayMemberBinding="{Binding Path=MyLastWatchDate}"/>
-                    <GridViewColumn Header="Wertung" Width="80" DisplayMemberBinding="{Binding Path=MyRating}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="Button_Add" Content="Hinzufügen" Height="22" Width="89" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Add_Click"/>
+        Title="Medien" Height="900" Width="1440">
+    <Window.Resources>
+        <DataTemplate x:Name="listViewTemplate" DataType="{x:Type local:ListViewModel}">
+            <ListView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Background="#FF535353">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Fill="#FF363636"/>
+        <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Fill="#FF363636"/>
+
+        <DockPanel Grid.Row="0" Grid.Column="1">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" Background="#FF2B2B2B" Foreground="#FFDEDEDE" FontSize="20" Width="100"/>
+                <Rectangle Width="20" />
+                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" Background="#FF2B2B2B" Foreground="#FFDEDEDE" FontSize="20" Width="100"/>
+            </StackPanel>
+        </DockPanel>
+
+
+        <DockPanel Grid.Row="1" Grid.Column="0">
+            <StackPanel VerticalAlignment="Bottom">
+                <Button x:Name="Button_Book" Content="Bücher" Click="Button_Book_Click" Background="#FF2B2B2B" Foreground="#FFDEDEDE"/>
+                <Button x:Name="Button_WebNovel" Content="Web Novels" Click="Button_WebNovel_Click" Background="#FF2B2B2B" Foreground="#FFDEDEDE"/>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Grid.Row="3" Grid.Column="0">
+            <StackPanel VerticalAlignment="Top">
+                <Button x:Name="Button_Add" Content="Hinzufügen" Click="Button_Add_Click" Background="#FF2B2B2B" Foreground="#FFDEDEDE"/>
+            </StackPanel>
+        </DockPanel>
+
+
+        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="3" Content="{Binding}"/>
+
     </Grid>
 </Window>
