@@ -22,7 +22,9 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MediaList mediaList = new MediaList();
+        public static MainWindow MyMainwindow { get; set; }
+
+        public MediaList mediaList = new MediaList();
         private JSONSerializer json = new JSONSerializer();
         private Page activePage;
 
@@ -31,6 +33,7 @@ namespace GUI
             InitializeComponent();
             Load();
             Refresh();
+            MyMainwindow = this;
         }
 
         public void Refresh()
@@ -66,7 +69,8 @@ namespace GUI
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-
+            activePage = new AddPage(mediaList);
+            PageView.Content = activePage;
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
