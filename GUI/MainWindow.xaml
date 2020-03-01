@@ -71,7 +71,7 @@
         </DockPanel>
 
 
-        <Frame x:Name="PageView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3"/>
+        <Frame x:Name="PageView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>

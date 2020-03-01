@@ -25,6 +25,7 @@ namespace GUI
         {
             InitializeComponent();
             Refresh();
+            Date_myReleaseDate.SelectedDate = DateTime.Today;
         }
 
         private void AddMedia<T>()
