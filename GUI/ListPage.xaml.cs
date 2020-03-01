@@ -17,11 +17,11 @@ using MediaClass;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for ListView.xaml
+    /// Interaction logic for ListPage.xaml
     /// </summary>
-    public partial class ListView : UserControl
+    public partial class ListPage : Page, PageInterface
     {
-        public ListView(MediaList mediaList)
+        public ListPage(MediaList mediaList)
         {
             InitializeComponent();
             List_Media.ItemsSource = mediaList;

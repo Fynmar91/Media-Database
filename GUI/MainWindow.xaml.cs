@@ -24,6 +24,7 @@ namespace GUI
     {
         private MediaList mediaList = new MediaList();
         private JSONSerializer json = new JSONSerializer();
+        private Page activePage;
 
         public MainWindow()
         {
@@ -44,7 +45,8 @@ namespace GUI
 
         private void Button_List_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new ListViewModel();
+            activePage = new ListPage(mediaList);
+            PageView.Content = activePage;
         }
 
         private void Button_Tile_Click(object sender, RoutedEventArgs e)
@@ -52,19 +54,24 @@ namespace GUI
 
         }
 
-        private void Button_Add_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
         private void Button_Book_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
         {
-           
-        }        
+
+        }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
+        {
+            json.Serialize(mediaList);
+        }
     }
 }

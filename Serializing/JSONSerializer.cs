@@ -16,7 +16,7 @@ namespace Serializing
 
         public void Serialize(MediaList list)
         {
-            //Directory.CreateDirectory(path);
+            Directory.CreateDirectory(path);
 
             using (StreamWriter file = File.CreateText(filePath))
             {

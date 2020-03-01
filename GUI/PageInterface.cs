@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    public class ListViewModel
+    interface PageInterface
     {
-
+        void Refresh();
     }
 }
