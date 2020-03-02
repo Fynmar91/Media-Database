@@ -36,7 +36,6 @@ namespace GUI
             Box_myTitle.Text = "";
             Box_myAuthor.Text = "";
             Box_myRating.Text = "";
-            Box_myTitle.Background = Brushes.White;
             comboBox_MediaChoice.SelectedIndex = 0;
         }
 
