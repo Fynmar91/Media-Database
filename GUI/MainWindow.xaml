@@ -5,31 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Medien" Height="900" Width="1440">
+        Title="Medien" Height="900" Width="1440">    
     
-    <Window.Resources>       
-        <Style TargetType="{x:Type Button}" x:Key="SameBackgroundButton">
-            <Setter Property="Background" Value="#FF2B2B2B" />
-            <Setter Property="Foreground" Value="#FFF0F0F0" />
-            <Setter Property="Margin" Value="0,2,0,2" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF636363" TargetName="Border" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
     <Grid Background="#FF535353">
 
         <Grid.ColumnDefinitions>
@@ -50,28 +27,28 @@
 
         <DockPanel Grid.Row="0" Grid.Column="1">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" FontSize="20" Width="100" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" FontSize="20" Width="100"/>
                 <Rectangle Width="20" />
-                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" FontSize="20" Width="100" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" FontSize="20" Width="100"/>
             </StackPanel>
         </DockPanel>
 
 
         <DockPanel Grid.Row="1" Grid.Column="0">
             <StackPanel VerticalAlignment="Bottom">
-                <Button x:Name="Button_All" Content="Alles" Click="Button_All_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_Book" Content="Bücher" Click="Button_Book_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_WebNovel" Content="Web Novels" Click="Button_WebNovel_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_Movies" Content="Filme" Click="Button_Movies_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_Shows" Content="Serien" Click="Button_Shows_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_Anime" Content="Anime" Click="Button_Anime_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_Anime_Movies" Content="Anime-Filme" Click="Button_Anime_Movies_Click" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_All" Content="Alles" Click="Button_All_Click"/>
+                <Button x:Name="Button_Book" Content="Bücher" Click="Button_Book_Click"/>
+                <Button x:Name="Button_WebNovel" Content="Web Novels" Click="Button_WebNovel_Click"/>
+                <Button x:Name="Button_Movies" Content="Filme" Click="Button_Movies_Click"/>
+                <Button x:Name="Button_Shows" Content="Serien" Click="Button_Shows_Click"/>
+                <Button x:Name="Button_Anime" Content="Anime" Click="Button_Anime_Click"/>
+                <Button x:Name="Button_Anime_Movies" Content="Anime-Filme" Click="Button_Anime_Movies_Click"/>
             </StackPanel>
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="0">
             <StackPanel VerticalAlignment="Top">
-                <Button x:Name="Button_Add" Content="Hinzufügen" Click="Button_Add_Click" Style="{StaticResource SameBackgroundButton}"/>
-                <Button x:Name="Button_Save" Content="Speichern" Click="Button_Save_Click" Style="{StaticResource SameBackgroundButton}"/>
+                <Button x:Name="Button_Add" Content="Hinzufügen" Click="Button_Add_Click"/>
+                <Button x:Name="Button_Save" Content="Speichern" Click="Button_Save_Click"/>
             </StackPanel>
         </DockPanel>        
 
