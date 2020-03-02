@@ -23,6 +23,13 @@ namespace GUI
     {
         string[] mediaChoices = { "", "Buch", "Web Novel", "Film", "Serie", "Anime", "Anime-Film" };
 
+        public int MyMediaChoice
+        {
+            get { return comboBox_MediaChoice.SelectedIndex; }
+            set { comboBox_MediaChoice.SelectedIndex = value; }
+        }
+
+
         public AddPage()
         {
             InitializeComponent();

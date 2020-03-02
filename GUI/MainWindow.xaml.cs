@@ -84,14 +84,21 @@ namespace GUI
 
         private void Button_Book_Click(object sender, RoutedEventArgs e)
         {
-            displayList = new MediaList();
-
-            foreach (var item in mediaList)
+            if (activePage is ListPage)
             {
-                if (item.MyType == "Buch")
+                displayList = new MediaList();
+
+                foreach (var item in mediaList)
                 {
-                    displayList.Add(item);
+                    if (item.MyType == "Buch")
+                    {
+                        displayList.Add(item);
+                    }
                 }
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 1;
             }
             Refresh();
         }
