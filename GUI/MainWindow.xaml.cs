@@ -40,9 +40,13 @@ namespace GUI
 
         public void Refresh()
         {
-            if (ListPage.MyListPage != null)
+            if (activePage is ListPage && ListPage.MyListPage != null)
             {
                 ListPage.MyListPage.Refresh();
+            }
+            else if (activePage is AddPage && AddPage.MyAddPage != null)
+            {
+                AddPage.MyAddPage.Refresh();
             }
         }
 

@@ -17,58 +17,12 @@ namespace MediaClass
         public bool MyIsFinished { get; set; }
         public int MyTotalRewatches { get; set; }
         public string MyRating { get; set; }
-        public int MyLastPage { get; set; }
-        public int MyPercentageRead { get; set; }
+        public int MyProgress { get; set; }
+        public int MyProgressPercentage { get; set; }
+        public bool MyIsDropped { get; set; }
 
-        public DateTime MyReleaseDate { get; set; }
-        public string MyReleaseDateS
-        {
-            get
-            {
-                if (MyReleaseDate != DateTime.MinValue)
-                {
-
-                    return MyReleaseDate.ToString("yyyy-MM-dd");
-                }
-                else
-                {
-                    return "";
-                }
-            }
-        }
-
-        public DateTime MyFirstWatchDate { get; set; }
-        public string MyFirstWatchDateS
-        {
-            get
-            {
-                if (MyFirstWatchDate != DateTime.MinValue)
-                {
-
-                    return MyFirstWatchDate.ToString("yyyy-MM-dd");
-                }
-                else
-                {
-                    return "";
-                }
-            }
-        }
-
-        public DateTime MyLastWatchDate { get; set; }
-        public string MyLastWatchDateS
-        {
-            get
-            {
-                if (MyLastWatchDate != DateTime.MinValue)
-                {
-
-                    return MyLastWatchDate.ToString("yyyy-MM-dd");
-                }
-                else
-                {
-                    return "";
-                }
-            }
-        }
+        public string MyReleaseDate { get; set; }
+        public string MyFirstWatchDate { get; set; }
+        public string MyLastWatchDate { get; set; }       
     }
 }
