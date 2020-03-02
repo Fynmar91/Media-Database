@@ -9,17 +9,50 @@
       Title="AddPage">
 
     <Grid>
-        <TextBox x:Name="Box_myTitle" HorizontalAlignment="Left" Margin="42,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="332" FontSize="20"/>
-        <CheckBox x:Name="checkBox_myIsWatched" Content="CheckBox" HorizontalAlignment="Left" Margin="42,91,0,0" VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20"/>
-        <DatePicker x:Name="Date_myReleaseDate" HorizontalAlignment="Left" Margin="42,126,0,0" VerticalAlignment="Top" FontSize="20" Width="198" FirstDayOfWeek="Monday" Background="White" BorderBrush="{x:Null}" Foreground="Black"/>
-        <DatePicker x:Name="Date_myFirstWatchDate" HorizontalAlignment="Left" Margin="42,166,0,0" VerticalAlignment="Top" FontSize="20" Width="198" FirstDayOfWeek="Monday" BorderBrush="{x:Null}" Background="White" Foreground="Black"/>
-        <TextBox x:Name="Box_myRating" HorizontalAlignment="Left" Margin="42,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" FontSize="20"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <TextBox x:Name="Box_myAuthor" HorizontalAlignment="Left" Margin="407,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="332" FontSize="20"/>
+        <ComboBox x:Name="comboBox_MediaChoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" FontSize="14" Margin="0,40,0,0" Grid.Column="1" Height="35"/>
 
-        <Button x:Name="Button_Check" Content="Kontrollieren" HorizontalAlignment="Left" Margin="120,307,0,0" VerticalAlignment="Top" Width="120" Click="Button_Check_Click"/>
-        <Button x:Name="Button_Add" Content="Hinzufügen" HorizontalAlignment="Left" Margin="120,339,0,0" VerticalAlignment="Top" Width="120" Click="Button_Add_Click"/>
-        <ComboBox x:Name="comboBox_MediaChoice" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" Width="178" FontSize="20"/>
+        <Grid Grid.Column="2" Grid.RowSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Top">
+                <TextBlock x:Name="title_txt" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,40,0,0"/>
+                <TextBlock x:Name="isWatched_txt" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
+                <TextBlock x:Name="author_txt" TextWrapping="Wrap" Text="Autor" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
+                <TextBlock x:Name="rating_txt" TextWrapping="Wrap" Text="Bewertung" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                <TextBox x:Name="myTitle_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,40,0,0"/>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox x:Name="myIsWatched_in" Content="gesehen"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="0,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5"/>
+                    <CheckBox x:Name="myIsStarted_in" Content="angefangen"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="20,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5"/>
+                </StackPanel>
+                <TextBox x:Name="myAuthor_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0"/>
+                <Slider x:Name="myRating_in" VerticalAlignment="Top" Grid.Column="2" SmallChange="1" Maximum="100" AutoToolTipPlacement="BottomRight" Height="30" Margin="0,10,0,0" MaxWidth="300" HorizontalAlignment="Left" Width="300"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel VerticalAlignment="Bottom" Grid.Column="1">
+            <Button x:Name="Button_Check" Content="Kontrollieren" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="120" Click="Button_Check_Click"/>
+            <Button x:Name="Button_Add" Content="Hinzufügen" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="120" Click="Button_Add_Click"/>
+        </StackPanel>
 
     </Grid>
 </Page>

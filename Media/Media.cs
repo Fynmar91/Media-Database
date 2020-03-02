@@ -13,7 +13,8 @@ namespace MediaClass
         public string MyTitle { get; set; }
         public string MyAuthor { get; set; }
         public string MyStudio { get; set; }
-        public bool MyIsWatched { get; set; }
+        public bool MyIsStarted { get; set; }
+        public bool MyIsFinished { get; set; }
         public int MyTotalRewatches { get; set; }
         public string MyRating { get; set; }
         public int MyLastPage { get; set; }
@@ -44,7 +45,7 @@ namespace MediaClass
                 if (MyFirstWatchDate != DateTime.MinValue)
                 {
 
-                    return MyReleaseDate.ToString("yyyy-MM-dd");
+                    return MyFirstWatchDate.ToString("yyyy-MM-dd");
                 }
                 else
                 {
@@ -61,7 +62,7 @@ namespace MediaClass
                 if (MyLastWatchDate != DateTime.MinValue)
                 {
 
-                    return MyReleaseDate.ToString("yyyy-MM-dd");
+                    return MyLastWatchDate.ToString("yyyy-MM-dd");
                 }
                 else
                 {

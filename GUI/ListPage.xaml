@@ -12,13 +12,13 @@
         <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" FontSize="20">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Titel"  Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
-                    <GridViewColumn Header="Erschienen" Width="200" DisplayMemberBinding="{Binding Path=MyReleaseDateS}"/>
-                    <GridViewColumn Header="Zuletzt" Width="200" DisplayMemberBinding="{Binding Path=MyLastWatchDateS}"/>
+                    <GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
+                    <GridViewColumn Header="Erschienen" Width="120" DisplayMemberBinding="{Binding Path=MyReleaseDateS}"/>
+                    <GridViewColumn Header="Zuletzt" Width="120" DisplayMemberBinding="{Binding Path=MyLastWatchDateS}"/>
                     <GridViewColumn Header="Wertung" Width="100" DisplayMemberBinding="{Binding Path=MyRating}"/>
                     <GridViewColumn Header="Typ" Width="200" DisplayMemberBinding="{Binding Path=MyType}"/>
                 </GridView>
-            </ListView.View>            
+            </ListView.View>
         </ListView>
     </Grid>
 

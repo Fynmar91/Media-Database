@@ -78,7 +78,14 @@ namespace GUI
 
         private void Button_All_Click(object sender, RoutedEventArgs e)
         {
-            displayList = mediaList;
+            if (activePage is ListPage)
+            {
+                displayList = mediaList;
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 0;
+            }
             Refresh();
         }
 
@@ -105,70 +112,105 @@ namespace GUI
 
         private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
         {
-            displayList = new MediaList();
-
-            foreach (var item in mediaList)
+            if (activePage is ListPage)
             {
-                if (item.MyType == "Web Novel")
+                displayList = new MediaList();
+
+                foreach (var item in mediaList)
                 {
-                    displayList.Add(item);
+                    if (item.MyType == "Web-Novel")
+                    {
+                        displayList.Add(item);
+                    }
                 }
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 2;
             }
             Refresh();
         }
 
         private void Button_Movies_Click(object sender, RoutedEventArgs e)
         {
-            displayList = new MediaList();
-
-            foreach (var item in mediaList)
+            if (activePage is ListPage)
             {
-                if (item.MyType == "Film")
+                displayList = new MediaList();
+
+                foreach (var item in mediaList)
                 {
-                    displayList.Add(item);
+                    if (item.MyType == "Film")
+                    {
+                        displayList.Add(item);
+                    }
                 }
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 3;
             }
             Refresh();
         }
 
         private void Button_Shows_Click(object sender, RoutedEventArgs e)
         {
-            displayList = new MediaList();
-
-            foreach (var item in mediaList)
+            if (activePage is ListPage)
             {
-                if (item.MyType == "Serie")
+                displayList = new MediaList();
+
+                foreach (var item in mediaList)
                 {
-                    displayList.Add(item);
+                    if (item.MyType == "Serie")
+                    {
+                        displayList.Add(item);
+                    }
                 }
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 4;
             }
             Refresh();
         }
 
         private void Button_Anime_Click(object sender, RoutedEventArgs e)
         {
-            displayList = new MediaList();
-
-            foreach (var item in mediaList)
+            if (activePage is ListPage)
             {
-                if (item.MyType == "Anime")
+                displayList = new MediaList();
+
+                foreach (var item in mediaList)
                 {
-                    displayList.Add(item);
+                    if (item.MyType == "Anime")
+                    {
+                        displayList.Add(item);
+                    }
                 }
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 5;
             }
             Refresh();
         }
 
         private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
         {
-            displayList = new MediaList();
-
-            foreach (var item in mediaList)
+            if (activePage is ListPage)
             {
-                if (item.MyType == "Anime-Film")
+                displayList = new MediaList();
+
+                foreach (var item in mediaList)
                 {
-                    displayList.Add(item);
+                    if (item.MyType == "Anime-Film")
+                    {
+                        displayList.Add(item);
+                    }
                 }
+            }
+            else if (activePage is AddPage)
+            {
+                (activePage as AddPage).MyMediaChoice = 6;
             }
             Refresh();
         }

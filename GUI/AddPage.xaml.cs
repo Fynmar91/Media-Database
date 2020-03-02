@@ -21,7 +21,7 @@ namespace GUI
     /// </summary>
     public partial class AddPage : Page, PageInterface
     {
-        string[] mediaChoices = { "", "Buch", "Web Novel", "Film", "Serie", "Anime", "Anime-Film" };
+        string[] mediaChoices = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
 
         public int MyMediaChoice
         {
@@ -40,9 +40,9 @@ namespace GUI
 
         public void Refresh()
         {
-            Box_myTitle.Text = "";
-            Box_myAuthor.Text = "";
-            Box_myRating.Text = "";
+            myTitle_in.Text = "";
+            myAuthor_in.Text = "";
+            myRating_in.Value = 0;
             comboBox_MediaChoice.SelectedIndex = 0;
         }
 
@@ -55,32 +55,19 @@ namespace GUI
                 media.MyType = comboBox_MediaChoice.SelectedValue.ToString();
             }
 
-            if (Box_myTitle.Text.ToString() != "")
+            if (myTitle_in.Text.ToString() != "")
             {
-                media.MyTitle = Box_myTitle.Text.ToString();
+                media.MyTitle = myTitle_in.Text.ToString();
             }
 
-            if (Box_myAuthor.Text.ToString() != "")
+            if (myAuthor_in.Text.ToString() != "")
             {
-                media.MyAuthor = Box_myAuthor.Text.ToString();
+                media.MyAuthor = myAuthor_in.Text.ToString();
             }
 
-            media.MyIsWatched = checkBox_myIsWatched.IsChecked.Value;
-
-            if (Box_myRating.Text.ToString() != "")
+            if (myRating_in.Value != 0)
             {
-                media.MyRating = Box_myRating.Text.ToString();
-            }
-
-            if (Date_myReleaseDate.SelectedDate != null)
-            {
-                media.MyReleaseDate = Date_myReleaseDate.SelectedDate.Value;
-            }
-
-            if (Date_myFirstWatchDate.SelectedDate != null)
-            {
-                media.MyFirstWatchDate = Date_myFirstWatchDate.SelectedDate.Value;
-                media.MyLastWatchDate = Date_myFirstWatchDate.SelectedDate.Value;
+                media.MyRating = myRating_in.Value.ToString();
             }
 
             MainWindow.MyMainwindow.mediaList.Add(media);
@@ -90,11 +77,11 @@ namespace GUI
         {
             bool passed = true;
 
-            if (Box_myTitle.Text.ToString() != "" && comboBox_MediaChoice.SelectedIndex != 0)
+            if (myTitle_in.Text.ToString() != "" && comboBox_MediaChoice.SelectedIndex != 0)
             {
                 foreach (var item in MainWindow.MyMainwindow.mediaList)
                 {
-                    if (item.MyType == comboBox_MediaChoice.SelectedValue.ToString() && item.MyTitle == Box_myTitle.Text.ToString())
+                    if (item.MyType == comboBox_MediaChoice.SelectedValue.ToString() && item.MyTitle == myTitle_in.Text.ToString())
                     {
                         passed = false;
                         break;
@@ -109,12 +96,12 @@ namespace GUI
 
             if (passed)
             {
-                Box_myTitle.Background = Brushes.Green;
+                myTitle_in.Background = Brushes.Green;
                 return true;
             }
             else
             {
-                Box_myTitle.Background = Brushes.Red;
+                myTitle_in.Background = Brushes.Red;
                 return false;
             }
         }

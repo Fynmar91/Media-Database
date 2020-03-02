@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Medien" Height="900" Width="1440">    
+        Title="Medien" Height="900" Width="1440" MinWidth="1000" MinHeight="600">    
     
-    <Grid Background="#FF535353">
+    <Grid Background="#FF0F0F0F">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"></ColumnDefinition>
