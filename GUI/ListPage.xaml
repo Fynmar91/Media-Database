@@ -9,7 +9,18 @@
       Title="ListPage">   
     
     <Grid>
-        <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Column="1" Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
@@ -21,9 +32,6 @@
             </ListView.View>
         </ListView>
     </Grid>
-
-
-
 </Page>
     
     

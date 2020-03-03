@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Medien" Height="900" Width="1440" MinWidth="1000" MinHeight="600">    
+        Title="Medien" Height="900" Width="1440" MinWidth="1000" MinHeight="600" MouseDown="Window_MouseDown" WindowStyle="None">    
     
-    <Grid Background="#FF0F0F0F">
+    <Grid Background="#FF1D1D1D">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"></ColumnDefinition>
@@ -22,16 +22,20 @@
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Fill="#FF363636"/>
-        <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Fill="#FF363636"/>
+        <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF363636"/>
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF363636"/>
+        <Button Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Background="#FF363636"/>
+        <Button Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Background="#FF363636"/>
 
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" FontSize="20" Width="100"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Height="36">
+                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" FontSize="24" Width="140" Padding="10,0"/>
                 <Rectangle Width="20" />
-                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" FontSize="20" Width="100"/>
+                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" FontSize="24" Width="140" Padding="10,0"/>
             </StackPanel>
         </DockPanel>
+
+        <Button x:Name="Close_List" Content="X" Click="Button_Close_Click" FontSize="24" Width="36" Padding="10,0,10,5" Grid.Column="2" Height="36" HorizontalAlignment="Right" Margin="0,0,2,0" VerticalAlignment="Center"/>
 
 
         <DockPanel Grid.Row="1" Grid.Column="0">
