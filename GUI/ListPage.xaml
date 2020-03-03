@@ -20,7 +20,7 @@
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Column="1" Grid.Row="1">
+        <ListView x:Name="List_Media" FontSize="20" Grid.Column="1" Grid.Row="1" PreviewMouseDoubleClick="List_Media_PreviewMouseDoubleClick" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>

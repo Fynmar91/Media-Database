@@ -24,8 +24,11 @@ namespace GUI
     {
         public static MainWindow MyMainwindow { get; set; }
 
+        public int MyTypeIndex { get; set; }
+
         public string[] typeString = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
-        public int typeIndex = 0;
+
+        private List<Button> buttons;
 
         public MediaList mediaList = new MediaList();
         private JSONSerializer json = new JSONSerializer();
@@ -36,6 +39,10 @@ namespace GUI
             MyMainwindow = this;
             InitializeComponent();
             Load();
+            SetButtonColor(0);
+            MyTypeIndex = 0;
+            activePage = new TilePage();
+            PageView.Content = activePage;
             Refresh();
         }
 
@@ -82,10 +89,9 @@ namespace GUI
             json.Serialize(mediaList);
         }
 
-
         private void TypeChoice(int i)
         {
-            typeIndex = i;
+            MyTypeIndex = i;
 
             if (activePage is ListPage)
             {
@@ -93,7 +99,7 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyTypeChoice = typeIndex;
+                (activePage as AddPage).MyTypeChoice = MyTypeIndex;
             }
             else if (activePage is TilePage)
             {
@@ -105,36 +111,64 @@ namespace GUI
         private void Button_All_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(0);
+            SetButtonColor(0);
         }
 
         private void Button_Book_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(1);
+            SetButtonColor(1);
         }
 
         private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(2);
+            SetButtonColor(2);
         }
 
         private void Button_Movies_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(3);
+            SetButtonColor(3);
         }
 
         private void Button_Shows_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(4);
+            SetButtonColor(4);
         }
 
         private void Button_Anime_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(5);
+            SetButtonColor(5);
         }
 
         private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
         {
             TypeChoice(6);
+            SetButtonColor(6);
+        }
+
+        public void SetButtonColor(int i)
+        {
+            if (buttons == null)
+            {
+                buttons = new List<Button>();
+                buttons.Add(Button_All);
+                buttons.Add(Button_Book);
+                buttons.Add(Button_WebNovel);
+                buttons.Add(Button_Movies);
+                buttons.Add(Button_Shows);
+                buttons.Add(Button_Anime);
+                buttons.Add(Button_Anime_Movies);
+            }
+
+            foreach (var item in buttons)
+            {
+                item.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+            }
+            buttons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

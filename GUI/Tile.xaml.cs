@@ -39,5 +39,10 @@ namespace GUI
             }
             title.Text = m.MyTitle;
         }
+
+        private void Click_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.MyMainwindow.OpenDisplayPage(media);
+        }
     }
 }

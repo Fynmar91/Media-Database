@@ -45,7 +45,7 @@
 
         <DockPanel Grid.Row="1" Grid.Column="0">
             <StackPanel VerticalAlignment="Bottom">
-                <Button x:Name="Button_All" Content="Alles" Click="Button_All_Click"/>
+                <Button x:Name="Button_All" Content="Alles" Click="Button_All_Click" Foreground="#FFBABABA"/>
                 <Button x:Name="Button_Book" Content="Bücher" Click="Button_Book_Click"/>
                 <Button x:Name="Button_WebNovel" Content="Web Novels" Click="Button_WebNovel_Click"/>
                 <Button x:Name="Button_Movies" Content="Filme" Click="Button_Movies_Click"/>

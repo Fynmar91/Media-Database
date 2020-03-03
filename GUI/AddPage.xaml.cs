@@ -33,7 +33,7 @@ namespace GUI
         {
             InitializeComponent();
             comboBox_MediaChoice.ItemsSource = MainWindow.MyMainwindow.typeString;
-            comboBox_MediaChoice.SelectedIndex = MainWindow.MyMainwindow.typeIndex;
+            comboBox_MediaChoice.SelectedIndex = MainWindow.MyMainwindow.MyTypeIndex;
             Refresh();
         }
 
@@ -44,18 +44,37 @@ namespace GUI
                 case 1:
                     ResetInput();
                     SetInputBook();
+                    MainWindow.MyMainwindow.SetButtonColor(1);
                     break;
                 case 2:
                     ResetInput();
                     SetInputWebNovel();
+                    MainWindow.MyMainwindow.SetButtonColor(2);
                     break;
                 case 3:
                     ResetInput();
                     SetInputMovie();
+                    MainWindow.MyMainwindow.SetButtonColor(3);
+                    break;
+                case 4:
+                    ResetInput();
+                    SetInputShow();
+                    MainWindow.MyMainwindow.SetButtonColor(4);
+                    break;
+                case 5:
+                    ResetInput();
+                    SetInputAnime();
+                    MainWindow.MyMainwindow.SetButtonColor(5);
+                    break;
+                case 6:
+                    ResetInput();
+                    SetInputAnimeMovie();
+                    MainWindow.MyMainwindow.SetButtonColor(6);
                     break;
                 default:
                     ResetInput();
                     SetInputAll();
+                    MainWindow.MyMainwindow.SetButtonColor(0);
                     break;
             }
         }
@@ -206,7 +225,22 @@ namespace GUI
 
         private void SetInputMovie()
         {
+
+        }
+
+        private void SetInputShow()
+        {
             
+        }
+
+        private void SetInputAnime()
+        {
+
+        }
+
+        private void SetInputAnimeMovie()
+        {
+
         }
 
         private void Percentage_switch_Checked(object sender, RoutedEventArgs e)
@@ -259,7 +293,7 @@ namespace GUI
 
         private void ComboBox_MediaChoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-             MainWindow.MyMainwindow.typeIndex = comboBox_MediaChoice.SelectedIndex;
+             MainWindow.MyMainwindow.MyTypeIndex = comboBox_MediaChoice.SelectedIndex;
             Refresh();
         }
     }

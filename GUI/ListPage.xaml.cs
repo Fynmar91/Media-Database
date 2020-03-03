@@ -32,7 +32,7 @@ namespace GUI
         {
             displayList = new MediaList();
 
-            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.typeIndex];
+            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.MyTypeIndex];
 
             foreach (var item in MainWindow.MyMainwindow.mediaList)
             {
@@ -46,14 +46,9 @@ namespace GUI
             List_Media.Items.Refresh();
         }
 
-        private void List_Media_KeyDown(object sender, KeyEventArgs e)
+        private void List_Media_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void List_Media_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if ((sender as ListView).SelectedItem is Media)
+            if (sender is ListView && (sender as ListView).SelectedItem != null)
             {
                 MainWindow.MyMainwindow.OpenDisplayPage((sender as ListView).SelectedItem as Media);
             }

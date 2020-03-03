@@ -36,7 +36,7 @@ namespace GUI
         {
             displayList = new MediaList();
 
-            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.typeIndex];
+            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.MyTypeIndex];
 
             if (filter != null)
             {

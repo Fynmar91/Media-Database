@@ -16,6 +16,8 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <Button x:Name="click" Grid.RowSpan="2" Click="Click_Click" Panel.ZIndex="1" Opacity="0"/>
+
         <Image x:Name="image"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" MaxWidth="200">
