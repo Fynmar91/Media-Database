@@ -9,7 +9,7 @@
       Title="ListPage">   
     
     <Grid>
-        <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" FontSize="20">
+        <ListView x:Name="List_Media" MouseDoubleClick="List_Media_MouseDoubleClick"  KeyDown="List_Media_KeyDown" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>

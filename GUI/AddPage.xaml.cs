@@ -21,9 +21,6 @@ namespace GUI
     /// </summary>
     public partial class AddPage : Page, PageInterface
     {
-        public static AddPage MyAddPage { get; set; }
-
-        string[] mediaChoices = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
 
         public int MyMediaChoice
         {
@@ -34,10 +31,9 @@ namespace GUI
 
         public AddPage()
         {
-            MyAddPage = this;
             InitializeComponent();
-            comboBox_MediaChoice.ItemsSource = mediaChoices;
-            comboBox_MediaChoice.SelectedIndex = 0;
+            comboBox_MediaChoice.ItemsSource = MainWindow.MyMainwindow.typeString;
+            comboBox_MediaChoice.SelectedIndex = MainWindow.MyMainwindow.typeIndex;
             Refresh();
         }
 
@@ -62,7 +58,6 @@ namespace GUI
                     SetInputAll();
                     break;
             }
-
         }
 
         private void AddMedia()

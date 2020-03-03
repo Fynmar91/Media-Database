@@ -20,18 +20,20 @@ namespace GUI
     /// <summary>
     /// Interaction logic for TilePage.xaml
     /// </summary>
-    public partial class TilePage : Page
+    public partial class TilePage : Page, PageInterface
     {
         public List<Tile> tiles = new List<Tile>();
 
         public TilePage()
         {
             InitializeComponent();
-            Refresh(null);
+            Refresh();
         }
 
-        public void Refresh(string filter)
+        public void Refresh()
         {
+            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.typeIndex];
+
             if (filter != null)
             {
                 stack1.Children.Clear();
@@ -39,20 +41,16 @@ namespace GUI
                 tiles.Clear();
             }
 
-            int i = 1;
-
             foreach (var item in MainWindow.MyMainwindow.mediaList)
             {
-                if (filter == null || item.MyType == filter)
+                if (filter == "" || item.MyType == filter)
                 {
-                    ++i;
-
                     Frame frame = new Frame { };
                     Tile tile = new Tile { };
                     tiles.Add(tile);
                     frame.Content = tile;
 
-                    if (i % 2 == 0)
+                    if (stack1.Children.Count <= stack2.Children.Count)
                     {                        
                         stack1.Children.Add(frame);
                     }

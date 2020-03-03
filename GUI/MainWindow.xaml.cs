@@ -24,6 +24,9 @@ namespace GUI
     {
         public static MainWindow MyMainwindow { get; set; }
 
+        public string[] typeString = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
+        public int typeIndex = 0;
+
         public MediaList mediaList = new MediaList();
         public MediaList displayList;
         private JSONSerializer json = new JSONSerializer();
@@ -40,13 +43,9 @@ namespace GUI
 
         public void Refresh()
         {
-            if (activePage is ListPage && ListPage.MyListPage != null)
+            if (activePage != null)
             {
-                ListPage.MyListPage.Refresh();
-            }
-            else if (activePage is AddPage && AddPage.MyAddPage != null)
-            {
-                AddPage.MyAddPage.Refresh();
+                (activePage as PageInterface).Refresh();
             }
         }
 
@@ -83,23 +82,25 @@ namespace GUI
 
         private void Button_All_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 0;
             if (activePage is ListPage)
             {
                 displayList = mediaList;
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 0;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh(null);
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
 
         private void Button_Book_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 1;
             if (activePage is ListPage)
             {
                 displayList = new MediaList();
@@ -114,17 +115,18 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 1;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh("Buch");
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
 
         private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 2;
             if (activePage is ListPage)
             {
                 displayList = new MediaList();
@@ -139,17 +141,18 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 2;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh("Web-Novel");
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
 
         private void Button_Movies_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 3;
             if (activePage is ListPage)
             {
                 displayList = new MediaList();
@@ -164,17 +167,18 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 3;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh("Film");
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
 
         private void Button_Shows_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 4;
             if (activePage is ListPage)
             {
                 displayList = new MediaList();
@@ -189,17 +193,18 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 4;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh("Serie");
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
 
         private void Button_Anime_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 5;
             if (activePage is ListPage)
             {
                 displayList = new MediaList();
@@ -214,17 +219,18 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 5;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh("Anime");
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
 
         private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
         {
+            typeIndex = 6;
             if (activePage is ListPage)
             {
                 displayList = new MediaList();
@@ -239,11 +245,11 @@ namespace GUI
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = 6;
+                (activePage as AddPage).MyMediaChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh("Anime-Film");
+                (activePage as TilePage).Refresh();
             }
             Refresh();
         }
