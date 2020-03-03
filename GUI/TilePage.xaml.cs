@@ -49,8 +49,8 @@ namespace GUI
             {
                 if (filter == "" || item.MyType == filter)
                 {
-                    Frame frame = new Frame { };
-                    Tile tile = new Tile { };
+                    Frame frame = new Frame() { };
+                    Tile tile = new Tile(item) { };
                     frame.Content = tile;
 
                     tiles.Add(tile);
@@ -64,8 +64,6 @@ namespace GUI
                     {
                         stack2.Children.Add(frame);
                     }
-
-                    tile.title.Text = item.MyTitle;
                 }
             }
         }

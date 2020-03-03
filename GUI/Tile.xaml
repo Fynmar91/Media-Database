@@ -5,21 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
-      Title="Tile" Height="400" Width="300">
+      Title="Tile" Margin="10">
 
-    <Grid Height="400" Width="300">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="200" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*" MaxHeight="480"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image x:Name="image" Height="280" Width="280"/>
+        <Image x:Name="image"/>
 
-        <StackPanel Grid.Row="1">
-            <TextBlock x:Name="title" Grid.Row="1" TextWrapping="Wrap" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" TextAlignment="Center"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" MaxWidth="200">
+            <TextBlock x:Name="title" Grid.Row="1" Text="Titel" Foreground="#FFEAEAEA" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Height="60"/>
         </StackPanel>
 
     </Grid>

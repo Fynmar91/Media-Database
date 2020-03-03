@@ -65,6 +65,12 @@ namespace GUI
             PageView.Content = activePage;
         }
 
+        public void OpenDisplayPage(Media m)
+        {
+            activePage = new DisplayPage(m);
+            PageView.Content = activePage;
+        }
+
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             activePage = new AddPage();
@@ -142,7 +148,7 @@ namespace GUI
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Button_Full_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState != WindowState.Maximized)
             {
@@ -152,7 +158,6 @@ namespace GUI
             {
                 this.WindowState = WindowState.Normal;
             }
-           
         }
     }
 }

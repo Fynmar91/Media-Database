@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Medien" Height="900" Width="1440" MinWidth="1000" MinHeight="600" MouseDown="Window_MouseDown" WindowStyle="None">    
-    
+        Title="Medien" Height="900" Width="1440" MinHeight="600" MinWidth="1000" MouseDown="Window_MouseDown" WindowStyle="None">
+
     <Grid Background="#FF1D1D1D">
 
         <Grid.ColumnDefinitions>
@@ -22,20 +22,25 @@
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF363636"/>
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Background="#FF363636"/>
-        <Button Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Background="#FF363636"/>
-        <Button Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Background="#FF363636"/>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Fill="#FF363636"/>
+        <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Fill="#FF363636"/>
+        <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Fill="#FF363636"/>
+        <Rectangle Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Fill="#FF363636"/>
 
         <DockPanel Grid.Row="0" Grid.Column="1">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Height="36">
-                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" FontSize="24" Width="140" Padding="10,0"/>
+                <Button x:Name="Button_Tile" Content="Kacheln" Click="Button_Tile_Click" FontSize="20" Width="140" Padding="10,0"/>
                 <Rectangle Width="20" />
-                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" FontSize="24" Width="140" Padding="10,0"/>
+                <Button x:Name="Button_List" Content="Liste" Click="Button_List_Click" FontSize="20" Width="140" Padding="10,0"/>
+                <Rectangle Width="20" />
+                <Button x:Name="Button_Add" Content="Hinzufügen" Click="Button_Add_Click" FontSize="20" Width="140" Padding="10,0"/>
             </StackPanel>
         </DockPanel>
 
-        <Button x:Name="Close_List" Content="X" Click="Button_Close_Click" FontSize="24" Width="36" Padding="10,0,10,5" Grid.Column="2" Height="36" HorizontalAlignment="Right" Margin="0,0,2,0" VerticalAlignment="Center"/>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Height="40" >
+            <Button x:Name="Fullscreen_App" Content="O" Click="Button_Full_Click" FontSize="24" Width="36" Padding="0,0,0,5" Height="35" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <Button x:Name="Close_App" Content="X" Click="Button_Close_Click" FontSize="24" Width="36" Padding="0,0,0,5" Height="36" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
 
 
         <DockPanel Grid.Row="1" Grid.Column="0">
@@ -49,12 +54,11 @@
                 <Button x:Name="Button_Anime_Movies" Content="Anime-Filme" Click="Button_Anime_Movies_Click"/>
             </StackPanel>
         </DockPanel>
-        <DockPanel Grid.Row="3" Grid.Column="0">
+        <DockPanel Grid.Row="1" Grid.Column="4" VerticalAlignment="Bottom">
             <StackPanel VerticalAlignment="Top">
-                <Button x:Name="Button_Add" Content="Hinzufügen" Click="Button_Add_Click"/>
                 <Button x:Name="Button_Save" Content="Speichern" Click="Button_Save_Click"/>
             </StackPanel>
-        </DockPanel>        
+        </DockPanel>
 
         <Frame x:Name="PageView" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" NavigationUIVisibility="Hidden"/>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MediaClass;
 
 namespace GUI
 {
@@ -25,7 +25,7 @@ namespace GUI
 
         public ListPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
             Refresh();
         }
         public void Refresh()
@@ -53,7 +53,10 @@ namespace GUI
 
         private void List_Media_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            if ((sender as ListView).SelectedItem is Media)
+            {
+                MainWindow.MyMainwindow.OpenDisplayPage((sender as ListView).SelectedItem as Media);
+            }
         }
     }
 }

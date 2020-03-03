@@ -11,20 +11,16 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             
-            <StackPanel x:Name="stack1" Orientation="Horizontal" ScrollViewer.CanContentScroll="True">
-                <Frame x:Name="PageView" NavigationUIVisibility="Hidden"/>
-            </StackPanel>
-            <StackPanel x:Name="stack2" Orientation="Horizontal" ScrollViewer.CanContentScroll="True" Grid.Row="1">
-                <Frame x:Name="PageView2" NavigationUIVisibility="Hidden"/>
-            </StackPanel>
-            
+            <StackPanel x:Name="stack1" Orientation="Horizontal" ScrollViewer.CanContentScroll="True"/>
+            <StackPanel x:Name="stack2" Orientation="Horizontal" ScrollViewer.CanContentScroll="True" Grid.Row="1"/>
+
         </Grid>
     </ScrollViewer>
 

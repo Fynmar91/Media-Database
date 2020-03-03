@@ -20,6 +20,7 @@ namespace MediaClass
         public string MyProgress { get; set; }
         public int MyProgressPercentage { get; set; }
         public bool MyIsDropped { get; set; }
+        public string MyImageName { get; set; }
 
         public string MyReleaseDate { get; set; }
         public string MyFirstWatchDate { get; set; }

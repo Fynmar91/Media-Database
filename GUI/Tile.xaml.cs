@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +21,23 @@ namespace GUI
     /// </summary>
     public partial class Tile : Page
     {
+        Media media;
+
         string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\Bilder\");
 
-        public Tile()
+        public Tile(Media m)
         {
             InitializeComponent();
-            var path = System.IO.Path.Combine(folder, "StarGateAtlantisS1.jpg");
-            var uri = new Uri(path);
-            var bitmap = new BitmapImage(uri);
-            image.Source = bitmap;
+            media = m;
+
+            if (m.MyImageName != null)
+            {
+                var path = System.IO.Path.Combine(folder, m.MyImageName);
+                var uri = new Uri(path);
+                var bitmap = new BitmapImage(uri);
+                image.Source = bitmap;
+            }
+            title.Text = m.MyTitle;
         }
     }
 }
