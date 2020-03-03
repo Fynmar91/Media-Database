@@ -69,6 +69,8 @@ namespace GUI
         {
             Media media = new Media();
 
+            media.MyType = comboBox_MediaChoice.SelectedValue.ToString();
+
             media.MyTitle = myTitle_in.Text;
 
             media.MyIsStarted = myIsStarted_in.IsChecked.Value;
