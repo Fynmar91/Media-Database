@@ -64,7 +64,8 @@ namespace GUI
 
         private void Button_Tile_Click(object sender, RoutedEventArgs e)
         {
-
+            activePage = new TilePage();
+            PageView.Content = activePage;
         }      
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
@@ -90,6 +91,10 @@ namespace GUI
             {
                 (activePage as AddPage).MyMediaChoice = 0;
             }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh(null);
+            }
             Refresh();
         }
 
@@ -110,6 +115,10 @@ namespace GUI
             else if (activePage is AddPage)
             {
                 (activePage as AddPage).MyMediaChoice = 1;
+            }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh("Buch");
             }
             Refresh();
         }
@@ -132,6 +141,10 @@ namespace GUI
             {
                 (activePage as AddPage).MyMediaChoice = 2;
             }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh("Web-Novel");
+            }
             Refresh();
         }
 
@@ -152,6 +165,10 @@ namespace GUI
             else if (activePage is AddPage)
             {
                 (activePage as AddPage).MyMediaChoice = 3;
+            }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh("Film");
             }
             Refresh();
         }
@@ -174,6 +191,10 @@ namespace GUI
             {
                 (activePage as AddPage).MyMediaChoice = 4;
             }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh("Serie");
+            }
             Refresh();
         }
 
@@ -195,6 +216,10 @@ namespace GUI
             {
                 (activePage as AddPage).MyMediaChoice = 5;
             }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh("Anime");
+            }
             Refresh();
         }
 
@@ -215,6 +240,10 @@ namespace GUI
             else if (activePage is AddPage)
             {
                 (activePage as AddPage).MyMediaChoice = 6;
+            }
+            else if (activePage is TilePage)
+            {
+                (activePage as TilePage).Refresh("Anime-Film");
             }
             Refresh();
         }

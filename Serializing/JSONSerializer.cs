@@ -11,12 +11,12 @@ namespace Serializing
 {
     public class JSONSerializer
     {
-        string path = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\");
+        string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\");
         string filePath = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\database.json");
 
         public void Serialize(MediaList list)
         {
-            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(folder);
 
             using (StreamWriter file = File.CreateText(filePath))
             {

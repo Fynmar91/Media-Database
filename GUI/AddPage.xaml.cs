@@ -69,6 +69,20 @@ namespace GUI
         {
             Media media = new Media();
 
+            media.MyTitle = myTitle_in.Text;
+
+            media.MyIsStarted = myIsStarted_in.IsChecked.Value;
+            media.MyIsFinished = myIsFinished_in.IsChecked.Value;
+
+            media.MyAuthor = myAuthor_in.Text;
+
+            media.MyStudio = myStudio_in.Text;
+
+            media.MyRating = Convert.ToInt16(myRating_in.Value);
+
+            media.MyProgressPercentage = Convert.ToInt16(myPercentageRead_in.Value);
+            media.MyProgress = myProgress_in.Text;
+
             MainWindow.MyMainwindow.mediaList.Add(media);
         }
 

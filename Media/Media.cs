@@ -16,8 +16,8 @@ namespace MediaClass
         public bool MyIsStarted { get; set; }
         public bool MyIsFinished { get; set; }
         public int MyTotalRewatches { get; set; }
-        public string MyRating { get; set; }
-        public int MyProgress { get; set; }
+        public int MyRating { get; set; }
+        public string MyProgress { get; set; }
         public int MyProgressPercentage { get; set; }
         public bool MyIsDropped { get; set; }
 
