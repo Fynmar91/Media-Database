@@ -106,7 +106,6 @@ namespace GUI
                         break;
                     }
                 }
-
             }
             else
             {
