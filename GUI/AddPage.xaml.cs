@@ -22,7 +22,7 @@ namespace GUI
     public partial class AddPage : Page, PageInterface
     {
 
-        public int MyMediaChoice
+        public int MyTypeChoice
         {
             get { return comboBox_MediaChoice.SelectedIndex; }
             set { comboBox_MediaChoice.SelectedIndex = value; }
@@ -265,6 +265,12 @@ namespace GUI
         {
             myRating_in.Visibility = Visibility.Hidden;
             rating_value.Visibility = Visibility.Hidden;
+        }
+
+        private void ComboBox_MediaChoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+             MainWindow.MyMainwindow.typeIndex = comboBox_MediaChoice.SelectedIndex;
+            Refresh();
         }
     }
 }

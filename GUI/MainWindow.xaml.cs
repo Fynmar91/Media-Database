@@ -28,7 +28,6 @@ namespace GUI
         public int typeIndex = 0;
 
         public MediaList mediaList = new MediaList();
-        public MediaList displayList;
         private JSONSerializer json = new JSONSerializer();
         private Page activePage;
 
@@ -37,7 +36,6 @@ namespace GUI
             MyMainwindow = this;
             InitializeComponent();
             Load();
-            displayList = mediaList;
             Refresh();
         }
 
@@ -65,7 +63,7 @@ namespace GUI
         {
             activePage = new TilePage();
             PageView.Content = activePage;
-        }      
+        }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
@@ -79,179 +77,58 @@ namespace GUI
         }
 
 
-
-        private void Button_All_Click(object sender, RoutedEventArgs e)
+        private void TypeChoice(int i)
         {
-            typeIndex = 0;
+            typeIndex = i;
+
             if (activePage is ListPage)
             {
-                displayList = mediaList;
+                
             }
             else if (activePage is AddPage)
             {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
+                (activePage as AddPage).MyTypeChoice = typeIndex;
             }
             else if (activePage is TilePage)
             {
-                (activePage as TilePage).Refresh();
+                
             }
             Refresh();
+        }
+
+        private void Button_All_Click(object sender, RoutedEventArgs e)
+        {
+            TypeChoice(0);
         }
 
         private void Button_Book_Click(object sender, RoutedEventArgs e)
         {
-            typeIndex = 1;
-            if (activePage is ListPage)
-            {
-                displayList = new MediaList();
-
-                foreach (var item in mediaList)
-                {
-                    if (item.MyType == "Buch")
-                    {
-                        displayList.Add(item);
-                    }
-                }
-            }
-            else if (activePage is AddPage)
-            {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
-            }
-            else if (activePage is TilePage)
-            {
-                (activePage as TilePage).Refresh();
-            }
-            Refresh();
+            TypeChoice(1);
         }
 
         private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
         {
-            typeIndex = 2;
-            if (activePage is ListPage)
-            {
-                displayList = new MediaList();
-
-                foreach (var item in mediaList)
-                {
-                    if (item.MyType == "Web-Novel")
-                    {
-                        displayList.Add(item);
-                    }
-                }
-            }
-            else if (activePage is AddPage)
-            {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
-            }
-            else if (activePage is TilePage)
-            {
-                (activePage as TilePage).Refresh();
-            }
-            Refresh();
+            TypeChoice(2);
         }
 
         private void Button_Movies_Click(object sender, RoutedEventArgs e)
         {
-            typeIndex = 3;
-            if (activePage is ListPage)
-            {
-                displayList = new MediaList();
-
-                foreach (var item in mediaList)
-                {
-                    if (item.MyType == "Film")
-                    {
-                        displayList.Add(item);
-                    }
-                }
-            }
-            else if (activePage is AddPage)
-            {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
-            }
-            else if (activePage is TilePage)
-            {
-                (activePage as TilePage).Refresh();
-            }
-            Refresh();
+            TypeChoice(3);
         }
 
         private void Button_Shows_Click(object sender, RoutedEventArgs e)
         {
-            typeIndex = 4;
-            if (activePage is ListPage)
-            {
-                displayList = new MediaList();
-
-                foreach (var item in mediaList)
-                {
-                    if (item.MyType == "Serie")
-                    {
-                        displayList.Add(item);
-                    }
-                }
-            }
-            else if (activePage is AddPage)
-            {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
-            }
-            else if (activePage is TilePage)
-            {
-                (activePage as TilePage).Refresh();
-            }
-            Refresh();
+            TypeChoice(4);
         }
 
         private void Button_Anime_Click(object sender, RoutedEventArgs e)
         {
-            typeIndex = 5;
-            if (activePage is ListPage)
-            {
-                displayList = new MediaList();
-
-                foreach (var item in mediaList)
-                {
-                    if (item.MyType == "Anime")
-                    {
-                        displayList.Add(item);
-                    }
-                }
-            }
-            else if (activePage is AddPage)
-            {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
-            }
-            else if (activePage is TilePage)
-            {
-                (activePage as TilePage).Refresh();
-            }
-            Refresh();
+            TypeChoice(5);
         }
 
         private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
         {
-            typeIndex = 6;
-            if (activePage is ListPage)
-            {
-                displayList = new MediaList();
-
-                foreach (var item in mediaList)
-                {
-                    if (item.MyType == "Anime-Film")
-                    {
-                        displayList.Add(item);
-                    }
-                }
-            }
-            else if (activePage is AddPage)
-            {
-                (activePage as AddPage).MyMediaChoice = typeIndex;
-            }
-            else if (activePage is TilePage)
-            {
-                (activePage as TilePage).Refresh();
-            }
-            Refresh();
+            TypeChoice(6);
         }
     }
 }
