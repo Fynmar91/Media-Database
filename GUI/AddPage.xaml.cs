@@ -80,10 +80,19 @@ namespace GUI
 
             media.MyStudio = myStudio_in.Text;
 
-            media.MyRating = Convert.ToInt16(myRating_in.Value);
+            if (rating_switch.IsChecked == true)
+            {
+                media.MyRating = Convert.ToInt16(myRating_in.Value);
+            }
+            else
+            {
+                media.MyRating = -1;
+            }
 
             media.MyProgressPercentage = Convert.ToInt16(myPercentageRead_in.Value);
             media.MyProgress = myProgress_in.Text;
+
+            media.MyIsDropped = myIsDropped_in.IsChecked.Value;
 
             MainWindow.MyMainwindow.mediaList.Add(media);
         }
@@ -154,19 +163,25 @@ namespace GUI
             myStudio_in.Visibility = Visibility.Collapsed;
             myStudio_in.Text = "";
 
-            rating_txt.Visibility = Visibility.Visible;
+            rating_stack.Visibility = Visibility.Visible;
             rating_stack_in.Visibility = Visibility.Visible;
+            myRating_in.Visibility = Visibility.Hidden;
+            rating_value.Visibility = Visibility.Hidden;
             myRating_in.Value = 0;
+            rating_value.Text = "0";
+            rating_switch.IsChecked = false;
 
             progress_stack.Visibility = Visibility.Collapsed;
             percentage_stack_in.Visibility = Visibility.Collapsed;
             myProgress_in.Visibility = Visibility.Collapsed;
             percentage_switch.IsChecked = false;
+            percentage_value.Text = "0";
             myPercentageRead_in.Value = 0;
             myProgress_in.Text = "";
 
             dropped_txt.Visibility = Visibility.Visible;
             myIsDropped_in.Visibility = Visibility.Visible;
+            myIsDropped_in.IsChecked = false;
         }
 
         private void SetInputAll()
@@ -177,7 +192,7 @@ namespace GUI
             isFinished_txt.Visibility = Visibility.Collapsed;
             status_stack_in.Visibility = Visibility.Collapsed;
 
-            rating_txt.Visibility = Visibility.Collapsed;
+            rating_stack.Visibility = Visibility.Collapsed;
             rating_stack_in.Visibility = Visibility.Collapsed;
 
             dropped_txt.Visibility = Visibility.Collapsed;
@@ -243,6 +258,18 @@ namespace GUI
         private void MyPercentageRead_in_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             percentage_value.Text = myPercentageRead_in.Value.ToString();
+        }
+
+        private void Rating_switch_Checked(object sender, RoutedEventArgs e)
+        {
+            myRating_in.Visibility = Visibility.Visible;
+            rating_value.Visibility = Visibility.Visible;
+        }
+
+        private void Rating_switch_Unchecked(object sender, RoutedEventArgs e)
+        {
+            myRating_in.Visibility = Visibility.Hidden;
+            rating_value.Visibility = Visibility.Hidden;
         }
     }
 }

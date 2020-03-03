@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaClass
 {
+    [Serializable]
     public class MediaList : List<Media>
     {
 

@@ -37,10 +37,31 @@
                 <TextBlock x:Name="isFinished_txt" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
                 <TextBlock x:Name="author_txt" TextWrapping="Wrap" Text="Autor" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
                 <TextBlock x:Name="studio_txt" TextWrapping="Wrap" Text="Studio" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
-                <TextBlock x:Name="rating_txt" TextWrapping="Wrap" Text="Bewertung" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
+                <StackPanel x:Name="rating_stack" Orientation="Horizontal" Height="35" Margin="0,5,0,0" VerticalAlignment="Top">
+                    <TextBlock x:Name="rating_txt" TextWrapping="Wrap" Text="Bewertung" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" VerticalAlignment="Top" Width="140"/>
+                    <CheckBox x:Name="rating_switch" Content="Bewerten"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="14" Grid.Column="2" Height="35" VerticalContentAlignment="Center" Padding="0,0,0,5" Margin="5,0,0,0" Checked="Rating_switch_Checked" Unchecked="Rating_switch_Unchecked" RenderTransformOrigin="0.5,0.5">
+                        <CheckBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </CheckBox.RenderTransform>
+                    </CheckBox>
+                </StackPanel>
                 <StackPanel x:Name="progress_stack" Orientation="Horizontal" Height="35" Margin="0,5,0,0" VerticalAlignment="Top">
-                    <TextBlock x:Name="progress_txt" TextWrapping="Wrap" Text="Fortschritt" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0"/>
-                    <CheckBox x:Name="percentage_switch" Content="Prozent"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="14" Grid.Column="2" Height="35" VerticalContentAlignment="Center" Padding="0,0,0,5" Margin="10,0,0,0" Checked="Percentage_switch_Checked" Unchecked="Percentage_switch_Unchecked"/>
+                    <TextBlock x:Name="progress_txt" TextWrapping="Wrap" Text="Fortschritt" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" VerticalAlignment="Top" Width="140"/>
+                    <CheckBox x:Name="percentage_switch" Content="Prozent"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="14" Grid.Column="2" Height="35" VerticalContentAlignment="Center" Padding="0,0,0,5" Margin="5,0,0,0" Checked="Percentage_switch_Checked" Unchecked="Percentage_switch_Unchecked" RenderTransformOrigin="0.5,0.5">
+                        <CheckBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </CheckBox.RenderTransform>
+                    </CheckBox>
                 </StackPanel>
                 <TextBlock x:Name="dropped_txt" TextWrapping="Wrap" Text="Dropped" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
             </StackPanel>
@@ -49,7 +70,7 @@
                 <TextBox x:Name="myTitle_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,40,0,0"/>
                 <StackPanel x:Name="status_stack_in" Orientation="Horizontal">
                     <CheckBox x:Name="myIsStarted_in" Content="angefangen"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="0,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5"/>
-                    <CheckBox x:Name="myIsFinished_in" Content="gesehen"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="20,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5" Checked="MyIsFinished_in_Checked"/>
+                    <CheckBox x:Name="myIsFinished_in" Content="beendet"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="20,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5" Checked="MyIsFinished_in_Checked"/>
                 </StackPanel>
                 <TextBox x:Name="myAuthor_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0"/>
                 <TextBox x:Name="myStudio_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0"/>
