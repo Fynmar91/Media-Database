@@ -113,16 +113,7 @@ namespace GUI
                 passed = false;
             }
 
-            if (passed)
-            {
-                myTitle_in.Background = Brushes.Green;
-                return true;
-            }
-            else
-            {
-                myTitle_in.Background = Brushes.Red;
-                return false;
-            }
+            return passed;
         }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)

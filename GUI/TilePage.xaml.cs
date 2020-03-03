@@ -22,6 +22,8 @@ namespace GUI
     /// </summary>
     public partial class TilePage : Page, PageInterface
     {
+        public MediaList displayList;
+
         public List<Tile> tiles = new List<Tile>();
 
         public TilePage()
@@ -32,6 +34,8 @@ namespace GUI
 
         public void Refresh()
         {
+            displayList = new MediaList();
+
             string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.typeIndex];
 
             if (filter != null)
@@ -47,8 +51,10 @@ namespace GUI
                 {
                     Frame frame = new Frame { };
                     Tile tile = new Tile { };
-                    tiles.Add(tile);
                     frame.Content = tile;
+
+                    tiles.Add(tile);
+                    displayList.Add(item);
 
                     if (stack1.Children.Count <= stack2.Children.Count)
                     {                        

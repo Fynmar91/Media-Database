@@ -32,9 +32,11 @@ namespace GUI
         {
             displayList = new MediaList();
 
+            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.typeIndex];
+
             foreach (var item in MainWindow.MyMainwindow.mediaList)
             {
-                if (MainWindow.MyMainwindow.typeIndex == 0 ||item.MyType == MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.typeIndex])
+                if (filter == "" || item.MyType == filter)
                 {
                     displayList.Add(item);
                 }
