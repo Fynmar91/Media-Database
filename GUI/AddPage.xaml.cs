@@ -44,37 +44,37 @@ namespace GUI
 				case 1:
 					ResetInput();
 					SetInputBook();
-					MainWindow.MyMainwindow.SetButtonColor(1);
+					MainWindow.MyMainwindow.SetSelectButtonColor(1);
 					break;
 				case 2:
 					ResetInput();
 					SetInputWebNovel();
-					MainWindow.MyMainwindow.SetButtonColor(2);
+					MainWindow.MyMainwindow.SetSelectButtonColor(2);
 					break;
 				case 3:
 					ResetInput();
 					SetInputMovie();
-					MainWindow.MyMainwindow.SetButtonColor(3);
+					MainWindow.MyMainwindow.SetSelectButtonColor(3);
 					break;
 				case 4:
 					ResetInput();
 					SetInputShow();
-					MainWindow.MyMainwindow.SetButtonColor(4);
+					MainWindow.MyMainwindow.SetSelectButtonColor(4);
 					break;
 				case 5:
 					ResetInput();
 					SetInputAnime();
-					MainWindow.MyMainwindow.SetButtonColor(5);
+					MainWindow.MyMainwindow.SetSelectButtonColor(5);
 					break;
 				case 6:
 					ResetInput();
 					SetInputAnimeMovie();
-					MainWindow.MyMainwindow.SetButtonColor(6);
+					MainWindow.MyMainwindow.SetSelectButtonColor(6);
 					break;
 				default:
 					ResetInput();
 					SetInputAll();
-					MainWindow.MyMainwindow.SetButtonColor(0);
+					MainWindow.MyMainwindow.SetSelectButtonColor(0);
 					break;
 			}
 		}

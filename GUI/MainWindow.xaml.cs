@@ -28,7 +28,8 @@ namespace GUI
 
 		public string[] typeString = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
 
-		private List<Button> buttons;
+		private List<Button> selectButtons;
+		private List<Button> pageButtons;
 
 		public MediaList mediaList = new MediaList();
 		private JSONSerializer json = new JSONSerializer();
@@ -43,7 +44,7 @@ namespace GUI
 			MyMainwindow = this;
 			InitializeComponent();
 			Load();
-			SetButtonColor(0);
+			SetSelectButtonColor(0);
 			MyTypeIndex = 0;
 			listPage = new ListPage();
 			tilePage = new TilePage();
@@ -111,64 +112,64 @@ namespace GUI
 		private void Button_All_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(0);
-			SetButtonColor(0);
+			SetSelectButtonColor(0);
 		}
 
 		private void Button_Book_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(1);
-			SetButtonColor(1);
+			SetSelectButtonColor(1);
 		}
 
 		private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(2);
-			SetButtonColor(2);
+			SetSelectButtonColor(2);
 		}
 
 		private void Button_Movies_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(3);
-			SetButtonColor(3);
+			SetSelectButtonColor(3);
 		}
 
 		private void Button_Shows_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(4);
-			SetButtonColor(4);
+			SetSelectButtonColor(4);
 		}
 
 		private void Button_Anime_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(5);
-			SetButtonColor(5);
+			SetSelectButtonColor(5);
 		}
 
 		private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
 		{
 			TypeChoice(6);
-			SetButtonColor(6);
+			SetSelectButtonColor(6);
 		}
 
-		public void SetButtonColor(int i)
+		public void SetSelectButtonColor(int i)
 		{
-			if (buttons == null)
+			if (selectButtons == null)
 			{
-				buttons = new List<Button>();
-				buttons.Add(Button_All);
-				buttons.Add(Button_Book);
-				buttons.Add(Button_WebNovel);
-				buttons.Add(Button_Movies);
-				buttons.Add(Button_Shows);
-				buttons.Add(Button_Anime);
-				buttons.Add(Button_Anime_Movies);
+				selectButtons = new List<Button>();
+				selectButtons.Add(Button_All);
+				selectButtons.Add(Button_Book);
+				selectButtons.Add(Button_WebNovel);
+				selectButtons.Add(Button_Movies);
+				selectButtons.Add(Button_Shows);
+				selectButtons.Add(Button_Anime);
+				selectButtons.Add(Button_Anime_Movies);
 			}
 
-			foreach (var item in buttons)
+			foreach (var item in selectButtons)
 			{
 				item.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
 			}
-			buttons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
+			selectButtons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
 		}
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e)
