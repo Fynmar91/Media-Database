@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    interface PageInterface
-    {
-        void Refresh();
-    }
+	interface PageInterface
+	{
+		void Refresh();
+	}
 }

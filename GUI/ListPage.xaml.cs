@@ -16,42 +16,42 @@ using System.Windows.Shapes;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for ListPage.xaml
-    /// </summary>
-    public partial class ListPage : Page, PageInterface
-    {
-        public MediaList displayList;
+	/// <summary>
+	/// Interaction logic for ListPage.xaml
+	/// </summary>
+	public partial class ListPage : Page, PageInterface
+	{
+		public MediaList displayList;
 
-        public ListPage()
-        {
-            InitializeComponent();
-            Refresh();
-        }
-        public void Refresh()
-        {
-            displayList = new MediaList();
+		public ListPage()
+		{
+			InitializeComponent();
+			Refresh();
+		}
+		public void Refresh()
+		{
+			displayList = new MediaList();
 
-            string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.MyTypeIndex];
+			string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.MyTypeIndex];
 
-            foreach (var item in MainWindow.MyMainwindow.mediaList)
-            {
-                if (filter == "" || item.MyType == filter)
-                {
-                    displayList.Add(item);
-                }
-            }
+			foreach (var item in MainWindow.MyMainwindow.mediaList)
+			{
+				if (filter == "" || item.MyType == filter)
+				{
+					displayList.Add(item);
+				}
+			}
 
-            List_Media.ItemsSource = displayList;
-            List_Media.Items.Refresh();
-        }
+			List_Media.ItemsSource = displayList;
+			List_Media.Items.Refresh();
+		}
 
-        private void List_Media_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (sender is ListView && (sender as ListView).SelectedItem != null)
-            {
-                MainWindow.MyMainwindow.OpenDisplayPage((sender as ListView).SelectedItem as Media);
-            }
-        }
-    }
+		private void List_Media_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			if (sender is ListView && (sender as ListView).SelectedItem != null)
+			{
+				MainWindow.MyMainwindow.OpenDisplayPage((sender as ListView).SelectedItem as Media);
+			}
+		}
+	}
 }

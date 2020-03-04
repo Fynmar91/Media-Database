@@ -6,32 +6,32 @@
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="ListPage">   
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="10"></RowDefinition>
-        </Grid.RowDefinitions>
+      Title="ListPage">
 
-        <ListView x:Name="List_Media" FontSize="20" Grid.Column="1" Grid.Row="1" PreviewMouseDoubleClick="List_Media_PreviewMouseDoubleClick" VerticalAlignment="Top" FontFamily="Consolas">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
-                    <GridViewColumn Header="Erschienen" Width="120" DisplayMemberBinding="{Binding Path=MyReleaseDateS}"/>
-                    <GridViewColumn Header="Zuletzt" Width="120" DisplayMemberBinding="{Binding Path=MyLastWatchDateS}"/>
-                    <GridViewColumn Header="Wertung" Width="100" DisplayMemberBinding="{Binding Path=MyRating}"/>
-                    <GridViewColumn Header="Typ" Width="200" DisplayMemberBinding="{Binding Path=MyType}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </Grid>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="40"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="40"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="10"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<ListView x:Name="List_Media" FontSize="20" Grid.Column="1" Grid.Row="1" PreviewMouseDoubleClick="List_Media_PreviewMouseDoubleClick" VerticalAlignment="Top" FontFamily="Consolas">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
+					<GridViewColumn Header="Erschienen" Width="120" DisplayMemberBinding="{Binding Path=MyReleaseDateS}"/>
+					<GridViewColumn Header="Zuletzt" Width="120" DisplayMemberBinding="{Binding Path=MyLastWatchDateS}"/>
+					<GridViewColumn Header="Wertung" Width="100" DisplayMemberBinding="{Binding Path=MyRating}"/>
+					<GridViewColumn Header="Typ" Width="200" DisplayMemberBinding="{Binding Path=MyType}"/>
+				</GridView>
+			</ListView.View>
+		</ListView>
+	</Grid>
 </Page>
     
     

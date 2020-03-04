@@ -8,61 +8,61 @@
       d:DesignHeight="480" d:DesignWidth="780"
       Title="DisplayPage">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
 
-        <Image x:Name="image" Margin="20" MinWidth="200" MaxWidth="600"/>
+		<Image x:Name="image" Margin="20" MinWidth="200" MaxWidth="600"/>
 
-        <Grid Grid.Column="1" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+		<Grid Grid.Column="1" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="200"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
 
-            <StackPanel Margin="20">
-                <TextBlock Grid.Row="1" Text="Titel:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Author:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Studio:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Angefangen:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Beendet:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Wiederholungen:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Bewertung:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Fortschritt:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Fortschritt %:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Dropped:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Bild:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Erschienen am:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Erstes mal:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-                <TextBlock Grid.Row="1" Text="Letztes mal:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
-            </StackPanel>
+			<StackPanel Margin="20">
+				<TextBlock Grid.Row="1" Text="Titel:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Author:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Studio:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Angefangen:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Beendet:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Wiederholungen:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Bewertung:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Fortschritt:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Fortschritt %:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Dropped:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Bild:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Erschienen am:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Erstes mal:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+				<TextBlock Grid.Row="1" Text="Letztes mal:" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="20" Height="30"/>
+			</StackPanel>
 
-            <StackPanel Margin="20" Grid.Column="1">
-                <TextBox x:Name="title" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="author" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="studio" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="started" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="finished" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="rewatches" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="rating" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="progress" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="percentage" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="dropped" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="imageName" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="release" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="firstwatch" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="lastwatch" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
-            </StackPanel>
+			<StackPanel Margin="20" Grid.Column="1">
+				<TextBox x:Name="title" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="author" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="studio" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="started" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="finished" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="rewatches" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="rating" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="progress" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="percentage" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="dropped" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="imageName" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="release" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="firstwatch" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+				<TextBox x:Name="lastwatch" Grid.Row="1" Text="Titel" VerticalAlignment="Top" Foreground="#FFEAEAEA" FontSize="16" Height="30" Padding="6,0" VerticalContentAlignment="Center"/>
+			</StackPanel>
 
-        </Grid>
+		</Grid>
 
-    </Grid>
+	</Grid>
 </Page>

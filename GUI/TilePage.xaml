@@ -8,21 +8,21 @@
       Title="TilePage" MinWidth="600" MinHeight="300">
 
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            
-            <StackPanel x:Name="stack1" Orientation="Horizontal" ScrollViewer.CanContentScroll="True"/>
-            <StackPanel x:Name="stack2" Orientation="Horizontal" ScrollViewer.CanContentScroll="True" Grid.Row="1"/>
+	<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
 
-        </Grid>
-    </ScrollViewer>
+			<StackPanel x:Name="stack1" Orientation="Horizontal" ScrollViewer.CanContentScroll="True"/>
+			<StackPanel x:Name="stack2" Orientation="Horizontal" ScrollViewer.CanContentScroll="True" Grid.Row="1"/>
+
+		</Grid>
+	</ScrollViewer>
 
 
 </Page>
