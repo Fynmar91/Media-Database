@@ -14,9 +14,14 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
+
+		<StackPanel x:Name="descStack">
+			<TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock"/>
+
+		</StackPanel>
+		<StackPanel x:Name="inputStack" Grid.Column="1">
 		
-		<StackPanel x:Name="descStack"/>
-		<StackPanel x:Name="inputStack" Grid.Column="1"/>
+		</StackPanel>
 
 	</Grid>
 </UserControl>

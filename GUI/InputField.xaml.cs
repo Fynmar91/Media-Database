@@ -20,18 +20,18 @@ namespace GUI
 	/// </summary>
 	public partial class InputField : UserControl
 	{
-		public InputField(string inputType, string descText)
+		public InputField(string inputType, string descName, string descText)
 		{
 			InitializeComponent();
 
 			switch (inputType)
 			{
 				case "Text":
-					descStack.Children.Add(new TextBlock { Name = "descName", Text = "descText", FontSize = 20, Foreground = Brushes.WhiteSmoke });
+					descStack.Children.Add(new TextBlock { Name = descName, Text = descText, FontSize = 20, Foreground = Brushes.WhiteSmoke });
 					inputStack.Children.Add(new TextBox { Name = "inputName", FontSize = 20, Foreground = Brushes.WhiteSmoke });
 					break;
 				case "Slider":
-					descStack.Children.Add(new TextBlock { Name = "descName", Text = "descText", FontSize = 20, Foreground = Brushes.WhiteSmoke });
+					descStack.Children.Add(new TextBlock { Name = descName, Text = descText, FontSize = 20, Foreground = Brushes.WhiteSmoke });
 					inputStack.Children.Add(new Slider { Name = "inputName", Width = 200 });
 					break;
 				default:
