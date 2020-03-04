@@ -13,8 +13,8 @@ namespace Serializing
     {
         //string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\");
         //string filePath = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\database.json");
-        string folder = Environment.ExpandEnvironmentVariables(@"..\Bilder\");
-        string filePath = Environment.ExpandEnvironmentVariables(@"..\database.json");
+        string folder = Environment.ExpandEnvironmentVariables(@"..\..\Bilder\");
+        string filePath = Environment.ExpandEnvironmentVariables(@"..\..\database.json");
 
         public void Serialize(MediaList list)
         {
