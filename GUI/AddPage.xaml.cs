@@ -80,8 +80,30 @@ namespace GUI
 		{
 			foreach (var item in inputFields)
 			{
-				
+				if (item.MyErrorState)
+				{
+					return;
+				}
 			}
+
+			Media m = new Media();
+
+			m.MyType = MainWindow.MyMainwindow.MyActiveTypeString;
+
+			foreach (var item in inputFields)
+			{
+				MethodInfo mi = MainWindow.MyMainwindow.MyMediaList.GetType().GetMethod(item.MyPropName);
+				object[] obj = { MainWindow.MyMainwindow.MyActiveTypeString, item.MyInput };
+
+				if (mi != null && (bool)mi.Invoke(MainWindow.MyMainwindow.MyMediaList, obj))
+				{
+					Type myType = typeof(Media);
+					PropertyInfo myPropInfo = myType.GetProperty(item.MyPropName);
+					myPropInfo.SetValue(m, item.MyInput, null);
+				}
+			}
+
+			MainWindow.MyMainwindow.MyMediaList.Add(m);
 		}
 
 		//
@@ -97,14 +119,18 @@ namespace GUI
 		{
 			foreach (var item in inputFields)
 			{
-				item.Margin = new Thickness(0, 0, 0, 10);
 				inputStack.Children.Add(item);
 			}			
 		}
 
 		private void SetInputBook()
 		{
-			inputFields.Add(new InputField("Text", "a"));
+			inputFields.Add(new InputField("Text", "Buch", "MyTitle", "Titel"));
+			inputFields.Add(new InputField("Text", "Buch", "MyAuthor", "Autor"));
+			inputFields.Add(new InputField("Check", "Buch", "MyIsStarted", "Angefangen"));
+			inputFields.Add(new InputField("Check", "Buch", "MyIsFinished", "Beendet"));
+			inputFields.Add(new InputField("Slider", "Buch", "MyRating", "Bewertung"));
+			inputFields.Add(new InputField("Text", "Buch", "MyFirstWatchDate", "Angefangen:"));
 		}
 
 		private void SetInputWebNovel()

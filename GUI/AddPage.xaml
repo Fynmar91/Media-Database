@@ -28,12 +28,9 @@
 			<Button x:Name="Button_Add" Content="Hinzufügen" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="120" Click="Button_Add_Click"/>
 		</StackPanel>
 
-
 		<Grid Grid.Column="2" Grid.RowSpan="3" Margin="40,30,20,20">			
 			<StackPanel x:Name="inputStack" MaxWidth="1000"/>
 		</Grid>
-
-
-
+		
 	</Grid>
 </Page>

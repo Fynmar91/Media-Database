@@ -9,7 +9,7 @@ namespace MediaClass
 	[Serializable]
 	public class MediaList : List<Media>
 	{
-		public bool Title(string type, string title)
+		public bool MyTitle(string type, string title)
 		{
 			if (title != "")
 			{
@@ -24,17 +24,27 @@ namespace MediaClass
 			return true;
 		}
 
-		public bool Progress(string progress)
+		public bool MyAuthor(string type, string author)
+		{
+			return true;
+		}
+
+		public bool MyStudio(string type, string studio)
+		{
+			return true;
+		}
+
+		public bool MyProgress(string type, string progress)
 		{
 			return true;
 		}		
 
-		public bool TestImage()
+		public bool MyImageName(string type, string image)
 		{
 			return true;
 		}
 
-		public bool ReleaseDate(string date)
+		public bool MyReleaseDate(string type, string date)
 		{
 			DateTime newDate;
 
@@ -45,7 +55,7 @@ namespace MediaClass
 			return false;
 		}
 
-		public bool FirstWatchDate(string date)
+		public bool MyFirstWatchDate(string type, string date)
 		{
 			DateTime newDate;
 
@@ -56,7 +66,7 @@ namespace MediaClass
 			return false;
 		}
 
-		public bool LastWatchDate(string date)
+		public bool MyLastWatchDate(string type, string date)
 		{
 			DateTime newDate;
 

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MediaClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,23 +22,88 @@ namespace GUI
 	/// </summary>
 	public partial class InputField : UserControl
 	{
-		public InputField(string inputType, string descName, string descText)
+		public bool MyErrorState = false;
+		public string MyPropName;
+		private string inputType;
+		private string mediaType;
+
+		public string MyInput
+		{
+			get
+			{
+				string s = "";
+				switch (inputType)
+				{
+					case "Text":
+						s = textInput.Text.ToString();
+						break;
+					case "Slider":
+						sliderInput.Value.ToString();
+						break;
+					case "Check":
+						checkInput.IsChecked.ToString();
+						break;
+					default:
+						break;
+				}
+				return s;
+			}
+		}
+
+		public InputField(string inputType, string mediaType, string name, string descText)
 		{
 			InitializeComponent();
+			ResetBorder();
+			MyPropName = name;
+			descTextBlock.Text = descText;
+			this.mediaType = mediaType;
+			this.inputType = inputType;
 
 			switch (inputType)
 			{
 				case "Text":
-					descStack.Children.Add(new TextBlock { Name = descName, Text = descText, FontSize = 20, Foreground = Brushes.WhiteSmoke });
-					inputStack.Children.Add(new TextBox { Name = "inputName", FontSize = 20, Foreground = Brushes.WhiteSmoke });
+					sliderStack.Visibility = Visibility.Collapsed;
+					checkInput.Visibility = Visibility.Collapsed;
 					break;
 				case "Slider":
-					descStack.Children.Add(new TextBlock { Name = descName, Text = descText, FontSize = 20, Foreground = Brushes.WhiteSmoke });
-					inputStack.Children.Add(new Slider { Name = "inputName", Width = 200 });
+					textInput.Visibility = Visibility.Collapsed;
+					checkInput.Visibility = Visibility.Collapsed;
+					break;
+				case "Check":
+					textInput.Visibility = Visibility.Collapsed;
+					sliderStack.Visibility = Visibility.Collapsed;
 					break;
 				default:
 					break;
 			}
+		}
+
+		private void ResetBorder()
+		{
+			highlightBox.Visibility = Visibility.Hidden;
+		}
+
+		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			MethodInfo mi = MainWindow.MyMainwindow.MyMediaList.GetType().GetMethod(MyPropName);
+			object[] obj = { mediaType, textInput.Text.ToString() };
+
+			if (!(bool)mi.Invoke(MainWindow.MyMainwindow.MyMediaList, obj))
+			{
+				highlightBox.Visibility = Visibility.Visible;
+				MyErrorState = true;
+			}
+			else
+			{
+				ResetBorder();
+				MyErrorState = false;
+			}
+
+		}
+
+		private void SliderInput_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			sliderText.Text = sliderInput.Value.ToString();
 		}
 	}
 }
