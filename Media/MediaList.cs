@@ -9,7 +9,7 @@ namespace MediaClass
 	[Serializable]
 	public class MediaList : List<Media>
 	{
-		public bool TestTitle(string type, string title)
+		public bool Title(string type, string title)
 		{
 			if (title != "")
 			{
@@ -24,59 +24,17 @@ namespace MediaClass
 			return true;
 		}
 
-		public bool TestAuthor(string author)
+		public bool Progress(string progress)
 		{
 			return true;
-		}
-
-		public bool TestStudio(string studio)
-		{
-			return true;
-		}
-
-		public bool TestRewatches()
-		{
-			return true;
-		}
-
-		public bool TestRating(string rating)
-		{
-			int newRating;
-
-			if (int.TryParse(rating, out newRating))
-			{
-				return true;
-			}
-			return false;
-		}
-
-		public bool TestProgress(string progress)
-		{
-			return true;
-		}
-
-		public bool TestPercentage(string progress)
-		{
-			int newProgress;
-
-			if (int.TryParse(progress, out newProgress))
-			{
-				return true;
-			}
-			return false;
-		}
+		}		
 
 		public bool TestImage()
 		{
 			return true;
 		}
 
-		public bool TesReleaseDate()
-		{
-			return true;
-		}
-
-		public bool TestFirstDate(string date)
+		public bool ReleaseDate(string date)
 		{
 			DateTime newDate;
 
@@ -87,9 +45,26 @@ namespace MediaClass
 			return false;
 		}
 
-		public bool TestWatchDate()
+		public bool FirstWatchDate(string date)
 		{
-			return true;
+			DateTime newDate;
+
+			if (DateTime.TryParse(date, out newDate))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public bool LastWatchDate(string date)
+		{
+			DateTime newDate;
+
+			if (DateTime.TryParse(date, out newDate))
+			{
+				return true;
+			}
+			return false;
 		}
 	}
 }
