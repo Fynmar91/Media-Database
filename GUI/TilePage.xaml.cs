@@ -36,7 +36,7 @@ namespace GUI
 		{
 			displayList = new MediaList();
 
-			string filter = MainWindow.MyMainwindow.typeString[MainWindow.MyMainwindow.MyTypeIndex];
+			string filter = MainWindow.MyMainwindow.MyTypeString[MainWindow.MyMainwindow.MySelectedTypeIndex];
 
 			if (filter != null)
 			{
@@ -45,7 +45,7 @@ namespace GUI
 				tiles.Clear();
 			}
 
-			foreach (var item in MainWindow.MyMainwindow.mediaList)
+			foreach (var item in MainWindow.MyMainwindow.MyMediaList)
 			{
 				if (filter == "" || item.MyType == filter)
 				{

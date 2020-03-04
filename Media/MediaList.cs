@@ -6,41 +6,9 @@ using System.Threading.Tasks;
 
 namespace MediaClass
 {
-    [Serializable]
-    public class MediaList : List<Media>
-    {
-		//public void TestedAdd()
-		//{
-		//	Media media = new Media();
-
-		//	media.MyType = comboBox_MediaChoice.SelectedValue.ToString();
-
-		//	media.MyTitle = myTitle_in.Text;
-
-		//	media.MyIsStarted = myIsStarted_in.IsChecked.Value;
-		//	media.MyIsFinished = myIsFinished_in.IsChecked.Value;
-
-		//	media.MyAuthor = myAuthor_in.Text;
-
-		//	media.MyStudio = myStudio_in.Text;
-
-		//	if (rating_switch.IsChecked == true)
-		//	{
-		//		media.MyRating = Convert.ToInt16(myRating_in.Value);
-		//	}
-		//	else
-		//	{
-		//		media.MyRating = -1;
-		//	}
-
-		//	media.MyProgressPercentage = Convert.ToInt16(myPercentageRead_in.Value);
-		//	media.MyProgress = myProgress_in.Text;
-
-		//	media.MyIsDropped = myIsDropped_in.IsChecked.Value;
-
-		//	MainWindow.MyMainwindow.mediaList.Add(media);
-		//}
-
+	[Serializable]
+	public class MediaList : List<Media>
+	{
 		public bool TestTitle(string type, string title)
 		{
 			if (title != "")
@@ -49,51 +17,79 @@ namespace MediaClass
 				{
 					if (item.MyType == type && item.MyTitle == title)
 					{
-						return true;
+						return false;
 					}
 				}
 			}
-			return false;
+			return true;
 		}
 
-		public bool TestAuthor()
+		public bool TestAuthor(string author)
 		{
 			return true;
 		}
 
-		public bool TestStudio()
+		public bool TestStudio(string studio)
 		{
 			return true;
 		}
+
 		public bool TestRewatches()
 		{
 			return true;
 		}
-		public bool TestRating()
+
+		public bool TestRating(string rating)
+		{
+			int newRating;
+
+			if (int.TryParse(rating, out newRating))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public bool TestProgress(string progress)
 		{
 			return true;
 		}
-		public bool TestProgress()
+
+		public bool TestPercentage(string progress)
 		{
-			return true;
+			int newProgress;
+
+			if (int.TryParse(progress, out newProgress))
+			{
+				return true;
+			}
+			return false;
 		}
+
 		public bool TestImage()
 		{
 			return true;
 		}
+
 		public bool TesReleaseDate()
 		{
 			return true;
 		}
-		public bool TestFirstDate()
+
+		public bool TestFirstDate(string date)
 		{
-			return true;
+			DateTime newDate;
+
+			if (DateTime.TryParse(date, out newDate))
+			{
+				return true;
+			}
+			return false;
 		}
+
 		public bool TestWatchDate()
 		{
 			return true;
 		}
-
-
 	}
 }

@@ -24,14 +24,29 @@ namespace GUI
 	{
 		public static MainWindow MyMainwindow { get; set; }
 
-		public int MyTypeIndex { get; set; }
+		private int selectedTypeIndex;
+		public int MySelectedTypeIndex
+		{
+			get { return selectedTypeIndex; }
+			set
+			{
+				selectedTypeIndex = value;
+				if (activePage != null)
+				{
+					(activePage as PageInterface).Refresh();
+				}
+			}
+		}
 
-		public string[] typeString = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
+		private string[] typeString = { "", "Buch", "Web-Novel", "Film", "Serie", "Anime", "Anime-Film" };
+		public string[] MyTypeString { get => typeString; set => typeString = value; }
+		public string MyActiveTypeString { get => typeString[MySelectedTypeIndex];  }
+
 
 		private List<Button> selectButtons;
 		private List<Button> pageButtons;
 
-		public MediaList mediaList = new MediaList();
+		public MediaList MyMediaList { get; set; }
 		private JSONSerializer json = new JSONSerializer();
 		private Page activePage;
 
@@ -44,20 +59,22 @@ namespace GUI
 			MyMainwindow = this;
 			InitializeComponent();
 			Load();
-			SetSelectButtonColor(0);
-			SetPageButtonColor(0);
-			MyTypeIndex = 0;
+			MySelectedTypeIndex = 0;
 			tilePage = new TilePage();
-			listPage = new ListPage();
 			addPage = new AddPage();
 			activePage = tilePage;
 			PageView.Content = activePage;
+			SetSelectButtonColor(0);
+			SetPageButtonColor(0);
 			Refresh();
 		}
 
 		public void Refresh()
 		{
-			(activePage as PageInterface).Refresh();
+			if (activePage != null)
+			{
+				(activePage as PageInterface).Refresh();
+			}
 		}
 
 		//
@@ -68,7 +85,6 @@ namespace GUI
 			activePage = tilePage;
 			PageView.Content = activePage;
 			SetPageButtonColor(0);
-			Refresh();
 		}
 
 		private void Button_List_Click(object sender, RoutedEventArgs e)
@@ -77,7 +93,6 @@ namespace GUI
 			activePage = listPage;
 			PageView.Content = activePage;
 			SetPageButtonColor(1);
-			Refresh();
 		}
 
 		private void Button_Add_Click(object sender, RoutedEventArgs e)
@@ -85,7 +100,6 @@ namespace GUI
 			activePage = addPage;
 			PageView.Content = activePage;
 			SetPageButtonColor(2);
-			Refresh();
 		}
 
 		public void OpenDisplayPage(Media m)
@@ -93,7 +107,6 @@ namespace GUI
 			activePage = new DisplayPage(m);
 			PageView.Content = activePage;
 			SetPageButtonColor(3);
-			Refresh();
 		}
 		public void SetPageButtonColor(int i)
 		{
@@ -113,6 +126,7 @@ namespace GUI
 			{
 				pageButtons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
 			}
+			Refresh();
 		}
 
 		//
@@ -121,48 +135,40 @@ namespace GUI
 		private void Button_All_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(0);
-			Refresh();
 		}
 
 		private void Button_Book_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(1);
-			Refresh();
 		}
 
 		private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(2);
-			Refresh();
 		}
 
 		private void Button_Movies_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(3);
-			Refresh();
 		}
 
 		private void Button_Shows_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(4);
-			Refresh();
 		}
 
 		private void Button_Anime_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(5);
-			Refresh();
 		}
 
 		private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
 		{
 			SelectMediaType(6);
-			Refresh();
 		}
-		private void SelectMediaType(int i)
+		public void SelectMediaType(int i)
 		{
-			MyTypeIndex = i;
-			addPage.MyTypeChoice = MyTypeIndex;
+			MySelectedTypeIndex = i;
 
 			switch (i)
 			{
@@ -188,6 +194,7 @@ namespace GUI
 					SetSelectButtonColor(0);
 					break;
 			}
+			Refresh();
 		}
 
 		public void SetSelectButtonColor(int i)
@@ -217,13 +224,13 @@ namespace GUI
 		//
 		private void Load()
 		{
-			mediaList = json.Deserialize();
-			mediaList.Sort((x, y) => y.MyTitle.CompareTo(x.MyTitle));
+			MyMediaList = json.Deserialize();
+			MyMediaList.Sort((x, y) => y.MyTitle.CompareTo(x.MyTitle));
 		}
 
 		private void Button_Save_Click(object sender, RoutedEventArgs e)
 		{
-			json.Serialize(mediaList);
+			json.Serialize(MyMediaList);
 		}
 
 

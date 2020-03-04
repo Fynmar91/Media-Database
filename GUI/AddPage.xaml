@@ -64,12 +64,13 @@
 					</CheckBox>
 				</StackPanel>
 				<TextBlock x:Name="dropped_txt" TextWrapping="Wrap" Text="Dropped" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
+				<TextBlock x:Name="firstWatch_txt" TextWrapping="Wrap" Text="Angefangen am:" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="40,0,0,0" Margin="0,5,0,0"/>
 			</StackPanel>
 
 			<StackPanel Grid.Column="1" VerticalAlignment="Top">
-				<TextBox x:Name="myTitle_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,40,0,0"/>
+				<TextBox x:Name="myTitle_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,40,0,0" TextChanged="MyTitle_in_TextChanged"/>
 				<StackPanel x:Name="status_stack_in" Orientation="Horizontal">
-					<CheckBox x:Name="myIsStarted_in" Content="angefangen"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="0,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5"/>
+					<CheckBox x:Name="myIsStarted_in" Content="angefangen"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="0,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5" Checked="MyIsStarted_in_Checked" Unchecked="MyIsStarted_in_Unchecked"/>
 					<CheckBox x:Name="myIsFinished_in" Content="beendet"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="20,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5" Checked="MyIsFinished_in_Checked"/>
 				</StackPanel>
 				<TextBox x:Name="myAuthor_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0"/>
@@ -78,17 +79,17 @@
 					<Slider x:Name="myRating_in" VerticalAlignment="Top" Grid.Column="2" SmallChange="1" Maximum="100" AutoToolTipPlacement="BottomRight" HorizontalAlignment="Left" Width="200" Height="30" Margin="0,5,0,0" ValueChanged="MyRating_in_ValueChanged" IsSnapToTickEnabled="True"/>
 					<TextBlock x:Name="rating_value" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="5,0,0,0"/>
 				</StackPanel>
+				<TextBox x:Name="myProgress_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0"/>
 				<StackPanel x:Name="percentage_stack_in" Height="35" Margin="0,5,0,0" Orientation="Horizontal">
 					<Slider x:Name="myPercentageRead_in" VerticalAlignment="Top" Grid.Column="2" SmallChange="1" Maximum="100" AutoToolTipPlacement="BottomRight" Height="30" Margin="0,5,0,0" HorizontalAlignment="Left" Width="200" ValueChanged="MyPercentageRead_in_ValueChanged" IsSnapToTickEnabled="True"/>
 					<TextBlock x:Name="percentage_value" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Height="35" Foreground="#FFE0E0E0" FontSize="20" Padding="5,0,0,0"/>
 				</StackPanel>
-				<TextBox x:Name="myProgress_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0"/>
 				<CheckBox x:Name="myIsDropped_in" Content="Ja"  VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="20" Grid.Column="2" Height="35" Margin="0,5,0,0" VerticalContentAlignment="Center" Padding="5,0,0,5"/>
+				<TextBox x:Name="myFirstWatch_in" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Grid.Column="2" VerticalContentAlignment="Center" Height="35" Margin="0,5,0,0" TextChanged="MyFirstWatch_in_TextChanged"/>
 			</StackPanel>
 		</Grid>
 
 		<StackPanel VerticalAlignment="Bottom" Grid.Column="1">
-			<Button x:Name="Button_Check" Content="Kontrollieren" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="120" Click="Button_Check_Click"/>
 			<Button x:Name="Button_Add" Content="Hinzufügen" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="120" Click="Button_Add_Click"/>
 		</StackPanel>
 

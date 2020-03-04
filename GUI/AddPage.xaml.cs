@@ -21,24 +21,19 @@ namespace GUI
 	/// </summary>
 	public partial class AddPage : Page, PageInterface
 	{
-
-		public int MyTypeChoice
-		{
-			get { return comboBox_MediaChoice.SelectedIndex; }
-			set { comboBox_MediaChoice.SelectedIndex = value; }
-		}
-
+		private bool[] errors = { false, false };
 
 		public AddPage()
 		{
 			InitializeComponent();
-			comboBox_MediaChoice.ItemsSource = MainWindow.MyMainwindow.typeString;
-			comboBox_MediaChoice.SelectedIndex = MainWindow.MyMainwindow.MyTypeIndex;
+			comboBox_MediaChoice.ItemsSource = MainWindow.MyMainwindow.MyTypeString;
 			Refresh();
 		}
 
 		public void Refresh()
 		{
+			comboBox_MediaChoice.SelectedIndex = MainWindow.MyMainwindow.MySelectedTypeIndex;
+
 			ResetInput();
 
 			switch (comboBox_MediaChoice.SelectedIndex)
@@ -65,55 +60,54 @@ namespace GUI
 					SetInputAll();
 					break;
 			}
-		}
 
-		private void AddMedia()
-		{
-			Media media = new Media();
-
-			media.MyType = comboBox_MediaChoice.SelectedValue.ToString();
-
-			media.MyTitle = myTitle_in.Text;
-
-			media.MyIsStarted = myIsStarted_in.IsChecked.Value;
-			media.MyIsFinished = myIsFinished_in.IsChecked.Value;
-
-			media.MyAuthor = myAuthor_in.Text;
-
-			media.MyStudio = myStudio_in.Text;
-
-			if (rating_switch.IsChecked == true)
-			{
-				media.MyRating = Convert.ToInt16(myRating_in.Value);
-			}
-			else
-			{
-				media.MyRating = -1;
-			}
-
-			media.MyProgressPercentage = Convert.ToInt16(myPercentageRead_in.Value);
-			media.MyProgress = myProgress_in.Text;
-
-			media.MyIsDropped = myIsDropped_in.IsChecked.Value;
-
-			MainWindow.MyMainwindow.mediaList.Add(media);
-		}
-
-		private bool CheckMedia()
-		{
-			
+			title_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+			author_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+			studio_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+			rating_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+			progress_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+			percentage_value.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+			firstWatch_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
 		}
 
 		private void Button_Add_Click(object sender, RoutedEventArgs e)
 		{
-			
+			AddMedia();
 		}
 
-		private void Button_Check_Click(object sender, RoutedEventArgs e)
+		private void AddMedia()
 		{
+			if (!errors[0] && !errors[1])
+			{
+				Media media = new Media();
 
+				media.MyType = comboBox_MediaChoice.SelectedValue.ToString();
+
+				media.MyTitle = myTitle_in.Text;
+				media.MyAuthor = myAuthor_in.Text;
+				media.MyStudio = myStudio_in.Text;
+				media.MyIsStarted = myIsStarted_in.IsChecked.Value;
+				media.MyIsFinished = myIsFinished_in.IsChecked.Value;
+				if (rating_switch.IsChecked == true)
+				{
+					media.MyRating = Convert.ToInt16(myRating_in.Value);
+				}
+				media.MyProgress = myProgress_in.Text;
+				media.MyProgressPercentage = Convert.ToInt16(myPercentageRead_in.Value);
+				media.MyIsDropped = myIsDropped_in.IsChecked.Value;
+				if (myIsStarted_in.IsChecked.Value != false)
+				{
+					media.MyFirstWatchDate = myFirstWatch_in.Text.ToString();
+				}				
+
+				MainWindow.MyMainwindow.MyMediaList.Add(media);
+				Refresh();
+			}			
 		}
 
+		//
+		// Media Type Selection Stuff
+		//
 		private void ResetInput()
 		{
 			title_txt.Visibility = Visibility.Visible;
@@ -152,6 +146,10 @@ namespace GUI
 			dropped_txt.Visibility = Visibility.Visible;
 			myIsDropped_in.Visibility = Visibility.Visible;
 			myIsDropped_in.IsChecked = false;
+
+			firstWatch_txt.Visibility = Visibility.Visible;
+			myFirstWatch_in.Visibility = Visibility.Visible;
+			myFirstWatch_in.Text = "";
 		}
 
 		private void SetInputAll()
@@ -167,6 +165,9 @@ namespace GUI
 
 			dropped_txt.Visibility = Visibility.Collapsed;
 			myIsDropped_in.Visibility = Visibility.Collapsed;
+
+			firstWatch_txt.Visibility = Visibility.Collapsed;
+			myFirstWatch_in.Visibility = Visibility.Collapsed;
 		}
 
 		private void SetInputBook()
@@ -208,31 +209,46 @@ namespace GUI
 		{
 
 		}
-
-		private void Percentage_switch_Checked(object sender, RoutedEventArgs e)
+		
+		//
+		// Realtime Check Stuff
+		//
+		private void MyTitle_in_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (progress_stack.Visibility == Visibility.Visible)
+			if (MainWindow.MyMainwindow.MyMediaList.TestTitle(MainWindow.MyMainwindow.MyActiveTypeString, myTitle_in.Text.ToString()))
 			{
-				percentage_stack_in.Visibility = Visibility.Visible;
-				myProgress_in.Visibility = Visibility.Collapsed;
+				title_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+				errors[0] = false;
+			}
+			else
+			{
+				title_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x00, 0x00));
+				errors[0] = true;
+			}
+		}
+		private void MyFirstWatch_in_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (myIsStarted_in.IsChecked.Value == true)
+			{
+				if (MainWindow.MyMainwindow.MyMediaList.TestFirstDate(myFirstWatch_in.Text.ToString()))
+				{
+					firstWatch_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
+					errors[1] = false;
+				}
+				else
+				{
+					firstWatch_txt.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x00, 0x00));
+					errors[1] = true;
+				}
 			}
 		}
 
-		private void Percentage_switch_Unchecked(object sender, RoutedEventArgs e)
+		//
+		//
+		//
+		private void ComboBox_MediaChoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if (progress_stack.Visibility == Visibility.Visible)
-			{
-				percentage_stack_in.Visibility = Visibility.Collapsed;
-				myProgress_in.Visibility = Visibility.Visible;
-			}
-		}
-
-		private void MyIsFinished_in_Checked(object sender, RoutedEventArgs e)
-		{
-			if (status_stack_in.Visibility == Visibility.Visible)
-			{
-				myIsStarted_in.IsChecked = true;
-			}
+			MainWindow.MyMainwindow.SelectMediaType(comboBox_MediaChoice.SelectedIndex);
 		}
 
 		private void MyRating_in_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -250,17 +266,44 @@ namespace GUI
 			myRating_in.Visibility = Visibility.Visible;
 			rating_value.Visibility = Visibility.Visible;
 		}
-
 		private void Rating_switch_Unchecked(object sender, RoutedEventArgs e)
 		{
 			myRating_in.Visibility = Visibility.Hidden;
 			rating_value.Visibility = Visibility.Hidden;
 		}
 
-		private void ComboBox_MediaChoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void MyIsStarted_in_Checked(object sender, RoutedEventArgs e)
 		{
-			MainWindow.MyMainwindow.MyTypeIndex = comboBox_MediaChoice.SelectedIndex;
-			Refresh();
+			myFirstWatch_in.Text = DateTime.Today.ToString("yyyy-MM-dd");
+		}
+		private void MyIsStarted_in_Unchecked(object sender, RoutedEventArgs e)
+		{
+			myFirstWatch_in.Text = "";
+			myIsStarted_in.IsChecked = false;
+		}
+		private void MyIsFinished_in_Checked(object sender, RoutedEventArgs e)
+		{
+			if (status_stack_in.Visibility == Visibility.Visible)
+			{
+				myIsStarted_in.IsChecked = true;
+			}
+		}
+
+		private void Percentage_switch_Checked(object sender, RoutedEventArgs e)
+		{
+			if (progress_stack.Visibility == Visibility.Visible)
+			{
+				percentage_stack_in.Visibility = Visibility.Visible;
+				myProgress_in.Visibility = Visibility.Collapsed;
+			}
+		}
+		private void Percentage_switch_Unchecked(object sender, RoutedEventArgs e)
+		{
+			if (progress_stack.Visibility == Visibility.Visible)
+			{
+				percentage_stack_in.Visibility = Visibility.Collapsed;
+				myProgress_in.Visibility = Visibility.Visible;
+			}
 		}
 	}
 }
