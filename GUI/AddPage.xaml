@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddPage">
+      Title="AddPage" Foreground="Black" Background="#00000000">
 
 	<Grid>
 		<Grid.ColumnDefinitions>
