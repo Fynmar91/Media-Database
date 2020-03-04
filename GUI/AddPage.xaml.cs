@@ -39,42 +39,30 @@ namespace GUI
 
 		public void Refresh()
 		{
+			ResetInput();
+
 			switch (comboBox_MediaChoice.SelectedIndex)
 			{
 				case 1:
-					ResetInput();
 					SetInputBook();
-					MainWindow.MyMainwindow.SetSelectButtonColor(1);
 					break;
 				case 2:
-					ResetInput();
 					SetInputWebNovel();
-					MainWindow.MyMainwindow.SetSelectButtonColor(2);
 					break;
 				case 3:
-					ResetInput();
 					SetInputMovie();
-					MainWindow.MyMainwindow.SetSelectButtonColor(3);
 					break;
 				case 4:
-					ResetInput();
 					SetInputShow();
-					MainWindow.MyMainwindow.SetSelectButtonColor(4);
 					break;
 				case 5:
-					ResetInput();
 					SetInputAnime();
-					MainWindow.MyMainwindow.SetSelectButtonColor(5);
 					break;
 				case 6:
-					ResetInput();
 					SetInputAnimeMovie();
-					MainWindow.MyMainwindow.SetSelectButtonColor(6);
 					break;
 				default:
-					ResetInput();
 					SetInputAll();
-					MainWindow.MyMainwindow.SetSelectButtonColor(0);
 					break;
 			}
 		}
@@ -113,39 +101,17 @@ namespace GUI
 
 		private bool CheckMedia()
 		{
-			bool passed = true;
-
-			if (myTitle_in.Text.ToString() != "" && comboBox_MediaChoice.SelectedIndex != 0)
-			{
-				foreach (var item in MainWindow.MyMainwindow.mediaList)
-				{
-					if (item.MyType == comboBox_MediaChoice.SelectedValue.ToString() && item.MyTitle == myTitle_in.Text.ToString())
-					{
-						passed = false;
-						break;
-					}
-				}
-			}
-			else
-			{
-				passed = false;
-			}
-
-			return passed;
+			
 		}
 
 		private void Button_Add_Click(object sender, RoutedEventArgs e)
 		{
-			if (CheckMedia())
-			{
-				AddMedia();
-				Refresh();
-			}
+			
 		}
 
 		private void Button_Check_Click(object sender, RoutedEventArgs e)
 		{
-			CheckMedia();
+
 		}
 
 		private void ResetInput()

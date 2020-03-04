@@ -47,8 +47,8 @@ namespace GUI
 			SetSelectButtonColor(0);
 			SetPageButtonColor(0);
 			MyTypeIndex = 0;
-			listPage = new ListPage();
 			tilePage = new TilePage();
+			listPage = new ListPage();
 			addPage = new AddPage();
 			activePage = tilePage;
 			PageView.Content = activePage;
@@ -57,13 +57,7 @@ namespace GUI
 
 		public void Refresh()
 		{
-			if (activePage is DisplayPage)
-			{
-				(activePage as DisplayPage).Refresh();
-			}
-			listPage.Refresh();
-			tilePage.Refresh();
-			addPage.Refresh();
+			(activePage as PageInterface).Refresh();
 		}
 
 		//
@@ -79,6 +73,7 @@ namespace GUI
 
 		private void Button_List_Click(object sender, RoutedEventArgs e)
 		{
+			listPage = new ListPage();
 			activePage = listPage;
 			PageView.Content = activePage;
 			SetPageButtonColor(1);
@@ -118,64 +113,81 @@ namespace GUI
 			{
 				pageButtons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
 			}
-		}		
-		
+		}
+
 		//
 		// Type Selection Stuff
 		//
 		private void Button_All_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(0);
-			SetSelectButtonColor(0);
+			SelectMediaType(0);
 			Refresh();
 		}
 
 		private void Button_Book_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(1);
-			SetSelectButtonColor(1);
+			SelectMediaType(1);
 			Refresh();
 		}
 
 		private void Button_WebNovel_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(2);
-			SetSelectButtonColor(2);
+			SelectMediaType(2);
 			Refresh();
 		}
 
 		private void Button_Movies_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(3);
-			SetSelectButtonColor(3);
+			SelectMediaType(3);
 			Refresh();
 		}
 
 		private void Button_Shows_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(4);
-			SetSelectButtonColor(4);
+			SelectMediaType(4);
 			Refresh();
 		}
 
 		private void Button_Anime_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(5);
-			SetSelectButtonColor(5);
+			SelectMediaType(5);
 			Refresh();
 		}
 
 		private void Button_Anime_Movies_Click(object sender, RoutedEventArgs e)
 		{
-			SelecteMediaType(6);
-			SetSelectButtonColor(6);
+			SelectMediaType(6);
 			Refresh();
 		}
-		private void SelecteMediaType(int i)
+		private void SelectMediaType(int i)
 		{
 			MyTypeIndex = i;
-
 			addPage.MyTypeChoice = MyTypeIndex;
+
+			switch (i)
+			{
+				case 1:
+					SetSelectButtonColor(1);
+					break;
+				case 2:
+					SetSelectButtonColor(2);
+					break;
+				case 3:
+					SetSelectButtonColor(3);
+					break;
+				case 4:
+					SetSelectButtonColor(4);
+					break;
+				case 5:
+					SetSelectButtonColor(5);
+					break;
+				case 6:
+					SetSelectButtonColor(6);
+					break;
+				default:
+					SetSelectButtonColor(0);
+					break;
+			}
 		}
 
 		public void SetSelectButtonColor(int i)
