@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="ListPage">
+      Title="ListPage" Foreground="Transparent">
 
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
 			<RowDefinition Height="10"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<ListView x:Name="List_Media" FontSize="20" Grid.Column="1" Grid.Row="1" PreviewMouseDoubleClick="List_Media_PreviewMouseDoubleClick" VerticalAlignment="Top" FontFamily="Consolas">
+		<ListView x:Name="List_Media" FontSize="20" Grid.Column="1" Grid.Row="1" PreviewMouseDoubleClick="List_Media_PreviewMouseDoubleClick" VerticalAlignment="Top" FontFamily="Consolas" Background="#FFEAEAEA">
 			<ListView.View>
 				<GridView>
 					<GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
