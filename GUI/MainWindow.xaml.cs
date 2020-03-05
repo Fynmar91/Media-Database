@@ -204,13 +204,20 @@ namespace GUI
 			if (selectButtons == null)
 			{
 				selectButtons = new List<Button>();
-				selectButtons.Add(Button_All);
-				selectButtons.Add(Button_Book);
-				selectButtons.Add(Button_WebNovel);
-				selectButtons.Add(Button_Movies);
-				selectButtons.Add(Button_Shows);
-				selectButtons.Add(Button_Anime);
-				selectButtons.Add(Button_Anime_Movies);
+				selectButtons.Add(button_All);
+				selectButtons.Add(button_Book);
+				selectButtons.Add(button_WebNovel);
+				selectButtons.Add(button_Movies);
+				selectButtons.Add(button_Shows);
+				selectButtons.Add(button_Anime);
+				selectButtons.Add(button_Anime_Movies);
+				selectButtons.Add(button2_All);
+				selectButtons.Add(button2_Book);
+				selectButtons.Add(button2_WebNovel);
+				selectButtons.Add(button2_Movies);
+				selectButtons.Add(button2_Shows);
+				selectButtons.Add(button2_Anime);
+				selectButtons.Add(button2_Anime_Movies);
 			}
 
 			foreach (var item in selectButtons)
@@ -218,6 +225,7 @@ namespace GUI
 				item.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
 			}
 			selectButtons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
+			selectButtons[i + selectButtons.Count / 2].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
 		}
 
 

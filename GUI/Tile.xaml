@@ -7,22 +7,25 @@
       mc:Ignorable="d" 
       Title="Tile" Margin="10">
 
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition MinWidth="200" MaxWidth="300"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*" MaxHeight="480"></RowDefinition>
-			<RowDefinition Height="Auto"></RowDefinition>
-		</Grid.RowDefinitions>
+	<Viewbox>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="220" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="320"></RowDefinition>
+				<RowDefinition Height="60"></RowDefinition>
+			</Grid.RowDefinitions>
 
-		<Button x:Name="click" Grid.RowSpan="2" Click="Click_Click" Panel.ZIndex="1" Opacity="0"/>
+			<Button x:Name="click" Grid.RowSpan="2" Click="Click_Click" Panel.ZIndex="1" Opacity="0"/>
 
-		<Image x:Name="image"/>
+			<Image x:Name="image" Stretch="UniformToFill"/>
 
-		<StackPanel Grid.Row="1" VerticalAlignment="Top" MaxWidth="200">
-			<TextBlock x:Name="title" Grid.Row="1" Text="Titel" Foreground="#FFEAEAEA" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Height="60"/>
-		</StackPanel>
+			<StackPanel Grid.Row="1" VerticalAlignment="Top">
+				<TextBlock x:Name="title" Grid.Row="1" Text="Titel" Foreground="#FFEAEAEA" TextAlignment="Center" TextWrapping="Wrap" FontFamily="Consolas" FontSize="16"/>
+			</StackPanel>
 
-	</Grid>
+		</Grid>
+	</Viewbox>
+	
 </Page>
