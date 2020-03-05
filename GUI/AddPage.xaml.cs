@@ -161,10 +161,10 @@ namespace GUI
 				d.DownloadImageIMDB(searchTerm, MainWindow.MyMainwindow.MySettings.MyImageFolder + searchTerm + ".jpg");
 				m.MyImageName = searchTerm + ".jpg";
 			}
-			else if (m.MyType == "Film")
+			else if (m.MyType == "Serie")
 			{
 				string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-				string searchTerm = m.MyTitle + " " + "(" + m.MyReleaseDate + ")";
+				string searchTerm = m.MyTitle;
 				foreach (char c in invalid)
 				{
 					searchTerm = searchTerm.Replace(c.ToString(), "");
