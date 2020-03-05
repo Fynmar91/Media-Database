@@ -1,6 +1,7 @@
 ﻿using MediaClass;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,41 +22,44 @@ namespace GUI
 	/// </summary>
 	public partial class DisplayPage : Page, PageInterface
 	{
-		Media media;
+		Media MyMedia;
 
-		string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\Bilder\");
-
-		public DisplayPage(Media m)
+		public DisplayPage(Media media)
 		{
 			InitializeComponent();
-			media = m;
+			MyMedia = media;
 			Refresh();
 		}
 
 		public void Refresh()
 		{
-			if (media.MyImageName != null)
+			string path = "";
+			if (MyMedia.MyImageName != null)
 			{
-				var path = System.IO.Path.Combine(folder, media.MyImageName);
+				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyImageName);
+			}
+
+			if (File.Exists(path))
+			{
 				var uri = new Uri(path);
 				var bitmap = new BitmapImage(uri);
 				image.Source = bitmap;
 			}
 
-			title.Text = media.MyTitle;
-			author.Text = media.MyAuthor;
-			studio.Text = media.MyStudio;
-			started.Text = media.MyIsStarted.ToString();
-			finished.Text = media.MyIsFinished.ToString();
-			rewatches.Text = media.MyTotalRewatches.ToString();
-			rating.Text = media.MyRating.ToString();
-			progress.Text = media.MyProgress;
-			percentage.Text = media.MyProgressPercentage.ToString();
-			dropped.Text = media.MyIsDropped.ToString();
-			imageName.Text = media.MyImageName;
-			release.Text = media.MyReleaseDate;
-			firstwatch.Text = media.MyFirstWatchDate;
-			lastwatch.Text = media.MyLastWatchDate;
+			title.Text = MyMedia.MyTitle;
+			author.Text = MyMedia.MyAuthor;
+			studio.Text = MyMedia.MyStudio;
+			started.Text = MyMedia.MyIsStarted.ToString();
+			finished.Text = MyMedia.MyIsFinished.ToString();
+			rewatches.Text = MyMedia.MyTotalRewatches.ToString();
+			rating.Text = MyMedia.MyRating.ToString();
+			progress.Text = MyMedia.MyProgress;
+			percentage.Text = MyMedia.MyProgressPercentage.ToString();
+			dropped.Text = MyMedia.MyIsDropped.ToString();
+			imageName.Text = MyMedia.MyImageName;
+			release.Text = MyMedia.MyReleaseDate;
+			firstwatch.Text = MyMedia.MyFirstWatchDate;
+			lastwatch.Text = MyMedia.MyLastWatchDate;
 		}
 	}
 }

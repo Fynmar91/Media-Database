@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MediaClass
 {
-	[Serializable]
 	public class Media
 	{
 		private string _myType;
@@ -34,38 +33,11 @@ namespace MediaClass
 		public int MyTotalRewatches { get => _myTotalRewatches; set => _myTotalRewatches = value; }
 		public int MyRating { get => _myRating; set => _myRating = value; }
 		public string MyProgress { get => _myProgress; set => _myProgress = value; }
-		public int MyProgressPercentage
-		{
-			get => _myProgressPercentage;
-			set
-			{
-				_myProgressPercentage = value;
-				if (value > 0)
-				{
-					MyIsFinished = true;
-				}
-				if (value == 100)
-				{
-					MyIsFinished = true;
-				}
-			}
-		}
+		public int MyProgressPercentage { get => _myProgressPercentage; set => _myProgressPercentage = value; }
 		public bool MyIsDropped { get => _myIsDropped; set => _myIsDropped = value; }
 		public string MyImageName { get => _myImageName; set => _myImageName = value; }
-
 		public string MyReleaseDate { get => _myReleaseDate; set => _myReleaseDate = value; }
-		public string MyFirstWatchDate
-		{
-			get => _myFirstWatchDate;
-			set
-			{
-				_myFirstWatchDate = value;
-				if (value != "")
-				{
-					MyIsStarted = true;
-				}
-			}
-		}
+		public string MyFirstWatchDate { get => _myFirstWatchDate; set => _myFirstWatchDate = value; }
 		public string MyLastWatchDate { get => _myLastWatchDate; set => _myLastWatchDate = value; }
 	}
 }

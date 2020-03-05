@@ -58,6 +58,8 @@
 			<StackPanel VerticalAlignment="Top">
 				<TextBlock Text="Datenbank:" Background="#FF1F1F1F" TextAlignment="Center" Height="30" Foreground="#FFBABABA" FontSize="14" Padding="0,4,0,0" Margin="1" />
 				<Button x:Name="Button_Save" Content="Speichern" Click="Button_Save_Click"/>
+				<Button x:Name="Button_Load" Content="Laden" Click="Button_Load_Click"/>
+				<Button x:Name="Button_Options" Content="Optionen" Click="Button_Options_Click"/>
 			</StackPanel>
 		</DockPanel>
 

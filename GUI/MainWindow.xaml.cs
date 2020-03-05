@@ -46,6 +46,7 @@ namespace GUI
 		private List<Button> selectButtons;
 		private List<Button> pageButtons;
 
+		public Settings MySettings { get; set; }
 		public MediaList MyMediaList { get; set; }
 		private JSONSerializer json = new JSONSerializer();
 		private Page activePage;
@@ -58,6 +59,7 @@ namespace GUI
 		{
 			MyMainwindow = this;
 			InitializeComponent();
+			LoadSettings();
 			Load();
 			MySelectedTypeIndex = 0;
 			tilePage = new TilePage();
@@ -222,17 +224,21 @@ namespace GUI
 		//
 		// Application Stuff
 		//
+		private void LoadSettings()
+		{
+			MySettings = json.DeserializeSettings();
+		}
+
 		private void Load()
 		{
-			MyMediaList = json.Deserialize();
+			MyMediaList = json.Deserialize(MySettings);
 			MyMediaList.Sort((x, y) => y.MyTitle.CompareTo(x.MyTitle));
-		}
+		}		
 
 		private void Button_Save_Click(object sender, RoutedEventArgs e)
 		{
-			json.Serialize(MyMediaList);
+			json.Serialize(MyMediaList, MySettings);
 		}
-
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -244,6 +250,7 @@ namespace GUI
 
 		private void Button_Close_Click(object sender, RoutedEventArgs e)
 		{
+			json.SerializeSettings(MySettings);
 			System.Windows.Application.Current.Shutdown();
 		}
 
@@ -257,6 +264,17 @@ namespace GUI
 			{
 				this.WindowState = WindowState.Normal;
 			}
+		}
+
+		private void Button_Options_Click(object sender, RoutedEventArgs e)
+		{
+			MySettings.GetFolder();
+		}
+
+		private void Button_Load_Click(object sender, RoutedEventArgs e)
+		{
+			Load();
+			Refresh();
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using MediaClass;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,29 +22,31 @@ namespace GUI
 	/// </summary>
 	public partial class Tile : Page
 	{
-		Media media;
+		Media MyMedia;
 
-		//string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\Bilder\");
-		string folder = Environment.ExpandEnvironmentVariables(@"..\..\Bilder\");
-
-		public Tile(Media m)
+		public Tile(Media media)
 		{
 			InitializeComponent();
-			media = m;
+			this.MyMedia = media;
 
-			if (m.MyImageName != null)
+			string path = "";
+			if (media.MyImageName != null)
 			{
-				var path = System.IO.Path.Combine(folder, m.MyImageName);
+				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, media.MyImageName);
+			}
+
+			if (File.Exists(path))
+			{				
 				var uri = new Uri(path);
 				var bitmap = new BitmapImage(uri);
 				image.Source = bitmap;
 			}
-			title.Text = m.MyTitle;
+			title.Text = media.MyTitle;
 		}
 
 		private void Click_Click(object sender, RoutedEventArgs e)
 		{
-			MainWindow.MyMainwindow.OpenDisplayPage(media);
+			MainWindow.MyMainwindow.OpenDisplayPage(MyMedia);
 		}
 	}
 }
