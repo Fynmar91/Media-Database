@@ -22,6 +22,7 @@ namespace GUI
 	/// </summary>
 	public partial class DisplayPage : Page, PageInterface
 	{
+		private List<DisplayField> displayFields = new List<DisplayField>();
 		Media MyMedia;
 
 		public DisplayPage(Media media)
@@ -45,21 +46,24 @@ namespace GUI
 				var bitmap = new BitmapImage(uri);
 				image.Source = bitmap;
 			}
+			displayFields.Clear();
+			displayFields.Add(new DisplayField(MyMedia.MyTitle, "Titel"));
+			displayFields.Add(new DisplayField(MyMedia.MyAuthor, "Autor"));
+			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, "Angefangen"));
+			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, "Beendet"));
+			displayFields.Add(new DisplayField(MyMedia.MyRating, "Bewertung"));
+			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, "Dropped"));
+			displayFields.Add(new DisplayField(MyMedia.MyProgress, "Fortschritt"));
+			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, "Fortschritt%"));
+			displayFields.Add(new DisplayField(MyMedia.MyImageName, "Bild:"));
+			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, "Erschienen:"));
+			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, "Angefangen:"));
 
-			title.Text = MyMedia.MyTitle;
-			author.Text = MyMedia.MyAuthor;
-			studio.Text = MyMedia.MyStudio;
-			started.Text = MyMedia.MyIsStarted.ToString();
-			finished.Text = MyMedia.MyIsFinished.ToString();
-			rewatches.Text = MyMedia.MyTotalRewatches.ToString();
-			rating.Text = MyMedia.MyRating.ToString();
-			progress.Text = MyMedia.MyProgress;
-			percentage.Text = MyMedia.MyProgressPercentage.ToString();
-			dropped.Text = MyMedia.MyIsDropped.ToString();
-			imageName.Text = MyMedia.MyImageName;
-			release.Text = MyMedia.MyReleaseDate;
-			firstwatch.Text = MyMedia.MyFirstWatchDate;
-			lastwatch.Text = MyMedia.MyLastWatchDate;
+			displayStack.Children.Clear();
+			foreach (var item in displayFields)
+			{
+				displayStack.Children.Add(item);
+			}
 		}
 	}
 }
