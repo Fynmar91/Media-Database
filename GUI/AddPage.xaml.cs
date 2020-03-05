@@ -130,6 +130,11 @@ namespace GUI
 			inputFields.Add(new InputField("Check", "Buch", "MyIsStarted", "Angefangen"));
 			inputFields.Add(new InputField("Check", "Buch", "MyIsFinished", "Beendet"));
 			inputFields.Add(new InputField("Slider", "Buch", "MyRating", "Bewertung"));
+			inputFields.Add(new InputField("Check", "Buch", "MyIsDropped", "Dropped"));
+			inputFields.Add(new InputField("Text", "Buch", "MyProgress", "Fortschritt"));
+			inputFields.Add(new InputField("Slider", "Buch", "MyProgressPercentage", "Fortschritt%"));
+			inputFields.Add(new InputField("Text", "Buch", "MyImageName", "Bild:"));
+			inputFields.Add(new InputField("Text", "Buch", "MyReleaseDate", "Erschienen:"));
 			inputFields.Add(new InputField("Text", "Buch", "MyFirstWatchDate", "Angefangen:"));
 		}
 

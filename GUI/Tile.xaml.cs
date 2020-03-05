@@ -23,7 +23,8 @@ namespace GUI
 	{
 		Media media;
 
-		string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\Bilder\");
+		//string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\Bilder\");
+		string folder = Environment.ExpandEnvironmentVariables(@"..\..\Bilder\");
 
 		public Tile(Media m)
 		{
