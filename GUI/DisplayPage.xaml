@@ -27,7 +27,7 @@
 				<RowDefinition Height="*"></RowDefinition>
 			</Grid.RowDefinitions>
 
-			<StackPanel x:Name="displayStack" Margin="20"/>
+			<StackPanel x:Name="displayStack" Margin="20" MaxWidth="800"/>
 
 		</Grid>
 

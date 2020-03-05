@@ -29,7 +29,7 @@
 		</StackPanel>
 
 		<Grid Grid.Column="2" Grid.RowSpan="3" Margin="40,30,20,20">			
-			<StackPanel x:Name="inputStack" MaxWidth="1000"/>
+			<StackPanel x:Name="inputStack" MaxWidth="800"/>
 		</Grid>
 		
 	</Grid>
