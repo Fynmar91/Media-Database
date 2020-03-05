@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Serializing
+namespace HelperClasses
 {
 	public class JSONSerializer
 	{

@@ -7,9 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaClass", "Media\MediaClass.csproj", "{BC857B8B-416D-4D25-85EE-944210E7FECE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serializing", "Serializing\Serializing.csproj", "{739309BE-A16A-41F7-AC7D-B228A2A2D235}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downloader", "Downloader\Downloader.csproj", "{B81DC67F-6162-450C-BF02-D91BF92CF241}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperClasses", "Serializing\HelperClasses.csproj", "{739309BE-A16A-41F7-AC7D-B228A2A2D235}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{739309BE-A16A-41F7-AC7D-B228A2A2D235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{739309BE-A16A-41F7-AC7D-B228A2A2D235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{739309BE-A16A-41F7-AC7D-B228A2A2D235}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B81DC67F-6162-450C-BF02-D91BF92CF241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B81DC67F-6162-450C-BF02-D91BF92CF241}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B81DC67F-6162-450C-BF02-D91BF92CF241}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B81DC67F-6162-450C-BF02-D91BF92CF241}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
