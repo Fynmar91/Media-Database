@@ -193,17 +193,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Downloader\Downloader.csproj">
-      <Project>{b81dc67f-6162-450c-bf02-d91bf92cf241}</Project>
-      <Name>Downloader</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Media\MediaClass.csproj">
       <Project>{bc857b8b-416d-4d25-85ee-944210e7fece}</Project>
       <Name>MediaClass</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Serializing\Serializing.csproj">
+    <ProjectReference Include="..\Serializing\HelperClasses.csproj">
       <Project>{739309be-a16a-41f7-ac7d-b228a2a2d235}</Project>
-      <Name>Serializing</Name>
+      <Name>HelperClasses</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
