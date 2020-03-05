@@ -49,7 +49,11 @@ namespace MediaClass
 		{
 			DateTime newDate;
 
-			if (DateTime.TryParse(date, out newDate))
+			if (DateTime.TryParse(date + "-01-01", out newDate) && date.Length == 4)
+			{
+				return true;
+			}
+			else if (date == "")
 			{
 				return true;
 			}
@@ -64,6 +68,10 @@ namespace MediaClass
 			{
 				return true;
 			}
+			else if (date == "")
+			{
+				return true;
+			}
 			return false;
 		}
 
@@ -72,6 +80,10 @@ namespace MediaClass
 			DateTime newDate;
 
 			if (DateTime.TryParse(date, out newDate))
+			{
+				return true;
+			}
+			else if (date == "")
 			{
 				return true;
 			}

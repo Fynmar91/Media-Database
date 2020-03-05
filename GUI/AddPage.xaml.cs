@@ -1,5 +1,6 @@
 ﻿using MediaClass;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Downloaders;
 
 namespace GUI
 {
@@ -101,9 +103,39 @@ namespace GUI
 					PropertyInfo myPropInfo = myType.GetProperty(item.MyPropName);
 					myPropInfo.SetValue(m, item.MyInput, null);
 				}
+				else if (mi == null)
+				{
+					if (item.MyInputType == "Slider")
+					{
+						Type myType = typeof(Media);
+						PropertyInfo myPropInfo = myType.GetProperty(item.MyPropName);
+						myPropInfo.SetValue(m, Convert.ToInt16(item.MyInput), null);
+					}
+					else if (item.MyInputType == "Check")
+					{
+						Type myType = typeof(Media);
+						PropertyInfo myPropInfo = myType.GetProperty(item.MyPropName);
+						myPropInfo.SetValue(m, Convert.ToBoolean(item.MyInput), null);
+					}					
+				}
+			}
+
+			if (m.MyType == "Film")
+			{
+				string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
+				string searchTerm = m.MyTitle + " " + "(" + m.MyReleaseDate + ")";
+				foreach (char c in invalid)
+				{
+					searchTerm = searchTerm.Replace(c.ToString(), "");
+				}
+
+				Downloader d = new Downloader();
+				d.DownloadImageIMDB(searchTerm, MainWindow.MyMainwindow.MySettings.MyImageFolder + searchTerm + ".jpg");
+				m.MyImageName = searchTerm + ".jpg";
 			}
 
 			MainWindow.MyMainwindow.MyMediaList.Add(m);
+			ResetInput();
 		}
 
 		//
@@ -133,7 +165,6 @@ namespace GUI
 			inputFields.Add(new InputField("Check", "Buch", "MyIsDropped", "Dropped"));
 			inputFields.Add(new InputField("Text", "Buch", "MyProgress", "Fortschritt"));
 			inputFields.Add(new InputField("Slider", "Buch", "MyProgressPercentage", "Fortschritt%"));
-			inputFields.Add(new InputField("Text", "Buch", "MyImageName", "Bild:"));
 			inputFields.Add(new InputField("Text", "Buch", "MyReleaseDate", "Erschienen:"));
 			inputFields.Add(new InputField("Text", "Buch", "MyFirstWatchDate", "Angefangen:"));
 		}
@@ -145,7 +176,14 @@ namespace GUI
 
 		private void SetInputMovie()
 		{
-
+			inputFields.Add(new InputField("Text", "Buch", "MyTitle", "Titel"));
+			inputFields.Add(new InputField("Check", "Buch", "MyIsStarted", "Angefangen"));
+			inputFields.Add(new InputField("Check", "Buch", "MyIsFinished", "Beendet"));
+			inputFields.Add(new InputField("Slider", "Buch", "MyRating", "Bewertung"));
+			inputFields.Add(new InputField("Check", "Buch", "MyIsDropped", "Dropped"));
+			inputFields.Add(new InputField("Text", "Buch", "MyProgress", "Fortschritt"));
+			inputFields.Add(new InputField("Text", "Buch", "MyReleaseDate", "Erschienen:"));
+			inputFields.Add(new InputField("Text", "Buch", "MyFirstWatchDate", "Angefangen:"));
 		}
 
 		private void SetInputShow()

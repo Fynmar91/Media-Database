@@ -181,7 +181,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="database.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -194,6 +193,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Downloader\Downloader.csproj">
+      <Project>{b81dc67f-6162-450c-bf02-d91bf92cf241}</Project>
+      <Name>Downloader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Media\MediaClass.csproj">
       <Project>{bc857b8b-416d-4d25-85ee-944210e7fece}</Project>
       <Name>MediaClass</Name>

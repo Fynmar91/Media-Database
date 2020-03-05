@@ -19,12 +19,12 @@
 			<TextBlock x:Name="descTextBlock" TextWrapping="Wrap" Text="descText" FontSize="16" Foreground="#FFBABABA" Height="30" FontFamily="Consolas" Padding="0,4,0,0"/>
 		</StackPanel>
 		<StackPanel Grid.Column="1" Margin="2">
-			<TextBox x:Name="textDisplay" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True"/>
+			<TextBox x:Name="textDisplay" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False"/>
 			<StackPanel x:Name="progressStack" Orientation="Horizontal">
-				<ProgressBar x:Name="progressDisplay" Margin="2,5" HorizontalAlignment="Left" Height="20" Padding="0" Width="300" Maximum="100" SmallChange="1"/>
+				<ProgressBar x:Name="progressDisplay" Margin="2,5" HorizontalAlignment="Left" Height="20" Padding="0" Width="300" Maximum="100" SmallChange="1" IsHitTestVisible="False"/>
 				<TextBlock x:Name="progressText" TextWrapping="Wrap" Text="0" FontSize="16" Foreground="#FFBABABA" FontFamily="Consolas" Padding="10,4,0,0"/>
 			</StackPanel>
-			<CheckBox x:Name="checkDisplay" Content="" VerticalContentAlignment="Center" FontFamily="Consolas"/>
+			<CheckBox x:Name="checkDisplay" Content="" VerticalContentAlignment="Center" FontFamily="Consolas" Focusable="False" IsHitTestVisible="False"/>
 		</StackPanel>
 
 	</Grid>

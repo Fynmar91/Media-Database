@@ -36,7 +36,7 @@ namespace MediaClass
 		public int MyProgressPercentage { get => _myProgressPercentage; set => _myProgressPercentage = value; }
 		public bool MyIsDropped { get => _myIsDropped; set => _myIsDropped = value; }
 		public string MyImageName { get => _myImageName; set => _myImageName = value; }
-		public string MyReleaseDate { get => _myReleaseDate; set => _myReleaseDate = value; }
+		public string MyReleaseDate { get => _myReleaseDate; set => _myReleaseDate = value ; }
 		public string MyFirstWatchDate { get => _myFirstWatchDate; set => _myFirstWatchDate = value; }
 		public string MyLastWatchDate { get => _myLastWatchDate; set => _myLastWatchDate = value; }
 	}

@@ -24,7 +24,7 @@ namespace GUI
 	{
 		public bool MyErrorState = false;
 		public string MyPropName;
-		private string inputType;
+		public string MyInputType;
 		private string mediaType;
 
 		public string MyInput
@@ -32,16 +32,16 @@ namespace GUI
 			get
 			{
 				string s = "";
-				switch (inputType)
+				switch (MyInputType)
 				{
 					case "Text":
 						s = textInput.Text.ToString();
 						break;
 					case "Slider":
-						sliderInput.Value.ToString();
+						s = sliderInput.Value.ToString();
 						break;
 					case "Check":
-						checkInput.IsChecked.ToString();
+						s = checkInput.IsChecked.ToString();
 						break;
 					default:
 						break;
@@ -57,7 +57,7 @@ namespace GUI
 			MyPropName = name;
 			descTextBlock.Text = descText;
 			this.mediaType = mediaType;
-			this.inputType = inputType;
+			this.MyInputType = inputType;
 
 			switch (inputType)
 			{
