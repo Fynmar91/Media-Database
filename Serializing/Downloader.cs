@@ -78,7 +78,7 @@ namespace HelperClasses
 
 			if (imageNodes[0] != null)
 			{
-				string input = imageNodes[0].Attributes["src"].Value.ToString();				
+				string input = imageNodes[0].Attributes["src"].Value.ToString();
 
 				return input;
 			}
@@ -86,7 +86,7 @@ namespace HelperClasses
 			return null;
 		}
 
-
+		
 		private string FindImageGoodReads(string url)
 		{
 			string targetUrl = "https://www.goodreads.com/search?utf8=✓&q=" + url;
@@ -105,12 +105,21 @@ namespace HelperClasses
 
 			if (imageNodes[0] != null)
 			{
-				string input = imageNodes[0].Attributes["src"].Value.ToString();
+				string input;
+
+				if (!imageNodes[0].Attributes["src"].Value.ToString().Contains(".png"))
+				{
+					input = imageNodes[0].Attributes["src"].Value.ToString();
+				}
+				else
+				{
+					input = imageNodes[4].Attributes["src"].Value.ToString();
+				}
 
 				int index = input.IndexOf("._");
 				if (index > 0)
 				{
-					input = input.Substring(0, index + 2);
+					input = input.Substring(0, index);
 				}
 
 				return (input + ".jpg");
