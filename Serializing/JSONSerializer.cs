@@ -50,7 +50,7 @@ namespace HelperClasses
 			return fromFile;
 		}
 
-		public void SerializeSettings(Settings list)
+		public void SerializeSettings(Settings settings)
 		{
 			Directory.CreateDirectory(folder);
 
@@ -58,7 +58,7 @@ namespace HelperClasses
 			{
 				JsonSerializer serializer = new JsonSerializer();
 				serializer.Formatting = Formatting.Indented;
-				serializer.Serialize(file, list);
+				serializer.Serialize(file, settings);
 			}
 		}
 
@@ -79,10 +79,9 @@ namespace HelperClasses
 				Directory.CreateDirectory(folder);
 				using (StreamWriter file = File.CreateText(filePath))
 				{
-					Settings s = new Settings();
 					JsonSerializer serializer = new JsonSerializer();
 					serializer.Formatting = Formatting.Indented;
-					serializer.Serialize(file, s);
+					serializer.Serialize(file, fromFile);
 				}
 			}
 			return fromFile;

@@ -9,7 +9,20 @@ namespace HelperClasses
 	public class Settings
 	{
 		public string MyFolder { get; set; }
-		public string MyImageFolder { get { return System.IO.Path.Combine(MyFolder, @"Bilder\"); }  }
+		public string MyImageFolder
+		{
+			get
+			{
+				if (MyFolder != null)
+				{
+					return System.IO.Path.Combine(MyFolder, @"Bilder\");
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
 
 		public Settings()
 		{
