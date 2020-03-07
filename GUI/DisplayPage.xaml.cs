@@ -52,17 +52,17 @@ namespace GUI
 			image.Source = bitmap;
 
 			displayFields.Clear();
-			displayFields.Add(new DisplayField(MyMedia.MyTitle.MyValue, "Titel", "MyTitle", this));
-			displayFields.Add(new DisplayField(MyMedia.MyAuthor.MyValue, "Autor", "MyAuthor", this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsStarted.MyValue, "Angefangen", "MyIsStarted", this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsFinished.MyValue, "Beendet", "MyIsFinished", this));
-			displayFields.Add(new DisplayField(MyMedia.MyRating.MyValue, "Bewertung", "MyRating", this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsDropped.MyValue, "Dropped", "MyIsDropped", this));
-			displayFields.Add(new DisplayField(MyMedia.MyProgress.MyValue, "Fortschritt", "MyProgress", this));
-			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage.MyValue, "Fortschritt%", "MyProgressPercentage", this));
-			displayFields.Add(new DisplayField(MyMedia.MyImageName.MyValue, "Bild:", "MyImageName", this));
-			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate.MyValue, "Erschienen:", "MyReleaseDate", this));
-			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate.MyValue, "Angefangen:", "MyFirstWatchDate", this));
+			displayFields.Add(new DisplayField(MyMedia.MyTitle, this));
+			displayFields.Add(new DisplayField(MyMedia.MyAuthor, this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, this));
+			displayFields.Add(new DisplayField(MyMedia.MyRating, this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, this));
+			displayFields.Add(new DisplayField(MyMedia.MyProgress, this));
+			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, this));
+			displayFields.Add(new DisplayField(MyMedia.MyImageName, this));
+			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, this));
+			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, this));
 
 			displayStack.Children.Clear();
 			foreach (var item in displayFields)
@@ -71,31 +71,26 @@ namespace GUI
 			}
 		}
 
-		public void EnableInput(string propName, string descText)
+		public void EnableInput(MediaProp mediaProp)
 		{
 			InputField inputField;
 
-			Type myType = typeof(Media);
-			PropertyInfo myPropInfo = myType.GetProperty(propName);
-			TypeCode typeCode = Type.GetTypeCode(myPropInfo.PropertyType)
-
-;			switch (typeCode)
+			if (mediaProp is MediaPropText)
 			{
-				case TypeCode.String:
 
-					break;
-				case TypeCode.Int32:
-
-					break;
-				case TypeCode.Boolean:
-
-					break;				
-				default:
-					break;
 			}
+			else if (mediaProp is MediaPropInt)
+			{
 
-			
+			}
+			else if (mediaProp is MediaPropBool)
+			{
 
+			}
+			else if (mediaProp is MediaPropDate)
+			{
+
+			}
 		}
 	}
 }

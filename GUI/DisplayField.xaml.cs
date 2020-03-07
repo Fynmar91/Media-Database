@@ -22,63 +22,55 @@ namespace GUI
 	public partial class DisplayField : UserControl
 	{
 		private DisplayPage MyDisplayPage;
-		private string MyDescText;
-		public string MyPropName;
+		public MediaProp MyMediaProp;
 
-		public DisplayField(string value, string descText, string propName, DisplayPage displayPage)
+		public DisplayField(MediaProp mediaProp, DisplayPage displayPage)
 		{
 			InitializeComponent();
 			MyDisplayPage = displayPage;
-			MyPropName = propName;
+			MyMediaProp = mediaProp;
 
-			progressStack.Visibility = Visibility.Collapsed;
-			checkDisplay.Visibility = Visibility.Collapsed;
+			descTextBlock.Text = MyMediaProp.MyDescription;
 
-			descTextBlock.Text = descText;
-			textDisplay.Text = value;
-		}
-
-
-		public DisplayField(double value, string descText, string propName, DisplayPage displayPage)
-		{
-			InitializeComponent();
-			MyDisplayPage = displayPage;
-			MyPropName = propName;
-
-			textDisplay.Visibility = Visibility.Collapsed;
-			checkDisplay.Visibility = Visibility.Collapsed;
-
-			descTextBlock.Text = descText;
-			progressDisplay.Value = value;
-			progressText.Text = value.ToString();
-		}
-
-		public DisplayField(bool value, string descText, string propName, DisplayPage displayPage)
-		{
-			InitializeComponent();
-			MyDisplayPage = displayPage;
-			MyPropName = propName;
-
-			textDisplay.Visibility = Visibility.Collapsed;
-			progressStack.Visibility = Visibility.Collapsed;
-
-			descTextBlock.Text = descText;
-			checkDisplay.IsChecked = value;
+			if (MyMediaProp is MediaPropText)
+			{
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				textDisplay.Text = (MyMediaProp as MediaPropText).MyValue;
+			}
+			else if (MyMediaProp is MediaPropInt)
+			{
+				textDisplay.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				progressDisplay.Value = (MyMediaProp as MediaPropInt).MyValue;
+			}
+			else if (MyMediaProp is MediaPropBool)
+			{
+				textDisplay.Visibility = Visibility.Collapsed;
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.IsChecked = (MyMediaProp as MediaPropBool).MyValue;
+			}
+			else if (MyMediaProp is MediaPropDate)
+			{
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				textDisplay.Text = (MyMediaProp as MediaPropDate).MyValue;
+			}
 		}
 
 		private void TextDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyDisplayPage.EnableInput(MyPropName, MyDescText);
+			MyDisplayPage.EnableInput(MyMediaProp);
 		}
 
 		private void ProgressDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyDisplayPage.EnableInput(MyPropName, MyDescText);
+			MyDisplayPage.EnableInput(MyMediaProp);
 		}
 
 		private void CheckDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyDisplayPage.EnableInput(MyPropName, MyDescText);
+			MyDisplayPage.EnableInput(MyMediaProp);
 		}
 	}
 }

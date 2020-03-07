@@ -23,11 +23,11 @@
 		<ListView x:Name="List_Media" FontSize="20" Grid.Column="1" Grid.Row="1" PreviewMouseDoubleClick="List_Media_PreviewMouseDoubleClick" VerticalAlignment="Top" FontFamily="Consolas" Background="#00EAEAEA" BorderBrush="#00606060" Foreground="#00042271">
 			<ListView.View>
 				<GridView>
-					<GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle}"/>
-					<GridViewColumn Header="Erschienen" Width="120" DisplayMemberBinding="{Binding Path=MyReleaseDateS}"/>
-					<GridViewColumn Header="Zuletzt" Width="120" DisplayMemberBinding="{Binding Path=MyLastWatchDateS}"/>
-					<GridViewColumn Header="Wertung" Width="100" DisplayMemberBinding="{Binding Path=MyRating}"/>
-					<GridViewColumn Header="Typ" Width="200" DisplayMemberBinding="{Binding Path=MyType}"/>
+					<GridViewColumn Header="Titel" Width="400" DisplayMemberBinding="{Binding Path=MyTitle.MyValue}"/>
+					<GridViewColumn Header="Erschienen" Width="120" DisplayMemberBinding="{Binding Path=MyReleaseDate.MyValue}"/>
+					<GridViewColumn Header="Zuletzt" Width="120" DisplayMemberBinding="{Binding Path=MyLastWatchDate.MyValue}"/>
+					<GridViewColumn Header="Wertung" Width="100" DisplayMemberBinding="{Binding Path=MyRating.MyValue}"/>
+					<GridViewColumn Header="Typ" Width="100" DisplayMemberBinding="{Binding Path=MyType.MyValue}"/>
 				</GridView>
 			</ListView.View>
 		</ListView>

@@ -25,6 +25,7 @@ namespace HelperClasses
 				using (StreamWriter file = File.CreateText(path))
 				{
 					JsonSerializer serializer = new JsonSerializer();
+					serializer.TypeNameHandling = TypeNameHandling.Auto;
 					serializer.Formatting = Formatting.Indented;
 					serializer.Serialize(file, list);
 				}
@@ -44,6 +45,7 @@ namespace HelperClasses
 					using (StreamReader file = File.OpenText(path))
 					{
 						JsonSerializer serializer = new JsonSerializer();
+						serializer.TypeNameHandling = TypeNameHandling.Auto;
 						fromFile = (MediaList)serializer.Deserialize(file, typeof(MediaList));
 					}
 				}
@@ -58,6 +60,7 @@ namespace HelperClasses
 			using (StreamWriter file = File.CreateText(filePath))
 			{
 				JsonSerializer serializer = new JsonSerializer();
+				serializer.TypeNameHandling = TypeNameHandling.Auto;
 				serializer.Formatting = Formatting.Indented;
 				serializer.Serialize(file, settings);
 			}
@@ -72,6 +75,7 @@ namespace HelperClasses
 				using (StreamReader file = File.OpenText(filePath))
 				{
 					JsonSerializer serializer = new JsonSerializer();
+					serializer.TypeNameHandling = TypeNameHandling.Auto;
 					fromFile = (Settings)serializer.Deserialize(file, typeof(Settings));
 				}
 			}
@@ -81,6 +85,7 @@ namespace HelperClasses
 				using (StreamWriter file = File.CreateText(filePath))
 				{
 					JsonSerializer serializer = new JsonSerializer();
+					serializer.TypeNameHandling = TypeNameHandling.Auto;
 					serializer.Formatting = Formatting.Indented;
 					serializer.Serialize(file, fromFile);
 				}
