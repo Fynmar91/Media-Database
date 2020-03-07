@@ -36,7 +36,7 @@ namespace GUI
 
 			foreach (var item in MainWindow.MyMainwindow.MyMediaList)
 			{
-				if (filter == "" || item.MyType == filter)
+				if (filter == "" || item.MyType.MyValue == filter)
 				{
 					displayList.Add(item);
 				}

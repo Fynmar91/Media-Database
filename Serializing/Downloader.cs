@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using MediaClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,37 +11,109 @@ namespace HelperClasses
 {
 	public class Downloader
 	{
-		public void DownloadImageGoodReads(string mediaName, string target)
+		public string GetImage(string folder, Media media)
+		{			
+			string searchTerm = media.MyTitle.MyValue;
+
+			string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
+
+			if (media.MyType.MyValue == "Film" && media.MyReleaseDate.MyValue != null && media.MyReleaseDate.MyValue != "")
+			{
+				searchTerm += "(" + media.MyReleaseDate.MyValue + ")";
+			}
+			else if (media.MyType.MyValue == "Serie" && media.MyTitle.MySeason > 0)
+			{
+				searchTerm += media.MyTitle.MySeason;
+			}
+			foreach (char c in invalid)
+			{
+				searchTerm = searchTerm.Replace(c.ToString(), "");
+			}
+
+			if (media.MyType.MyValue == "Buch")
+			{
+				DownloadImageGoodReads(searchTerm, folder + searchTerm + ".jpg");
+			}
+			else if (media.MyType.MyValue == "Web-Novel")
+			{
+				DownloadImageNovelUpdates(searchTerm, folder + searchTerm + ".jpg");
+			}
+			else if (media.MyType.MyValue == "Film")
+			{
+
+				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", false);
+			}
+			else if (media.MyType.MyValue == "Serie")
+			{
+				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", true);
+			}
+			else if (media.MyType.MyValue == "Anime")
+			{
+				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
+			}
+			else if (media.MyType.MyValue == "Anime-Film")
+			{
+				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
+			}
+
+			return searchTerm + ".jpg";
+		}
+
+
+		private void DownloadImageGoodReads(string mediaName, string target)
 		{
 			string source = FindImageGoodReads(mediaName.Replace(" ", "+"));
 
-			using (WebClient client = new WebClient())
+			if (source != null)
 			{
-				client.Headers.Add("User-Agent: Other");
-				client.DownloadFile(new Uri(source), target);
+				using (WebClient client = new WebClient())
+				{
+					client.Headers.Add("User-Agent: Other");
+					client.DownloadFile(new Uri(source), target);
+				}
 			}
 		}
 
-		public void DownloadImageNovelUpdates(string mediaName, string target)
+		private void DownloadImageNovelUpdates(string mediaName, string target)
 		{
 			string source = FindImageNovelUpdates(mediaName.Replace(" ", "+"));
 
-			using (WebClient client = new WebClient())
+			if (source != null)
+			{
+				using (WebClient client = new WebClient())
 			{
 				client.Headers.Add("User-Agent: Other");
 				client.DownloadFile(new Uri(source), target);
+				}
 			}
 		}
 
-		public void DownloadImageIMDB(string mediaName, string target)
+		private void DownloadImageIMDB(string mediaName, string target, bool show)
 		{
-			string source = FindImageIMDB(mediaName.Replace(" ", "+"));
+			string source = FindImageIMDB(mediaName.Replace(" ", "+"), show);
 
-			using (WebClient client = new WebClient())
+			if (source != null)
+			{
+				using (WebClient client = new WebClient())
 			{
 				client.Headers.Add("User-Agent: Other");
 				client.DownloadFile(new Uri(source), target);
+				}
 			}
+		}
+
+		private void DownloadImageMyAnimeList(string mediaName, string target, bool show)
+		{
+			string source = FindImageMyAnimeList(mediaName, show);
+
+			if (source != null)
+			{
+				using (WebClient client = new WebClient())
+				{
+					client.Headers.Add("User-Agent: Other");
+					client.DownloadFile(new Uri(source), target);
+				}
+			}			
 		}
 
 
@@ -85,7 +158,6 @@ namespace HelperClasses
 
 			return null;
 		}
-
 		
 		private string FindImageGoodReads(string url)
 		{
@@ -128,9 +200,18 @@ namespace HelperClasses
 			return null;
 		}
 
-		private string FindImageIMDB(string url)
+		private string FindImageIMDB(string url, bool show)
 		{
-			string targetUrl = "https://www.imdb.com/find?q=" + url;
+			string targetUrl;
+
+			if (show)
+			{
+				targetUrl = "https://www.imdb.com/find?q=" + url + "&s=tt&ttype=tv";
+			}
+			else
+			{
+				targetUrl = "https://www.imdb.com/find?q=" + url + "&s=tt&ttype=ft";
+			}
 
 			WebClient client = new WebClient();
 			client.Headers.Add("User-Agent: Other");
@@ -155,6 +236,39 @@ namespace HelperClasses
 				}
 
 				return (input + ".jpg");
+			}
+
+			return null;
+		}
+
+		private string FindImageMyAnimeList(string url, bool show)
+		{
+			string targetUrl = targetUrl = "https://myanimelist.net/anime.php?q=" + url;	
+
+			WebClient client = new WebClient();
+			client.Headers.Add("User-Agent: Other");
+			string html = client.DownloadString(targetUrl);
+
+			HtmlDocument doc = new HtmlDocument();
+			doc.LoadHtml(html);
+
+			List<HtmlNode> imageNodes = null;
+			imageNodes = (from HtmlNode node in doc.DocumentNode.SelectNodes("//img")
+						  where node.Name == "img" && node.Attributes["data-src"] != null 
+						  select node).ToList();
+
+			if (imageNodes.Count > 0)
+			{
+				string input = imageNodes[0].Attributes["data-src"].Value.ToString();
+				input = input.Replace("/r/50x70", "");
+
+				int index = input.IndexOf(".jpg");
+				if (index > 0)
+				{
+					input = input.Substring(0, index);
+				}
+
+				return (input + "l.jpg");
 			}
 
 			return null;

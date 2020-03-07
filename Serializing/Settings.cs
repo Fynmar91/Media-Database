@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,20 @@ namespace HelperClasses
 	public class Settings
 	{
 		public string MyFolder { get; set; }
-		public string MyImageFolder { get { return System.IO.Path.Combine(MyFolder, @"Bilder\"); }  }
+		public string MyImageFolder
+		{
+			get
+			{
+				if (MyFolder != null)
+				{
+					return System.IO.Path.Combine(MyFolder, @"Bilder\");
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
 
 		public Settings()
 		{
@@ -22,6 +36,8 @@ namespace HelperClasses
 			{
 				MyFolder = dialog.SelectedPath.ToString();
 			}
+
+			Directory.CreateDirectory(MyImageFolder);
 		}
 
 	}

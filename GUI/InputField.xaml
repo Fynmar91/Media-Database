@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Padding="0,0,0,10">
+             Padding="0,0,0,10">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="240"></ColumnDefinition>
@@ -20,12 +20,28 @@
 		</StackPanel>
 			<Rectangle x:Name="highlightBox" Fill="#FFD64949" Height="34" Stroke="Black" Grid.Column="1" VerticalAlignment="Top" Panel.ZIndex="-1"/>
 		<StackPanel Grid.Column="1" Margin="2">
+			<!-- -->
+			<Grid x:Name="titleGrid">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="60"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"></RowDefinition>
+				</Grid.RowDefinitions>
+				<TextBox x:Name="titleInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
+				<TextBox x:Name="seasonInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged" Grid.Column="1" Margin="12,0,0,0"/>
+			</Grid>
+			<!-- -->
 			<TextBox x:Name="textInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
+			<!-- -->
 			<StackPanel x:Name="sliderStack" Orientation="Horizontal">
-				<Slider x:Name="sliderInput" Margin="10,5,0,0" HorizontalAlignment="Left" Height="25" Padding="0" Width="300" ValueChanged="SliderInput_ValueChanged" Maximum="100" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" IsMoveToPointEnabled="True"/>
+				<Slider x:Name="sliderInput" Margin="10,5,0,0" HorizontalAlignment="Left" Height="25" Padding="0" Width="300" ValueChanged="SliderInput_ValueChanged" Maximum="100" SmallChange="1" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
 				<TextBlock x:Name="sliderText" TextWrapping="Wrap" Text="0" FontSize="16" Foreground="#FFBABABA" FontFamily="Consolas" Padding="10,4,0,0"/>
 			</StackPanel>
+			<!-- -->
 			<CheckBox x:Name="checkInput" Content="" VerticalContentAlignment="Center" FontFamily="Consolas"/>
+			<!-- -->
 		</StackPanel>
 
 	</Grid>

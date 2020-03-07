@@ -8,36 +8,42 @@ namespace MediaClass
 {
 	public class Media
 	{
-		private string _myType;
-		private string _myTitle;
-		private string _myAuthor;
-		private string _myStudio;
-		private bool _myIsStarted;
-		private bool _myIsFinished;
-		private int _myTotalRewatches;
-		private int _myRating;
-		private string _myProgress;
-		private int _myProgressPercentage;
-		private bool _myIsDropped;
-		private string _myImageName;
-		private string _myReleaseDate;
-		private string _myFirstWatchDate;
-		private string _myLastWatchDate;
+		public List<MediaProp> MyProperties { get; set; }
 
-		public string MyType { get => _myType; set => _myType = value; }
-		public string MyTitle { get => _myTitle; set => _myTitle = value; }
-		public string MyAuthor { get => _myAuthor; set => _myAuthor = value; }
-		public string MyStudio { get => _myStudio; set => _myStudio = value; }
-		public bool MyIsStarted { get => _myIsStarted; set => _myIsStarted = value; }
-		public bool MyIsFinished { get => _myIsFinished; set => _myIsFinished = value; }
-		public int MyTotalRewatches { get => _myTotalRewatches; set => _myTotalRewatches = value; }
-		public int MyRating { get => _myRating; set => _myRating = value; }
-		public string MyProgress { get => _myProgress; set => _myProgress = value; }
-		public int MyProgressPercentage { get => _myProgressPercentage; set => _myProgressPercentage = value; }
-		public bool MyIsDropped { get => _myIsDropped; set => _myIsDropped = value; }
-		public string MyImageName { get => _myImageName; set => _myImageName = value; }
-		public string MyReleaseDate { get => _myReleaseDate; set => _myReleaseDate = value ; }
-		public string MyFirstWatchDate { get => _myFirstWatchDate; set => _myFirstWatchDate = value; }
-		public string MyLastWatchDate { get => _myLastWatchDate; set => _myLastWatchDate = value; }
+		public Media()
+		{
+			MyProperties = new List<MediaProp>();
+			MyProperties.Add(MyType = new MediaPropText("", "Typ:"));
+			MyProperties.Add(MyTitle = new MediaPropTitle("", "Titel:", false, 0));
+			MyProperties.Add(MyAuthor = new MediaPropText("", "Autor:"));
+			MyProperties.Add(MyStudio = new MediaPropText("", "Studio:"));
+			MyProperties.Add(MyIsStarted = new MediaPropBool(false, "Angefangen:"));
+			MyProperties.Add(MyIsFinished = new MediaPropBool(false, "Beendet:"));
+			MyProperties.Add(MyTotalRewatches = new MediaPropInt(-1, "Wiederholungen:"));
+			MyProperties.Add(MyRating = new MediaPropInt(-1, "Bewertung:"));
+			MyProperties.Add(MyProgress = new MediaPropText("", "Fortschritt:"));
+			MyProperties.Add(MyProgressPercentage = new MediaPropInt(-1, "Fortschritt%:"));
+			MyProperties.Add(MyIsDropped = new MediaPropBool(false, "Dropped:"));
+			MyProperties.Add(MyImageName = new MediaPropText("", "Bildername:"));
+			MyProperties.Add(MyReleaseDate = new MediaPropDate("", "Erscheinungsjahr:", true));
+			MyProperties.Add(MyFirstWatchDate = new MediaPropDate("", "Angefangen am:", false));
+			MyProperties.Add(MyLastWatchDate = new MediaPropDate("", "Wiederholt am:", false));
+		}
+
+		public MediaPropText MyType { get; set; }
+		public MediaPropTitle MyTitle { get; set; }
+		public MediaPropText MyAuthor { get; set; }
+		public MediaPropText MyStudio { get; set; }
+		public MediaPropBool MyIsStarted { get; set; }
+		public MediaPropBool MyIsFinished { get; set; }
+		public MediaPropInt MyTotalRewatches { get; set; }
+		public MediaPropInt MyRating { get; set; }
+		public MediaPropText MyProgress { get; set; }
+		public MediaPropInt MyProgressPercentage { get; set; }
+		public MediaPropBool MyIsDropped { get; set; }
+		public MediaPropText MyImageName { get; set; }
+		public MediaPropDate MyReleaseDate { get; set; }
+		public MediaPropDate MyFirstWatchDate { get; set; }
+		public MediaPropDate MyLastWatchDate { get; set; }
 	}
 }

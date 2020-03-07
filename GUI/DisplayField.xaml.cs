@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,40 +21,68 @@ namespace GUI
 	/// </summary>
 	public partial class DisplayField : UserControl
 	{
+		private DisplayPage MyDisplayPage;
+		public MediaProp MyMediaProp;
 
-		public DisplayField(string value, string descText)
+		public DisplayField(MediaProp mediaProp, DisplayPage displayPage)
 		{
 			InitializeComponent();
+			MyDisplayPage = displayPage;
+			MyMediaProp = mediaProp;
 
-			progressStack.Visibility = Visibility.Collapsed;
-			checkDisplay.Visibility = Visibility.Collapsed;
+			descTextBlock.Text = MyMediaProp.MyDescription;
 
-			descTextBlock.Text = descText;
-			textDisplay.Text = value;
+			if (MyMediaProp is MediaPropTitle)
+			{
+				textDisplay.Visibility = Visibility.Collapsed;
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				titleDisplay.Text = (MyMediaProp as MediaPropTitle).MyValue;
+				seasonDisplay.Text = (MyMediaProp as MediaPropTitle).MySeason.ToString();
+			}
+			else if (MyMediaProp is MediaPropText)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				textDisplay.Text = (MyMediaProp as MediaPropText).MyValue;
+			}
+			else if (MyMediaProp is MediaPropInt)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
+				textDisplay.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				progressDisplay.Value = (MyMediaProp as MediaPropInt).MyValue;
+			}
+			else if (MyMediaProp is MediaPropBool)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
+				textDisplay.Visibility = Visibility.Collapsed;
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.IsChecked = (MyMediaProp as MediaPropBool).MyValue;
+			}
+			else if (MyMediaProp is MediaPropDate)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				textDisplay.Text = (MyMediaProp as MediaPropDate).MyValue;
+			}
 		}
 
-
-		public DisplayField(double value, string descText)
+		private void TextDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			InitializeComponent();
-
-			textDisplay.Visibility = Visibility.Collapsed;
-			checkDisplay.Visibility = Visibility.Collapsed;
-
-			descTextBlock.Text = descText;
-			progressDisplay.Value = value;
-			progressText.Text = value.ToString();
+			MyDisplayPage.EnableInput(MyMediaProp);
 		}
 
-		public DisplayField(bool value, string descText)
+		private void ProgressDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			InitializeComponent();
+			MyDisplayPage.EnableInput(MyMediaProp);
+		}
 
-			textDisplay.Visibility = Visibility.Collapsed;
-			progressStack.Visibility = Visibility.Collapsed;
-
-			descTextBlock.Text = descText;
-			checkDisplay.IsChecked = value;
+		private void CheckDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			MyDisplayPage.EnableInput(MyMediaProp);
 		}
 	}
 }
