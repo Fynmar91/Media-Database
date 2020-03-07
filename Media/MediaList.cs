@@ -10,84 +10,28 @@ namespace MediaClass
 	[Serializable]
 	public class MediaList : List<Media>
 	{
-		public bool MyTitle(string type, string title)
+		public bool CheckForDuplicates(string type, string title)
 		{
 			if (title != "")
 			{
 				foreach (var item in this)
 				{
-					if (item.MyType == type && item.MyTitle == title)
+					if (item.MyType.MyValue == type && item.MyTitle.MyValue == title)
 					{
+						if (true)
+						{
+
+						}
 						return false;
 					}
 				}
 			}
-			return true;
-		}
+			else
+			{
+				return false;
+			}
 
-		public bool MyAuthor(string type, string author)
-		{
-			return true;
-		}
-
-		public bool MyStudio(string type, string studio)
-		{
-			return true;
-		}
-
-		public bool MyProgress(string type, string progress)
-		{
 			return true;
 		}		
-
-		public bool MyImageName(string type, string image)
-		{
-			return true;
-		}
-
-		public bool MyReleaseDate(string type, string date)
-		{
-			DateTime newDate;
-
-			if (DateTime.TryParse(date + "-01-01", out newDate) && date.Length == 4)
-			{
-				return true;
-			}
-			else if (date == "")
-			{
-				return true;
-			}
-			return false;
-		}
-
-		public bool MyFirstWatchDate(string type, string date)
-		{
-			DateTime newDate;
-
-			if (DateTime.TryParse(date, out newDate))
-			{
-				return true;
-			}
-			else if (date == "")
-			{
-				return true;
-			}
-			return false;
-		}
-
-		public bool MyLastWatchDate(string type, string date)
-		{
-			DateTime newDate;
-
-			if (DateTime.TryParse(date, out newDate))
-			{
-				return true;
-			}
-			else if (date == "")
-			{
-				return true;
-			}
-			return false;
-		}
 	}
 }

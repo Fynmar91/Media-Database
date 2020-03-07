@@ -19,6 +19,7 @@ namespace HelperClasses
 			if (settings.MyFolder != null)
 			{
 				Directory.CreateDirectory(settings.MyFolder);
+				Directory.CreateDirectory(settings.MyImageFolder);
 				var path = Path.Combine(settings.MyFolder, "database.json");
 
 				using (StreamWriter file = File.CreateText(path))

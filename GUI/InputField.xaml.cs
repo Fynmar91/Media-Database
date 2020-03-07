@@ -22,60 +22,53 @@ namespace GUI
 	/// </summary>
 	public partial class InputField : UserControl
 	{
-		public bool MyErrorState = false;
-		public string MyPropName;
-		public string MyInputType;
-		private string MyMediaType;
+		public bool MyNoError = true;
+		public MediaProp MyMediaProp;
+		
 
 		public string MyInput
 		{
 			get
 			{
 				string s = "";
-				switch (MyInputType)
+				if (MyMediaProp is MediaPropText || MyMediaProp is MediaPropDate)
 				{
-					case "Text":
-						s = textInput.Text.ToString();
-						break;
-					case "Slider":
-						s = sliderInput.Value.ToString();
-						break;
-					case "Check":
-						s = checkInput.IsChecked.ToString();
-						break;
-					default:
-						break;
+					s = textInput.Text.ToString();
+				}
+				else if (MyMediaProp is MediaPropInt)
+				{
+					s = sliderInput.Value.ToString();
+				}
+				else if (MyMediaProp is MediaPropBool)
+				{
+					s = checkInput.IsChecked.ToString();
 				}
 				return s;
 			}
 		}
 
-		public InputField(string inputType, string mediaType, string name, string descText)
+		public InputField(MediaProp mediaProp)
 		{
 			InitializeComponent();
 			ResetBorder();
-			MyPropName = name;
-			descTextBlock.Text = descText;
-			MyMediaType = mediaType;
-			MyInputType = inputType;
+			MyMediaProp = mediaProp;
+			descTextBlock.Text = mediaProp.MyDescription;
 
-			switch (inputType)
+			if (MyMediaProp is MediaPropText || MyMediaProp is MediaPropDate)
 			{
-				case "Text":
-					sliderStack.Visibility = Visibility.Collapsed;
-					checkInput.Visibility = Visibility.Collapsed;
-					break;
-				case "Slider":
-					textInput.Visibility = Visibility.Collapsed;
-					checkInput.Visibility = Visibility.Collapsed;
-					break;
-				case "Check":
-					textInput.Visibility = Visibility.Collapsed;
-					sliderStack.Visibility = Visibility.Collapsed;
-					break;
-				default:
-					break;
+				sliderStack.Visibility = Visibility.Collapsed;
+				checkInput.Visibility = Visibility.Collapsed;
 			}
+			else if (MyMediaProp is MediaPropInt)
+			{
+				textInput.Visibility = Visibility.Collapsed;
+				checkInput.Visibility = Visibility.Collapsed;
+			}
+			else if (MyMediaProp is MediaPropBool)
+			{
+				textInput.Visibility = Visibility.Collapsed;
+				sliderStack.Visibility = Visibility.Collapsed;
+			}			
 		}
 
 		private void ResetBorder()
@@ -85,20 +78,22 @@ namespace GUI
 
 		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			MethodInfo mi = MainWindow.MyMainwindow.MyMediaList.GetType().GetMethod(MyPropName);
-			object[] obj = { MyMediaType, textInput.Text.ToString() };
-
-			if (!(bool)mi.Invoke(MainWindow.MyMainwindow.MyMediaList, obj))
+			if (MyMediaProp is MediaPropText)
 			{
-				highlightBox.Visibility = Visibility.Visible;
-				MyErrorState = true;
+				MyNoError = (MyMediaProp as MediaPropText).ValidateValue();
 			}
-			else
+			else if (MyMediaProp is MediaPropInt)
 			{
-				ResetBorder();
-				MyErrorState = false;
+				MyNoError = (MyMediaProp as MediaPropInt).ValidateValue();
 			}
-
+			else if (MyMediaProp is MediaPropBool)
+			{
+				MyNoError = (MyMediaProp as MediaPropBool).ValidateValue();
+			}
+			else if (MyMediaProp is MediaPropDate)
+			{
+				MyNoError = (MyMediaProp as MediaPropDate).ValidateValue(textInput.Text.ToString());
+			}
 		}
 
 		private void SliderInput_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

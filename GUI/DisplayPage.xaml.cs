@@ -33,14 +33,14 @@ namespace GUI
 			InitializeComponent();
 			MyMedia = media;
 
-			if (MyMedia.MyImageName != null && MyMedia.MyImageName != "")
+			if (MyMedia.MyImageName != null && MyMedia.MyImageName.MyValue != "")
 			{
-				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyImageName);
+				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyImageName.MyValue);
 			}
 			if (!File.Exists(path))
 			{
 				Downloader d = new Downloader();
-				MyMedia.MyImageName = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyType, MyMedia.MyTitle, MyMedia.MyReleaseDate);
+				MyMedia.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyType.MyValue, MyMedia.MyTitle.MyValue, MyMedia.MyReleaseDate.MyValue);
 			}
 			Refresh();
 		}
@@ -52,17 +52,17 @@ namespace GUI
 			image.Source = bitmap;
 
 			displayFields.Clear();
-			displayFields.Add(new DisplayField(MyMedia.MyTitle, "Titel", "MyTitle", this));
-			displayFields.Add(new DisplayField(MyMedia.MyAuthor, "Autor", "MyAuthor", this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, "Angefangen", "MyIsStarted", this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, "Beendet", "MyIsFinished", this));
-			displayFields.Add(new DisplayField(MyMedia.MyRating, "Bewertung", "MyRating", this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, "Dropped", "MyIsDropped", this));
-			displayFields.Add(new DisplayField(MyMedia.MyProgress, "Fortschritt", "MyProgress", this));
-			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, "Fortschritt%", "MyProgressPercentage", this));
-			displayFields.Add(new DisplayField(MyMedia.MyImageName, "Bild:", "MyImageName", this));
-			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, "Erschienen:", "MyReleaseDate", this));
-			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, "Angefangen:", "MyFirstWatchDate", this));
+			displayFields.Add(new DisplayField(MyMedia.MyTitle.MyValue, "Titel", "MyTitle", this));
+			displayFields.Add(new DisplayField(MyMedia.MyAuthor.MyValue, "Autor", "MyAuthor", this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsStarted.MyValue, "Angefangen", "MyIsStarted", this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsFinished.MyValue, "Beendet", "MyIsFinished", this));
+			displayFields.Add(new DisplayField(MyMedia.MyRating.MyValue, "Bewertung", "MyRating", this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsDropped.MyValue, "Dropped", "MyIsDropped", this));
+			displayFields.Add(new DisplayField(MyMedia.MyProgress.MyValue, "Fortschritt", "MyProgress", this));
+			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage.MyValue, "Fortschritt%", "MyProgressPercentage", this));
+			displayFields.Add(new DisplayField(MyMedia.MyImageName.MyValue, "Bild:", "MyImageName", this));
+			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate.MyValue, "Erschienen:", "MyReleaseDate", this));
+			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate.MyValue, "Angefangen:", "MyFirstWatchDate", this));
 
 			displayStack.Children.Clear();
 			foreach (var item in displayFields)
@@ -82,7 +82,7 @@ namespace GUI
 ;			switch (typeCode)
 			{
 				case TypeCode.String:
-					inputField = new InputField("Text", myPropInfo.GetValue(MyMedia).ToString(), propName, descText);
+
 					break;
 				case TypeCode.Int32:
 

@@ -33,7 +33,7 @@ namespace GUI
 			string path = "";
 			if (media.MyImageName != null)
 			{
-				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, media.MyImageName);
+				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, media.MyImageName.MyValue);
 			}
 
 			if (File.Exists(path))
@@ -42,7 +42,7 @@ namespace GUI
 				var bitmap = new BitmapImage(uri);
 				image.Source = bitmap;
 			}
-			title.Text = media.MyTitle;
+			title.Text = media.MyTitle.MyValue;
 		}
 
 		private void Click_Click(object sender, RoutedEventArgs e)

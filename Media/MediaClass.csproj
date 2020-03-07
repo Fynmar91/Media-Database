@@ -43,6 +43,11 @@
   <ItemGroup>
     <Compile Include="MediaList.cs" />
     <Compile Include="Media.cs" />
+    <Compile Include="MediaProp.cs" />
+    <Compile Include="MediaPropBool.cs" />
+    <Compile Include="MediaPropDate.cs" />
+    <Compile Include="MediaPropInt.cs" />
+    <Compile Include="MediaPropText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
