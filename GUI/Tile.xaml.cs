@@ -42,7 +42,7 @@ namespace GUI
 				var bitmap = new BitmapImage(uri);
 				image.Source = bitmap;
 			}
-			title.Text = media.MyTitle.MyValue;
+			title.Text = media.MyTitle.MyValue + " " + media.MyTitle.MySeason;
 		}
 
 		private void Click_Click(object sender, RoutedEventArgs e)

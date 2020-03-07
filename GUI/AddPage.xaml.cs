@@ -24,7 +24,7 @@ namespace GUI
 	/// </summary>
 	public partial class AddPage : Page, PageInterface
 	{
-		private List<InputField> inputFields = new List<InputField>();
+		private List<InputField> inputFields = new List<InputField>(); 
 
 		public AddPage()
 		{
@@ -78,6 +78,11 @@ namespace GUI
 			AddMedia();
 		}
 
+		public bool CheckTitle(string title, bool hasSeasons, int season)
+		{
+			return MainWindow.MyMainwindow.MyMediaList.IsUnique(MainWindow.MyMainwindow.MyActiveTypeString, title, hasSeasons, season);
+		}
+
 		private void AddMedia()
 		{
 			// Error Stuff
@@ -99,24 +104,30 @@ namespace GUI
 				{
 					if (item.MyMediaProp.MyDescription == prop.MyDescription)
 					{
-						if (prop is MediaPropText)
+						if (prop is MediaPropTitle)
 						{
-							(prop as MediaPropText).MyValue = item.MyInput;
+							(prop as MediaPropTitle).MyValue = item.MyInput[0];
+							(prop as MediaPropTitle).MySeason = int.Parse(item.MyInput[1]);
+							break;
+						}
+						else if (prop is MediaPropText)
+						{
+							(prop as MediaPropText).MyValue = item.MyInput[0];
 							break;
 						}
 						else if (prop is MediaPropInt)
 						{
-							(prop as MediaPropInt).MyValue = Convert.ToInt32(item.MyInput);
+							(prop as MediaPropInt).MyValue = int.Parse(item.MyInput[0]);
 							break;
 						}
 						else if (prop is MediaPropBool)
 						{
-							(prop as MediaPropBool).MyValue = Convert.ToBoolean(item.MyInput);
+							(prop as MediaPropBool).MyValue = bool.Parse(item.MyInput[0]);
 							break;
 						}
 						else if (prop is MediaPropDate)
 						{
-							(prop as MediaPropDate).MyValue = item.MyInput;
+							(prop as MediaPropDate).MyValue = item.MyInput[0];
 							break;
 						}
 					}
@@ -125,7 +136,7 @@ namespace GUI
 
 			// Download Image
 			Downloader d = new Downloader();
-			media.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, media.MyType.MyValue, media.MyTitle.MyValue, media.MyReleaseDate.MyValue);
+			media.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, media);
 
 			MainWindow.MyMainwindow.MyMediaList.Add(media);
 			Refresh();
@@ -151,87 +162,87 @@ namespace GUI
 		private void SetInputBook()
 		{
 			Media media = new Media();
-			inputFields.Add(new InputField(media.MyTitle));
-			inputFields.Add(new InputField(media.MyAuthor));
-			inputFields.Add(new InputField(media.MyIsStarted));
-			inputFields.Add(new InputField(media.MyIsFinished));
-			inputFields.Add(new InputField(media.MyRating));
-			inputFields.Add(new InputField(media.MyIsDropped));
-			inputFields.Add(new InputField(media.MyProgress));
-			inputFields.Add(new InputField(media.MyProgressPercentage));
-			inputFields.Add(new InputField(media.MyReleaseDate));
-			inputFields.Add(new InputField(media.MyFirstWatchDate));
+			inputFields.Add(new InputField(media.MyTitle, this));
+			inputFields.Add(new InputField(media.MyAuthor, this));
+			inputFields.Add(new InputField(media.MyIsStarted, this));
+			inputFields.Add(new InputField(media.MyIsFinished, this));
+			inputFields.Add(new InputField(media.MyRating, this));
+			inputFields.Add(new InputField(media.MyIsDropped, this));
+			inputFields.Add(new InputField(media.MyProgress, this));
+			inputFields.Add(new InputField(media.MyProgressPercentage, this));
+			inputFields.Add(new InputField(media.MyReleaseDate, this));
+			inputFields.Add(new InputField(media.MyFirstWatchDate, this));
 		}
 
 		private void SetInputWebNovel()
 		{
 			Media media = new Media();
-			inputFields.Add(new InputField(media.MyTitle));
-			inputFields.Add(new InputField(media.MyAuthor));
-			inputFields.Add(new InputField(media.MyIsStarted));
-			inputFields.Add(new InputField(media.MyIsFinished));
-			inputFields.Add(new InputField(media.MyRating));
-			inputFields.Add(new InputField(media.MyIsDropped));
-			inputFields.Add(new InputField(media.MyProgress));
-			inputFields.Add(new InputField(media.MyProgressPercentage));
-			inputFields.Add(new InputField(media.MyReleaseDate));
-			inputFields.Add(new InputField(media.MyFirstWatchDate));
+			inputFields.Add(new InputField(media.MyTitle, this));
+			inputFields.Add(new InputField(media.MyAuthor, this));
+			inputFields.Add(new InputField(media.MyIsStarted, this));
+			inputFields.Add(new InputField(media.MyIsFinished, this));
+			inputFields.Add(new InputField(media.MyRating, this));
+			inputFields.Add(new InputField(media.MyIsDropped, this));
+			inputFields.Add(new InputField(media.MyProgress, this));
+			inputFields.Add(new InputField(media.MyProgressPercentage, this));
+			inputFields.Add(new InputField(media.MyReleaseDate, this));
+			inputFields.Add(new InputField(media.MyFirstWatchDate, this));
 		}
 
 		private void SetInputMovie()
 		{
 			Media media = new Media();
-			inputFields.Add(new InputField(media.MyTitle));
-			inputFields.Add(new InputField(media.MyIsStarted));
-			inputFields.Add(new InputField(media.MyIsFinished));
-			inputFields.Add(new InputField(media.MyRating));
-			inputFields.Add(new InputField(media.MyIsDropped));
-			inputFields.Add(new InputField(media.MyProgress));
-			inputFields.Add(new InputField(media.MyReleaseDate));
-			inputFields.Add(new InputField(media.MyFirstWatchDate));
+			inputFields.Add(new InputField(media.MyTitle, this));
+			inputFields.Add(new InputField(media.MyIsStarted, this));
+			inputFields.Add(new InputField(media.MyIsFinished, this));
+			inputFields.Add(new InputField(media.MyRating, this));
+			inputFields.Add(new InputField(media.MyIsDropped, this));
+			inputFields.Add(new InputField(media.MyProgress, this));
+			inputFields.Add(new InputField(media.MyReleaseDate, this));
+			inputFields.Add(new InputField(media.MyFirstWatchDate, this));
 		}
 
 		private void SetInputShow()
 		{
 			Media media = new Media();
-			inputFields.Add(new InputField(media.MyTitle));
-			inputFields.Add(new InputField(media.MySeason));
-			inputFields.Add(new InputField(media.MyIsStarted));
-			inputFields.Add(new InputField(media.MyIsFinished));
-			inputFields.Add(new InputField(media.MyRating));
-			inputFields.Add(new InputField(media.MyIsDropped));
-			inputFields.Add(new InputField(media.MyProgress));
-			inputFields.Add(new InputField(media.MyReleaseDate));
-			inputFields.Add(new InputField(media.MyFirstWatchDate));
+			media.MyTitle.MyHasSeasons = true;
+			inputFields.Add(new InputField(media.MyTitle, this));
+			inputFields.Add(new InputField(media.MyIsStarted, this));
+			inputFields.Add(new InputField(media.MyIsFinished, this));
+			inputFields.Add(new InputField(media.MyRating, this));
+			inputFields.Add(new InputField(media.MyIsDropped, this));
+			inputFields.Add(new InputField(media.MyProgress, this));
+			inputFields.Add(new InputField(media.MyReleaseDate, this));
+			inputFields.Add(new InputField(media.MyFirstWatchDate, this));
 		}
 
 		private void SetInputAnime()
 		{
 			Media media = new Media();
-			inputFields.Add(new InputField(media.MyTitle));
-			inputFields.Add(new InputField(media.MySeason));
-			inputFields.Add(new InputField(media.MyStudio));
-			inputFields.Add(new InputField(media.MyIsStarted));
-			inputFields.Add(new InputField(media.MyIsFinished));
-			inputFields.Add(new InputField(media.MyRating));
-			inputFields.Add(new InputField(media.MyIsDropped));
-			inputFields.Add(new InputField(media.MyProgress));
-			inputFields.Add(new InputField(media.MyReleaseDate));
-			inputFields.Add(new InputField(media.MyFirstWatchDate));
+			media.MyTitle.MyHasSeasons = true;
+			inputFields.Add(new InputField(media.MyTitle, this));
+			inputFields.Add(new InputField(media.MyStudio, this));
+			inputFields.Add(new InputField(media.MyIsStarted, this));
+			inputFields.Add(new InputField(media.MyIsFinished, this));
+			inputFields.Add(new InputField(media.MyRating, this));
+			inputFields.Add(new InputField(media.MyIsDropped, this));
+			inputFields.Add(new InputField(media.MyProgress, this));
+			inputFields.Add(new InputField(media.MyReleaseDate, this));
+			inputFields.Add(new InputField(media.MyFirstWatchDate, this));
 		}
 
 		private void SetInputAnimeMovie()
 		{
 			Media media = new Media();
-			inputFields.Add(new InputField(media.MyTitle));
-			inputFields.Add(new InputField(media.MyStudio));
-			inputFields.Add(new InputField(media.MyIsStarted));
-			inputFields.Add(new InputField(media.MyIsFinished));
-			inputFields.Add(new InputField(media.MyRating));
-			inputFields.Add(new InputField(media.MyIsDropped));
-			inputFields.Add(new InputField(media.MyProgress));
-			inputFields.Add(new InputField(media.MyReleaseDate));
-			inputFields.Add(new InputField(media.MyFirstWatchDate));
+			inputFields.Add(new InputField(media.MyTitle, this));
+			inputFields.Add(new InputField(media.MyStudio, this));
+			inputFields.Add(new InputField(media.MyIsStarted, this));
+			inputFields.Add(new InputField(media.MyIsFinished, this));
+			inputFields.Add(new InputField(media.MyRating, this));
+			inputFields.Add(new InputField(media.MyIsDropped, this));
+			inputFields.Add(new InputField(media.MyProgress, this));
+			inputFields.Add(new InputField(media.MyReleaseDate, this));
+			inputFields.Add(new InputField(media.MyFirstWatchDate, this));
 		}
 	}
 }

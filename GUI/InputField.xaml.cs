@@ -22,53 +22,108 @@ namespace GUI
 	/// </summary>
 	public partial class InputField : UserControl
 	{
-		public bool MyNoError = true;
+		private bool myNoError = true;
 		public MediaProp MyMediaProp;
-		
+		private AddPage MyAddPage;
 
-		public string MyInput
+		public bool MyNoError
+		{
+			get => myNoError;
+			set
+			{
+				myNoError = value;
+				if (myNoError)
+				{
+					highlightBox.Visibility = Visibility.Collapsed;
+				}
+				else
+				{
+					highlightBox.Visibility = Visibility.Visible;
+				}
+			}
+		}
+
+		public string[] MyInput
 		{
 			get
 			{
-				string s = "";
-				if (MyMediaProp is MediaPropText || MyMediaProp is MediaPropDate)
+				string[] s = { "", "" };
+				if (MyMediaProp is MediaPropTitle)
 				{
-					s = textInput.Text.ToString();
+					s[0] = titleInput.Text.ToString();
+					s[1] = seasonInput.Text.ToString();
+
+				}
+				else if (MyMediaProp is MediaPropText)
+				{
+					s[0] = textInput.Text.ToString();
 				}
 				else if (MyMediaProp is MediaPropInt)
 				{
-					s = sliderInput.Value.ToString();
+					s[0] = sliderInput.Value.ToString();
 				}
 				else if (MyMediaProp is MediaPropBool)
 				{
-					s = checkInput.IsChecked.ToString();
+					s[0] = checkInput.IsChecked.ToString();
+				}
+				else if (MyMediaProp is MediaPropDate)
+				{
+					s[0] = textInput.Text.ToString();
 				}
 				return s;
 			}
 		}
 
-		public InputField(MediaProp mediaProp)
+
+
+		public InputField(MediaProp mediaProp, AddPage addPage)
 		{
 			InitializeComponent();
-			ResetBorder();
 			MyMediaProp = mediaProp;
+			MyAddPage = addPage;
 			descTextBlock.Text = mediaProp.MyDescription;
+			SetUp();
+		}
 
-			if (MyMediaProp is MediaPropText || MyMediaProp is MediaPropDate)
+		private void SetUp()
+		{
+			ResetBorder();
+
+			if (MyMediaProp is MediaPropTitle)
 			{
+				textInput.Visibility = Visibility.Collapsed;
+				sliderStack.Visibility = Visibility.Collapsed;
+				checkInput.Visibility = Visibility.Collapsed;
+
+				if ((MyMediaProp as MediaPropTitle).MyHasSeasons == false)
+				{
+					seasonInput.Visibility = Visibility.Collapsed;
+				}
+			}
+			else if (MyMediaProp is MediaPropText)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				sliderStack.Visibility = Visibility.Collapsed;
 				checkInput.Visibility = Visibility.Collapsed;
 			}
 			else if (MyMediaProp is MediaPropInt)
 			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				textInput.Visibility = Visibility.Collapsed;
 				checkInput.Visibility = Visibility.Collapsed;
 			}
 			else if (MyMediaProp is MediaPropBool)
 			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				textInput.Visibility = Visibility.Collapsed;
 				sliderStack.Visibility = Visibility.Collapsed;
-			}			
+			}
+			else if (MyMediaProp is MediaPropDate)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
+				sliderStack.Visibility = Visibility.Collapsed;
+				checkInput.Visibility = Visibility.Collapsed;
+			}
 		}
 
 		private void ResetBorder()
@@ -78,7 +133,11 @@ namespace GUI
 
 		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (MyMediaProp is MediaPropText)
+			if (MyMediaProp is MediaPropTitle)
+			{
+				MyNoError = MainWindow.MyMainwindow.MyMediaList.IsUnique(MainWindow.MyMainwindow.MyActiveTypeString, titleInput.Text.ToString(), (MyMediaProp as MediaPropTitle).MyHasSeasons, int.TryParse(seasonInput.Text, out int num) ? int.Parse(seasonInput.Text) : 0);
+			}
+			else if (MyMediaProp is MediaPropText)
 			{
 				MyNoError = (MyMediaProp as MediaPropText).ValidateValue();
 			}

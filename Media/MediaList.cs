@@ -10,7 +10,7 @@ namespace MediaClass
 	[Serializable]
 	public class MediaList : List<Media>
 	{
-		public bool CheckForDuplicates(string type, string title)
+		public bool IsUnique(string type, string title, bool hasSeasons, int season)
 		{
 			if (title != "")
 			{
@@ -18,20 +18,22 @@ namespace MediaClass
 				{
 					if (item.MyType.MyValue == type && item.MyTitle.MyValue == title)
 					{
-						if (true)
+						if (hasSeasons && item.MyTitle.MySeason == season)
 						{
-
+							return false;
 						}
-						return false;
+						else
+						{
+							return true;
+						}						
 					}
 				}
+				return true;
 			}
 			else
 			{
-				return false;
+				return true;
 			}
-
-			return true;
 		}		
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using MediaClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,42 +11,47 @@ namespace HelperClasses
 {
 	public class Downloader
 	{
-		public string GetImage(string folder, string type, string title, string releaseDate)
+		public string GetImage(string folder, Media media)
 		{			
-			string searchTerm = title;
+			string searchTerm = media.MyTitle.MyValue;
 
 			string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-			if (releaseDate != null && releaseDate != "")
+
+			if (media.MyType.MyValue == "Film" && media.MyReleaseDate.MyValue != null && media.MyReleaseDate.MyValue != "")
 			{
-				searchTerm += " " + "(" + releaseDate + ")";
+				searchTerm += "(" + media.MyReleaseDate.MyValue + ")";
+			}
+			else if (media.MyType.MyValue == "Serie" && media.MyTitle.MySeason > 0)
+			{
+				searchTerm += media.MyTitle.MySeason;
 			}
 			foreach (char c in invalid)
 			{
 				searchTerm = searchTerm.Replace(c.ToString(), "");
 			}
 
-			if (type == "Buch")
+			if (media.MyType.MyValue == "Buch")
 			{
 				DownloadImageGoodReads(searchTerm, folder + searchTerm + ".jpg");
 			}
-			else if (type == "Web-Novel")
+			else if (media.MyType.MyValue == "Web-Novel")
 			{
 				DownloadImageNovelUpdates(searchTerm, folder + searchTerm + ".jpg");
 			}
-			else if (type == "Film")
+			else if (media.MyType.MyValue == "Film")
 			{
 
 				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", false);
 			}
-			else if (type == "Serie")
+			else if (media.MyType.MyValue == "Serie")
 			{
 				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", true);
 			}
-			else if (type == "Anime")
+			else if (media.MyType.MyValue == "Anime")
 			{
 				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
 			}
-			else if (type == "Anime-Film")
+			else if (media.MyType.MyValue == "Anime-Film")
 			{
 				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
 			}

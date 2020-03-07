@@ -14,8 +14,7 @@ namespace MediaClass
 		{
 			MyProperties = new List<MediaProp>();
 			MyProperties.Add(MyType = new MediaPropText("", "Typ:"));
-			MyProperties.Add(MyTitle = new MediaPropText("", "Titel:"));
-			MyProperties.Add(MySeason = new MediaPropInt(-1, "Staffel:"));
+			MyProperties.Add(MyTitle = new MediaPropTitle("", "Titel:", false, 0));
 			MyProperties.Add(MyAuthor = new MediaPropText("", "Autor:"));
 			MyProperties.Add(MyStudio = new MediaPropText("", "Studio:"));
 			MyProperties.Add(MyIsStarted = new MediaPropBool(false, "Angefangen:"));
@@ -32,8 +31,7 @@ namespace MediaClass
 		}
 
 		public MediaPropText MyType { get; set; }
-		public MediaPropText MyTitle { get; set; }
-		public MediaPropInt MySeason { get; set; }
+		public MediaPropTitle MyTitle { get; set; }
 		public MediaPropText MyAuthor { get; set; }
 		public MediaPropText MyStudio { get; set; }
 		public MediaPropBool MyIsStarted { get; set; }

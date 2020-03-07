@@ -32,26 +32,38 @@ namespace GUI
 
 			descTextBlock.Text = MyMediaProp.MyDescription;
 
-			if (MyMediaProp is MediaPropText)
+			if (MyMediaProp is MediaPropTitle)
 			{
+				textDisplay.Visibility = Visibility.Collapsed;
+				progressStack.Visibility = Visibility.Collapsed;
+				checkDisplay.Visibility = Visibility.Collapsed;
+				titleDisplay.Text = (MyMediaProp as MediaPropTitle).MyValue;
+				seasonDisplay.Text = (MyMediaProp as MediaPropTitle).MySeason.ToString();
+			}
+			else if (MyMediaProp is MediaPropText)
+			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				progressStack.Visibility = Visibility.Collapsed;
 				checkDisplay.Visibility = Visibility.Collapsed;
 				textDisplay.Text = (MyMediaProp as MediaPropText).MyValue;
 			}
 			else if (MyMediaProp is MediaPropInt)
 			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				textDisplay.Visibility = Visibility.Collapsed;
 				checkDisplay.Visibility = Visibility.Collapsed;
 				progressDisplay.Value = (MyMediaProp as MediaPropInt).MyValue;
 			}
 			else if (MyMediaProp is MediaPropBool)
 			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				textDisplay.Visibility = Visibility.Collapsed;
 				progressStack.Visibility = Visibility.Collapsed;
 				checkDisplay.IsChecked = (MyMediaProp as MediaPropBool).MyValue;
 			}
 			else if (MyMediaProp is MediaPropDate)
 			{
+				titleGrid.Visibility = Visibility.Collapsed;
 				progressStack.Visibility = Visibility.Collapsed;
 				checkDisplay.Visibility = Visibility.Collapsed;
 				textDisplay.Text = (MyMediaProp as MediaPropDate).MyValue;

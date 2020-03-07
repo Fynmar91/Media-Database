@@ -40,7 +40,7 @@ namespace GUI
 			if (!File.Exists(path))
 			{
 				Downloader d = new Downloader();
-				MyMedia.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyType.MyValue, MyMedia.MyTitle.MyValue, MyMedia.MyReleaseDate.MyValue);
+				MyMedia.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia);
 			}
 			Refresh();
 		}
