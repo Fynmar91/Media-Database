@@ -1,4 +1,5 @@
-﻿using MediaClass;
+﻿using HelperClasses;
+using MediaClass;
 using System;
 using System.Collections.Generic;
 using System.IO;

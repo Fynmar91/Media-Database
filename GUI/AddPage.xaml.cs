@@ -89,7 +89,7 @@ namespace GUI
 				}
 			}
 
-			//
+			// Set Propperties
 			Media m = new Media();
 			m.MyType = MainWindow.MyMainwindow.MyActiveTypeString;
 
@@ -121,64 +121,13 @@ namespace GUI
 				}
 			}
 
-			// Image Stuff
-			if (m.MyType == "Buch")
-			{
-				string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-				string searchTerm = m.MyTitle;
-				foreach (char c in invalid)
-				{
-					searchTerm = searchTerm.Replace(c.ToString(), "");
-				}
+			// Download Image
+			Downloader d = new Downloader();
+			m.MyImageName = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, m.MyType, m.MyTitle, m.MyReleaseDate);
 
-				Downloader d = new Downloader();
-				d.DownloadImageGoodReads(searchTerm, MainWindow.MyMainwindow.MySettings.MyImageFolder + searchTerm + ".jpg");
-				m.MyImageName = searchTerm + ".jpg";
-			}
-			else if (m.MyType == "Web-Novel")
-			{
-				string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-				string searchTerm = m.MyTitle;
-				foreach (char c in invalid)
-				{
-					searchTerm = searchTerm.Replace(c.ToString(), "");
-				}
-
-				Downloader d = new Downloader();
-				d.DownloadImageNovelUpdates(searchTerm, MainWindow.MyMainwindow.MySettings.MyImageFolder + searchTerm + ".jpg");
-				m.MyImageName = searchTerm + ".jpg";
-			}
-			else if (m.MyType == "Film")
-			{
-				string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-				string searchTerm = m.MyTitle + " " + "(" + m.MyReleaseDate + ")";
-				foreach (char c in invalid)
-				{
-					searchTerm = searchTerm.Replace(c.ToString(), "");
-				}
-
-				Downloader d = new Downloader();
-				d.DownloadImageIMDB(searchTerm, MainWindow.MyMainwindow.MySettings.MyImageFolder + searchTerm + ".jpg");
-				m.MyImageName = searchTerm + ".jpg";
-			}
-			else if (m.MyType == "Serie")
-			{
-				string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-				string searchTerm = m.MyTitle;
-				foreach (char c in invalid)
-				{
-					searchTerm = searchTerm.Replace(c.ToString(), "");
-				}
-
-				Downloader d = new Downloader();
-				d.DownloadImageIMDB(searchTerm, MainWindow.MyMainwindow.MySettings.MyImageFolder + searchTerm + ".jpg");
-				m.MyImageName = searchTerm + ".jpg";
-			}
-
-			//
 			MainWindow.MyMainwindow.MyMediaList.Add(m);
-			ResetInput();
-		}
+			Refresh();
+		}		
 
 		//
 		// Media Type Selection Stuff

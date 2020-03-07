@@ -1,4 +1,5 @@
-﻿using MediaClass;
+﻿using HelperClasses;
+using MediaClass;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,28 +25,32 @@ namespace GUI
 	{
 		private List<DisplayField> displayFields = new List<DisplayField>();
 		Media MyMedia;
+		string path = "";
 
 		public DisplayPage(Media media)
 		{
 			InitializeComponent();
 			MyMedia = media;
+
+			if (MyMedia.MyImageName != null && MyMedia.MyImageName != "")
+			{
+				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyImageName);
+			}
+			if (!File.Exists(path))
+			{
+				Downloader d = new Downloader();
+				MyMedia.MyImageName = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyType, MyMedia.MyTitle, MyMedia.MyReleaseDate);
+			}
 			Refresh();
 		}
 
 		public void Refresh()
 		{
-			string path = "";
-			if (MyMedia.MyImageName != null)
-			{
-				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyImageName);
-			}
+			var uri = new Uri(path);
+			var bitmap = new BitmapImage(uri);
+			image.Source = bitmap;
 
-			if (File.Exists(path))
-			{
-				var uri = new Uri(path);
-				var bitmap = new BitmapImage(uri);
-				image.Source = bitmap;
-			}
+
 			displayFields.Clear();
 			displayFields.Add(new DisplayField(MyMedia.MyTitle, "Titel"));
 			displayFields.Add(new DisplayField(MyMedia.MyAuthor, "Autor"));
