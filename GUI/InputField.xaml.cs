@@ -25,7 +25,7 @@ namespace GUI
 		public bool MyErrorState = false;
 		public string MyPropName;
 		public string MyInputType;
-		private string mediaType;
+		private string MyMediaType;
 
 		public string MyInput
 		{
@@ -56,8 +56,8 @@ namespace GUI
 			ResetBorder();
 			MyPropName = name;
 			descTextBlock.Text = descText;
-			this.mediaType = mediaType;
-			this.MyInputType = inputType;
+			MyMediaType = mediaType;
+			MyInputType = inputType;
 
 			switch (inputType)
 			{
@@ -86,7 +86,7 @@ namespace GUI
 		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			MethodInfo mi = MainWindow.MyMainwindow.MyMediaList.GetType().GetMethod(MyPropName);
-			object[] obj = { mediaType, textInput.Text.ToString() };
+			object[] obj = { MyMediaType, textInput.Text.ToString() };
 
 			if (!(bool)mi.Invoke(MainWindow.MyMainwindow.MyMediaList, obj))
 			{
