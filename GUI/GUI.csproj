@@ -81,6 +81,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DisplayField.xaml.cs">
+      <DependentUpon>DisplayField.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DisplayPage.xaml.cs">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <DependentUpon>TilePage.xaml</DependentUpon>
     </Compile>
     <Page Include="AddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayField.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,7 +181,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="database.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -191,9 +197,9 @@
       <Project>{bc857b8b-416d-4d25-85ee-944210e7fece}</Project>
       <Name>MediaClass</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Serializing\Serializing.csproj">
+    <ProjectReference Include="..\Serializing\HelperClasses.csproj">
       <Project>{739309be-a16a-41f7-ac7d-b228a2a2d235}</Project>
-      <Name>Serializing</Name>
+      <Name>HelperClasses</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

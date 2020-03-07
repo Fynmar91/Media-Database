@@ -24,24 +24,24 @@ namespace GUI
 	{
 		public bool MyErrorState = false;
 		public string MyPropName;
-		private string inputType;
-		private string mediaType;
+		public string MyInputType;
+		private string MyMediaType;
 
 		public string MyInput
 		{
 			get
 			{
 				string s = "";
-				switch (inputType)
+				switch (MyInputType)
 				{
 					case "Text":
 						s = textInput.Text.ToString();
 						break;
 					case "Slider":
-						sliderInput.Value.ToString();
+						s = sliderInput.Value.ToString();
 						break;
 					case "Check":
-						checkInput.IsChecked.ToString();
+						s = checkInput.IsChecked.ToString();
 						break;
 					default:
 						break;
@@ -56,8 +56,8 @@ namespace GUI
 			ResetBorder();
 			MyPropName = name;
 			descTextBlock.Text = descText;
-			this.mediaType = mediaType;
-			this.inputType = inputType;
+			MyMediaType = mediaType;
+			MyInputType = inputType;
 
 			switch (inputType)
 			{
@@ -86,7 +86,7 @@ namespace GUI
 		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			MethodInfo mi = MainWindow.MyMainwindow.MyMediaList.GetType().GetMethod(MyPropName);
-			object[] obj = { mediaType, textInput.Text.ToString() };
+			object[] obj = { MyMediaType, textInput.Text.ToString() };
 
 			if (!(bool)mi.Invoke(MainWindow.MyMainwindow.MyMediaList, obj))
 			{

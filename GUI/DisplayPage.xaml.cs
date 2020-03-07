@@ -1,7 +1,10 @@
-﻿using MediaClass;
+﻿using HelperClasses;
+using MediaClass;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,41 +24,78 @@ namespace GUI
 	/// </summary>
 	public partial class DisplayPage : Page, PageInterface
 	{
-		Media media;
+		private List<DisplayField> displayFields = new List<DisplayField>();
+		private Media MyMedia;
+		private string path = "";
 
-		string folder = Environment.ExpandEnvironmentVariables(@"%AppData%\Media-Database\Bilder\");
-
-		public DisplayPage(Media m)
+		public DisplayPage(Media media)
 		{
 			InitializeComponent();
-			media = m;
+			MyMedia = media;
+
+			if (MyMedia.MyImageName != null && MyMedia.MyImageName != "")
+			{
+				path = System.IO.Path.Combine(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyImageName);
+			}
+			if (!File.Exists(path))
+			{
+				Downloader d = new Downloader();
+				MyMedia.MyImageName = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia.MyType, MyMedia.MyTitle, MyMedia.MyReleaseDate);
+			}
 			Refresh();
 		}
 
 		public void Refresh()
 		{
-			if (media.MyImageName != null)
+			var uri = new Uri(path);
+			var bitmap = new BitmapImage(uri);
+			image.Source = bitmap;
+
+			displayFields.Clear();
+			displayFields.Add(new DisplayField(MyMedia.MyTitle, "Titel", "MyTitle", this));
+			displayFields.Add(new DisplayField(MyMedia.MyAuthor, "Autor", "MyAuthor", this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, "Angefangen", "MyIsStarted", this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, "Beendet", "MyIsFinished", this));
+			displayFields.Add(new DisplayField(MyMedia.MyRating, "Bewertung", "MyRating", this));
+			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, "Dropped", "MyIsDropped", this));
+			displayFields.Add(new DisplayField(MyMedia.MyProgress, "Fortschritt", "MyProgress", this));
+			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, "Fortschritt%", "MyProgressPercentage", this));
+			displayFields.Add(new DisplayField(MyMedia.MyImageName, "Bild:", "MyImageName", this));
+			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, "Erschienen:", "MyReleaseDate", this));
+			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, "Angefangen:", "MyFirstWatchDate", this));
+
+			displayStack.Children.Clear();
+			foreach (var item in displayFields)
 			{
-				var path = System.IO.Path.Combine(folder, media.MyImageName);
-				var uri = new Uri(path);
-				var bitmap = new BitmapImage(uri);
-				image.Source = bitmap;
+				displayStack.Children.Add(item);
+			}
+		}
+
+		public void EnableInput(string propName, string descText)
+		{
+			InputField inputField;
+
+			Type myType = typeof(Media);
+			PropertyInfo myPropInfo = myType.GetProperty(propName);
+			TypeCode typeCode = Type.GetTypeCode(myPropInfo.PropertyType)
+
+;			switch (typeCode)
+			{
+				case TypeCode.String:
+					inputField = new InputField("Text", myPropInfo.GetValue(MyMedia).ToString(), propName, descText);
+					break;
+				case TypeCode.Int32:
+
+					break;
+				case TypeCode.Boolean:
+
+					break;				
+				default:
+					break;
 			}
 
-			title.Text = media.MyTitle;
-			author.Text = media.MyAuthor;
-			studio.Text = media.MyStudio;
-			started.Text = media.MyIsStarted.ToString();
-			finished.Text = media.MyIsFinished.ToString();
-			rewatches.Text = media.MyTotalRewatches.ToString();
-			rating.Text = media.MyRating.ToString();
-			progress.Text = media.MyProgress;
-			percentage.Text = media.MyProgressPercentage.ToString();
-			dropped.Text = media.MyIsDropped.ToString();
-			imageName.Text = media.MyImageName;
-			release.Text = media.MyReleaseDate;
-			firstwatch.Text = media.MyFirstWatchDate;
-			lastwatch.Text = media.MyLastWatchDate;
+			
+
 		}
 	}
 }

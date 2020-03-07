@@ -1,5 +1,5 @@
 ﻿using MediaClass;
-using Serializing;
+using HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +46,7 @@ namespace GUI
 		private List<Button> selectButtons;
 		private List<Button> pageButtons;
 
+		public Settings MySettings { get; set; }
 		public MediaList MyMediaList { get; set; }
 		private JSONSerializer json = new JSONSerializer();
 		private Page activePage;
@@ -58,6 +59,7 @@ namespace GUI
 		{
 			MyMainwindow = this;
 			InitializeComponent();
+			LoadSettings();
 			Load();
 			MySelectedTypeIndex = 0;
 			tilePage = new TilePage();
@@ -202,13 +204,20 @@ namespace GUI
 			if (selectButtons == null)
 			{
 				selectButtons = new List<Button>();
-				selectButtons.Add(Button_All);
-				selectButtons.Add(Button_Book);
-				selectButtons.Add(Button_WebNovel);
-				selectButtons.Add(Button_Movies);
-				selectButtons.Add(Button_Shows);
-				selectButtons.Add(Button_Anime);
-				selectButtons.Add(Button_Anime_Movies);
+				selectButtons.Add(button_All);
+				selectButtons.Add(button_Book);
+				selectButtons.Add(button_WebNovel);
+				selectButtons.Add(button_Movies);
+				selectButtons.Add(button_Shows);
+				selectButtons.Add(button_Anime);
+				selectButtons.Add(button_Anime_Movies);
+				selectButtons.Add(button2_All);
+				selectButtons.Add(button2_Book);
+				selectButtons.Add(button2_WebNovel);
+				selectButtons.Add(button2_Movies);
+				selectButtons.Add(button2_Shows);
+				selectButtons.Add(button2_Anime);
+				selectButtons.Add(button2_Anime_Movies);
 			}
 
 			foreach (var item in selectButtons)
@@ -216,23 +225,28 @@ namespace GUI
 				item.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xBA, 0xBA, 0xBA));
 			}
 			selectButtons[i].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
+			selectButtons[i + selectButtons.Count / 2].Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x16, 0xDA, 0xF9));
 		}
 
 
 		//
 		// Application Stuff
 		//
+		private void LoadSettings()
+		{
+			MySettings = json.DeserializeSettings();
+		}
+
 		private void Load()
 		{
-			MyMediaList = json.Deserialize();
+			MyMediaList = json.Deserialize(MySettings);
 			MyMediaList.Sort((x, y) => y.MyTitle.CompareTo(x.MyTitle));
-		}
+		}		
 
 		private void Button_Save_Click(object sender, RoutedEventArgs e)
 		{
-			json.Serialize(MyMediaList);
+			json.Serialize(MyMediaList, MySettings);
 		}
-
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -244,6 +258,7 @@ namespace GUI
 
 		private void Button_Close_Click(object sender, RoutedEventArgs e)
 		{
+			json.SerializeSettings(MySettings);
 			System.Windows.Application.Current.Shutdown();
 		}
 
@@ -257,6 +272,17 @@ namespace GUI
 			{
 				this.WindowState = WindowState.Normal;
 			}
+		}
+
+		private void Button_Options_Click(object sender, RoutedEventArgs e)
+		{
+			MySettings.GetFolder();
+		}
+
+		private void Button_Load_Click(object sender, RoutedEventArgs e)
+		{
+			Load();
+			Refresh();
 		}
 	}
 }

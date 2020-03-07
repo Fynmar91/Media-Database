@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaClass", "Media\MediaClass.csproj", "{BC857B8B-416D-4D25-85EE-944210E7FECE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serializing", "Serializing\Serializing.csproj", "{739309BE-A16A-41F7-AC7D-B228A2A2D235}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperClasses", "Serializing\HelperClasses.csproj", "{739309BE-A16A-41F7-AC7D-B228A2A2D235}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
