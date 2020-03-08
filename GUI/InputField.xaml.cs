@@ -20,11 +20,10 @@ namespace GUI
 	/// <summary>
 	/// Interaction logic for InputField.xaml
 	/// </summary>
-	public partial class InputField : UserControl
+	public partial class InputField : UserControl, FieldInterface
 	{
 		private bool myNoError = true;
 		public MediaProp MyMediaProp;
-		private AddPage MyAddPage;
 
 		public bool MyNoError
 		{
@@ -76,11 +75,10 @@ namespace GUI
 
 
 
-		public InputField(MediaProp mediaProp, AddPage addPage)
+		public InputField(MediaProp mediaProp)
 		{
 			InitializeComponent();
 			MyMediaProp = mediaProp;
-			MyAddPage = addPage;
 			descTextBlock.Text = mediaProp.MyDescription;
 			SetUp();
 		}

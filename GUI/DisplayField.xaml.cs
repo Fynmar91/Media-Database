@@ -19,16 +19,18 @@ namespace GUI
 	/// <summary>
 	/// Interaction logic for DisplayField.xaml
 	/// </summary>
-	public partial class DisplayField : UserControl
+	public partial class DisplayField : UserControl, FieldInterface
 	{
 		private DisplayPage MyDisplayPage;
 		public MediaProp MyMediaProp;
+		private int MyIndex;
 
-		public DisplayField(MediaProp mediaProp, DisplayPage displayPage)
+		public DisplayField(MediaProp mediaProp, DisplayPage displayPage, int index)
 		{
 			InitializeComponent();
 			MyDisplayPage = displayPage;
 			MyMediaProp = mediaProp;
+			MyIndex = index;
 
 			descTextBlock.Text = MyMediaProp.MyDescription;
 
@@ -72,17 +74,17 @@ namespace GUI
 
 		private void TextDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyDisplayPage.EnableInput(MyMediaProp);
+			MyDisplayPage.EnableInput(MyMediaProp, MyIndex);
 		}
 
 		private void ProgressDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyDisplayPage.EnableInput(MyMediaProp);
+			MyDisplayPage.EnableInput(MyMediaProp, MyIndex);
 		}
 
 		private void CheckDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyDisplayPage.EnableInput(MyMediaProp);
+			MyDisplayPage.EnableInput(MyMediaProp, MyIndex);
 		}
 	}
 }

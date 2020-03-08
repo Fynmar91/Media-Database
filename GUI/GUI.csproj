@@ -87,6 +87,7 @@
     <Compile Include="DisplayPage.xaml.cs">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FieldInterface.cs" />
     <Compile Include="InputField.xaml.cs">
       <DependentUpon>InputField.xaml</DependentUpon>
     </Compile>

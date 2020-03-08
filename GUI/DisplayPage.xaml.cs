@@ -24,7 +24,7 @@ namespace GUI
 	/// </summary>
 	public partial class DisplayPage : Page, PageInterface
 	{
-		private List<DisplayField> displayFields = new List<DisplayField>();
+		private List<FieldInterface> displayFields = new List<FieldInterface>();
 		private Media MyMedia;
 		private string path = "";
 
@@ -51,45 +51,54 @@ namespace GUI
 			var bitmap = new BitmapImage(uri);
 			image.Source = bitmap;
 
+			int index = 0;
 			displayFields.Clear();
-			displayFields.Add(new DisplayField(MyMedia.MyTitle, this));
-			displayFields.Add(new DisplayField(MyMedia.MyAuthor, this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, this));
-			displayFields.Add(new DisplayField(MyMedia.MyRating, this));
-			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, this));
-			displayFields.Add(new DisplayField(MyMedia.MyProgress, this));
-			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, this));
-			displayFields.Add(new DisplayField(MyMedia.MyImageName, this));
-			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, this));
-			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, this));
+			displayFields.Add(new DisplayField(MyMedia.MyTitle, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyAuthor, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyRating, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyProgress, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyImageName, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, this, ++index));
+			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, this, ++index));
 
 			displayStack.Children.Clear();
 			foreach (var item in displayFields)
 			{
-				displayStack.Children.Add(item);
+				displayStack.Children.Add(item as DisplayField);
 			}
 		}
 
-		public void EnableInput(MediaProp mediaProp)
+		public void EnableInput(MediaProp mediaProp, int index)
 		{
 			InputField inputField;
 
 			if (mediaProp is MediaPropText)
 			{
-
+				inputField = new InputField(mediaProp);
+				displayStack.Children.RemoveAt(index - 1);
+				displayStack.Children.Insert(index - 1, inputField);
 			}
 			else if (mediaProp is MediaPropInt)
 			{
-
+				inputField = new InputField(mediaProp);
+				displayStack.Children.RemoveAt(index - 1);
+				displayStack.Children.Insert(index - 1, inputField);
 			}
 			else if (mediaProp is MediaPropBool)
 			{
-
+				inputField = new InputField(mediaProp);
+				displayStack.Children.RemoveAt(index - 1);
+				displayStack.Children.Insert(index - 1, inputField);
 			}
 			else if (mediaProp is MediaPropDate)
 			{
-
+				inputField = new InputField(mediaProp);
+				displayStack.Children.RemoveAt(index - 1);
+				displayStack.Children.Insert(index - 1, inputField);
 			}
 		}
 	}
