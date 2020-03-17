@@ -14,6 +14,21 @@ namespace MediaClass
 		public MediaPropInt MySeason { get; set; }
 		public bool MyHasSeasons { get; set; }
 
+		public string MyName
+		{
+			get
+			{
+				if (MyHasSeasons)
+				{
+					return MyValue + MySeason.MyValue.ToString();
+				}
+				else
+				{
+					return MyValue;
+				}
+			}
+		}
+
 		public MediaPropTitle(string myValue, string myDescription, bool hasSeasons, int season) : base(myDescription)
 		{
 			MyValue = myValue;

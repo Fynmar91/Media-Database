@@ -45,7 +45,7 @@ namespace GUI
 			if (media.MyTitle.MyHasSeasons)
 			{
 
-				title.Text = media.MyTitle.MyValue + " " + media.MyTitle.MySeason;
+				title.Text = media.MyTitle.MyValue + " " + media.MyTitle.MySeason.MyValue;
 			}
 			else
 			{

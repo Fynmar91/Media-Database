@@ -240,7 +240,7 @@ namespace GUI
 		private void Load()
 		{
 			MyMediaList = json.Deserialize(MySettings);
-			MyMediaList.Sort((x, y) => y.MyTitle.MyValue.CompareTo(x.MyTitle.MyValue));
+			MyMediaList.Sort((y, x) => y.MyTitle.MyName.CompareTo(x.MyTitle.MyName));
 		}		
 
 		private void Button_Save_Click(object sender, RoutedEventArgs e)

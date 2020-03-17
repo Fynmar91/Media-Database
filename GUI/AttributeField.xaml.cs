@@ -67,7 +67,7 @@ namespace GUI
 					(MyMediaProp as MediaPropTitle).MyValue = titleInput.Text.ToString();
 					if ((MyMediaProp as MediaPropTitle).MyHasSeasons)
 					{
-						(MyMediaProp as MediaPropTitle).MySeason.MyValue = Convert.ToInt32(seasonInput);
+						(MyMediaProp as MediaPropTitle).MySeason.MyValue = Convert.ToInt32(seasonInput.Text);
 					}
 				}
 				else if (MyMediaProp is MediaPropText)

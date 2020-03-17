@@ -38,6 +38,12 @@ namespace HelperClasses
 			}
 
 			Directory.CreateDirectory(MyImageFolder);
+			Directory.CreateDirectory(MyImageFolder + @"Bücher\");
+			Directory.CreateDirectory(MyImageFolder + @"WebNovels\");
+			Directory.CreateDirectory(MyImageFolder + @"Filme\");
+			Directory.CreateDirectory(MyImageFolder + @"Serien\");
+			Directory.CreateDirectory(MyImageFolder + @"Anime\");
+			Directory.CreateDirectory(MyImageFolder + @"AnimeFilme\");
 		}
 
 	}

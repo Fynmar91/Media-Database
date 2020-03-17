@@ -14,6 +14,7 @@ namespace HelperClasses
 		public string GetImage(string folder, Media media)
 		{			
 			string searchTerm = media.MyTitle.MyValue;
+			string imagePath = null;
 
 			string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
 
@@ -23,7 +24,7 @@ namespace HelperClasses
 			}
 			else if (media.MyTitle.MyType.MyValue == "Serie" && media.MyTitle.MySeason.MyValue > 0)
 			{
-				searchTerm += media.MyTitle.MySeason;
+				searchTerm += media.MyTitle.MySeason.MyValue;
 			}
 			foreach (char c in invalid)
 			{
@@ -32,33 +33,38 @@ namespace HelperClasses
 
 			if (media.MyTitle.MyType.MyValue == "Buch")
 			{
-				DownloadImageGoodReads(searchTerm, folder + searchTerm + ".jpg");
+				imagePath = @"Bücher\" + searchTerm + ".jpg";
+				DownloadImageGoodReads(searchTerm, folder + imagePath);
 			}
 			else if (media.MyTitle.MyType.MyValue == "Web-Novel")
 			{
-				DownloadImageNovelUpdates(searchTerm, folder + searchTerm + ".jpg");
+				imagePath = @"WebNovels\" + searchTerm + ".jpg";
+				DownloadImageNovelUpdates(searchTerm, folder + imagePath);
 			}
 			else if (media.MyTitle.MyType.MyValue == "Film")
 			{
-
-				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", false);
+				imagePath = @"Filme\" + searchTerm + ".jpg";
+				DownloadImageIMDB(searchTerm, folder + imagePath, false);
 			}
 			else if (media.MyTitle.MyType.MyValue == "Serie")
 			{
-				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", true);
+				imagePath = @"Serien\" + searchTerm + ".jpg";
+				DownloadImageIMDB(searchTerm, folder + imagePath, true);
 			}
 			else if (media.MyTitle.MyType.MyValue == "Anime")
 			{
-				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
+				imagePath = @"Anime\" + searchTerm + ".jpg";
+				DownloadImageMyAnimeList(searchTerm, folder + imagePath, true);
 			}
 			else if (media.MyTitle.MyType.MyValue == "Anime-Film")
 			{
-				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
+				imagePath =  @"AnimeFilme\" + searchTerm + ".jpg";
+				DownloadImageMyAnimeList(searchTerm, folder + imagePath, true);
 			}
 
-			if (searchTerm != null)
+			if (imagePath != null)
 			{
-				return searchTerm + ".jpg";
+				return imagePath;
 
 			}
 			else
