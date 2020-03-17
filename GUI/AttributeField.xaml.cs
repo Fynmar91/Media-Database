@@ -148,6 +148,7 @@ namespace GUI
 			checkInput.Visibility = Visibility.Collapsed;
 
 			updateButton.Visibility = Visibility.Collapsed;
+			reverseButton.Visibility = Visibility.Collapsed;
 		}
 
 		public void Title()
@@ -165,6 +166,7 @@ namespace GUI
 				case 2:
 					titleInput.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
+					reverseButton.Visibility = Visibility.Visible;
 					break;
 				default:
 					break;
@@ -188,6 +190,7 @@ namespace GUI
 				case 2:
 					seasonInput.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
+					reverseButton.Visibility = Visibility.Visible;
 					break;
 				default:
 					break;
@@ -210,6 +213,7 @@ namespace GUI
 				case 2:
 					textInput.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
+					reverseButton.Visibility = Visibility.Visible;
 					break;
 				default:
 					break;
@@ -238,6 +242,7 @@ namespace GUI
 					sliderInput.Visibility = Visibility.Visible;
 					sliderText.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
+					reverseButton.Visibility = Visibility.Visible;
 					break;
 				default:
 					break;
@@ -260,6 +265,7 @@ namespace GUI
 				case 2:
 					checkInput.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
+					reverseButton.Visibility = Visibility.Visible;
 					break;
 				default:
 					break;
@@ -281,6 +287,7 @@ namespace GUI
 				case 2:
 					textInput.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
+					reverseButton.Visibility = Visibility.Visible;
 					break;
 				default:
 					break;
