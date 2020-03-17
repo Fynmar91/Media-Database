@@ -127,9 +127,8 @@ namespace GUI
 
 		public void Reset()
 		{
-			titleGrid.Visibility = Visibility.Collapsed;
-			titleDisplay.Visibility = Visibility.Collapsed;
-			titleInput.Visibility = Visibility.Collapsed;
+			titleDisplayGrid.Visibility = Visibility.Collapsed;
+			titleInputGrid.Visibility = Visibility.Collapsed;
 
 			seasonDisplay.Visibility = Visibility.Collapsed;
 			seasonInput.Visibility = Visibility.Collapsed;
@@ -153,18 +152,16 @@ namespace GUI
 
 		public void Title()
 		{
-			titleGrid.Visibility = Visibility.Visible;
-
 			switch (MyState)
 			{
-				case 0:	
-					titleDisplay.Visibility = Visibility.Visible;
+				case 0:
+					titleDisplayGrid.Visibility = Visibility.Visible;
 					break;
 				case 1:
-					titleInput.Visibility = Visibility.Visible;
+					titleInputGrid.Visibility = Visibility.Visible;
 					break;
 				case 2:
-					titleInput.Visibility = Visibility.Visible;
+					titleInputGrid.Visibility = Visibility.Visible;
 					updateButton.Visibility = Visibility.Visible;
 					reverseButton.Visibility = Visibility.Visible;
 					break;
@@ -174,7 +171,6 @@ namespace GUI
 
 			descTextBlock.Text = (MyMediaProp as MediaPropTitle).MyDescription;
 			titleDisplay.Text = (MyMediaProp as MediaPropTitle).MyValue;
-
 		}
 
 		public void Season()

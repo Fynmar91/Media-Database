@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       Title="DisplayPage" Margin="20" >
 
-	<Grid>
+	<Grid VerticalAlignment="Center">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto" MaxWidth="600"></ColumnDefinition>
 			<ColumnDefinition Width="*" MaxWidth="900"></ColumnDefinition>
@@ -16,7 +16,7 @@
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<Viewbox MaxWidth="600" HorizontalAlignment="Center" VerticalAlignment="Center" >
+		<Viewbox MaxWidth="600" HorizontalAlignment="Center" VerticalAlignment="Top" >
 			<Image x:Name="image"/>
 		</Viewbox>
 
