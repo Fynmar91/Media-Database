@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="900">
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="240"></ColumnDefinition>
+			<ColumnDefinition Width="200"></ColumnDefinition>
 			<ColumnDefinition Width="*"></ColumnDefinition>
 			<ColumnDefinition Width="Auto"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
@@ -36,13 +36,13 @@
 					<TextBox x:Name="seasonInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged" Margin="12,0,0,0"/>
 				</StackPanel>				
 				<StackPanel>
-				<TextBox x:Name="titleDisplay" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False" MouseDoubleClick="TitleDisplay_MouseDoubleClick"/>					
-				<TextBox x:Name="titleInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
+				<TextBox x:Name="titleDisplay" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False" MouseDoubleClick="TitleDisplay_MouseDoubleClick"/>					
+				<TextBox x:Name="titleInput" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
 				</StackPanel>
 			</Grid>
 			<!-- -->
 			<TextBox x:Name="textDisplay" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False" MouseDoubleClick="TextDisplay_MouseDoubleClick"/>
-			<TextBox x:Name="textInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
+			<TextBox x:Name="textInput" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
 			<!-- -->
 			<StackPanel x:Name="progressStack" Orientation="Horizontal">
 				<ProgressBar x:Name="progressDisplay" Margin="2,5" HorizontalAlignment="Left" Height="20" Padding="0" Width="300" Maximum="100" SmallChange="1" MouseDoubleClick="ProgressDisplay_MouseDoubleClick"/>
@@ -59,7 +59,7 @@
 		</StackPanel>
 		<StackPanel Grid.Column="2" Orientation="Horizontal" >
 			<Button x:Name="updateButton" Content="Update" VerticalAlignment="Top" Margin="2" Click="UpdateButton_Click"/>
-			<Button x:Name="reverseButton" Content="X" VerticalAlignment="Top" Margin="2"/>
+			<Button x:Name="reverseButton" Content="X" VerticalAlignment="Top" Margin="2" Click="ReverseButton_Click"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

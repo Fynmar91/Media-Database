@@ -302,6 +302,11 @@ namespace GUI
 			WriteProp();
 		}
 
+		private void ReverseButton_Click(object sender, RoutedEventArgs e)
+		{
+			MyState = 0;
+		}
+
 		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			if (MyMediaProp is MediaPropTitle)
@@ -359,6 +364,6 @@ namespace GUI
 		private void CheckDisplay_Click(object sender, RoutedEventArgs e)
 		{
 			checkDisplay.IsChecked = (MyMediaProp as MediaPropBool).MyValue;
-		}
+		}	
 	}
 }

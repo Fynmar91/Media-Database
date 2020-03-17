@@ -9,18 +9,18 @@
 
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" MaxWidth="800" ></ColumnDefinition>
-			<ColumnDefinition Width="Auto"></ColumnDefinition>
+			<ColumnDefinition Width="Auto" MaxWidth="600"></ColumnDefinition>
+			<ColumnDefinition Width="*" MaxWidth="900"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<Viewbox HorizontalAlignment="Right" VerticalAlignment="Center" MaxWidth="600" >
+		<Viewbox MaxWidth="600" HorizontalAlignment="Center" VerticalAlignment="Center" >
 			<Image x:Name="image"/>
 		</Viewbox>
 
-		<StackPanel x:Name="displayStack" Margin="20" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+		<StackPanel x:Name="displayStack" MaxWidth="1600" Margin="20" Grid.Column="1"/>
 
 	</Grid>
 </Page>
