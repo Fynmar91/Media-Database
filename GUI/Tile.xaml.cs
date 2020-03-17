@@ -28,7 +28,7 @@ namespace GUI
 		public Tile(Media media)
 		{
 			InitializeComponent();
-			this.MyMedia = media;
+			MyMedia = media;
 
 			string path = "";
 			if (media.MyImageName != null)

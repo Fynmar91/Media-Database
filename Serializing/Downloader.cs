@@ -56,7 +56,15 @@ namespace HelperClasses
 				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
 			}
 
-			return searchTerm + ".jpg";
+			if (searchTerm != null)
+			{
+				return searchTerm + ".jpg";
+
+			}
+			else
+			{
+				return null;
+			}
 		}
 
 

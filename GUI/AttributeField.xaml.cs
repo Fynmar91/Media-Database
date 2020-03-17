@@ -58,6 +58,42 @@ namespace GUI
 			MyState = state;
 		}
 
+		public void WriteProp()
+		{
+			if (MyNoError)
+			{
+				if (MyMediaProp is MediaPropTitle)
+				{
+					(MyMediaProp as MediaPropTitle).MyValue = titleInput.Text.ToString();
+					if ((MyMediaProp as MediaPropTitle).MyHasSeasons)
+					{
+						(MyMediaProp as MediaPropTitle).MySeason.MyValue = Convert.ToInt32(seasonInput);
+					}
+				}
+				else if (MyMediaProp is MediaPropText)
+				{
+					(MyMediaProp as MediaPropText).MyValue = textInput.Text.ToString();
+				}
+				else if (MyMediaProp is MediaPropInt)
+				{
+					(MyMediaProp as MediaPropInt).MyValue = Convert.ToInt32(sliderInput.Value);
+				}
+				else if (MyMediaProp is MediaPropBool)
+				{
+					(MyMediaProp as MediaPropBool).MyValue = checkInput.IsChecked == true;
+				}
+				else if (MyMediaProp is MediaPropDate)
+				{
+					(MyMediaProp as MediaPropDate).MyValue = textInput.Text.ToString();
+				}
+
+				if (MyState == 2)
+				{
+					MyState = 0;
+				}
+			}
+		}
+
 		public void Refresh()
 		{
 			Reset();
@@ -256,34 +292,7 @@ namespace GUI
 
 		private void UpdateButton_Click(object sender, RoutedEventArgs e)
 		{
-			if (MyNoError)
-			{
-				if (MyMediaProp is MediaPropTitle)
-				{
-					(MyMediaProp as MediaPropTitle).MyValue = titleInput.Text.ToString();
-					if ((MyMediaProp as MediaPropTitle).MyHasSeasons)
-					{
-						(MyMediaProp as MediaPropTitle).MySeason.MyValue = Convert.ToInt32(seasonInput);
-					}
-				}
-				else if (MyMediaProp is MediaPropText)
-				{
-					(MyMediaProp as MediaPropText).MyValue = textInput.Text.ToString();
-				}
-				else if (MyMediaProp is MediaPropInt)
-				{
-					(MyMediaProp as MediaPropInt).MyValue = Convert.ToInt32(sliderInput.Value);
-				}
-				else if (MyMediaProp is MediaPropBool)
-				{
-					(MyMediaProp as MediaPropBool).MyValue = checkInput.IsChecked == true;
-				}
-				else if (MyMediaProp is MediaPropDate)
-				{
-					(MyMediaProp as MediaPropDate).MyValue = textInput.Text.ToString();
-				}
-				MyState = 0;
-			}		
+			WriteProp();
 		}
 
 		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
