@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-	interface PageInterface
+	public interface IPage
 	{
 		void Refresh();
+		void EnableInput();
 	}
 }

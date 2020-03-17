@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace GUI
 	public partial class AttributeField : UserControl
 	{
 		private int myState;
-		private int myProp;
+		private bool myNoError = true;
 
 		public int MyState
 		{
@@ -30,11 +31,33 @@ namespace GUI
 		}
 		
 		public int MyProp { get; set; }
+		public MediaProp MyMediaProp { get; set; }
+		public IPage MyPage { get; set; }
 
+		public bool MyNoError
+		{
+			get => myNoError;
+			set
+			{
+				myNoError = value;
+				if (myNoError)
+				{
+					highlightBox.Visibility = Visibility.Collapsed;
+				}
+				else
+				{
+					highlightBox.Visibility = Visibility.Visible;
+				}
+			}
+		}
 
-		public AttributeField()
+		public AttributeField(int state, int prop, MediaProp mediaProp, IPage page)
 		{
 			InitializeComponent();
+			MyState = state;
+			MyProp = prop;
+			MyMediaProp = mediaProp;
+			MyPage = page;
 		}
 
 		public void Refresh()
@@ -163,6 +186,56 @@ namespace GUI
 				default:
 					break;
 			}
+		}
+		private void ResetBorder()
+		{
+			highlightBox.Visibility = Visibility.Hidden;
+		}
+
+		private void TextDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			MyPage.EnableInput(MyMediaProp, MyIndex);
+		}
+
+		private void ProgressDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			MyPage.EnableInput(MyMediaProp, MyIndex);
+		}
+
+		private void CheckDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			MyPage.EnableInput(MyMediaProp, MyIndex);
+		}
+
+		
+
+		private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (MyMediaProp is MediaPropTitle)
+			{
+				MyNoError = MainWindow.MyMainwindow.MyMediaList.IsUnique(MainWindow.MyMainwindow.MyActiveTypeString, titleInput.Text.ToString(), (MyMediaProp as MediaPropTitle).MyHasSeasons, int.TryParse(seasonInput.Text, out int num) ? int.Parse(seasonInput.Text) : 0);
+			}
+			else if (MyMediaProp is MediaPropText)
+			{
+				MyNoError = (MyMediaProp as MediaPropText).ValidateValue();
+			}
+			else if (MyMediaProp is MediaPropInt)
+			{
+				MyNoError = (MyMediaProp as MediaPropInt).ValidateValue();
+			}
+			else if (MyMediaProp is MediaPropBool)
+			{
+				MyNoError = (MyMediaProp as MediaPropBool).ValidateValue();
+			}
+			else if (MyMediaProp is MediaPropDate)
+			{
+				MyNoError = (MyMediaProp as MediaPropDate).ValidateValue(textInput.Text.ToString());
+			}
+		}
+
+		private void SliderInput_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			sliderText.Text = sliderInput.Value.ToString();
 		}
 	}
 }

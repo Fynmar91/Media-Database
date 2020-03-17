@@ -20,7 +20,7 @@ namespace GUI
 	/// <summary>
 	/// Interaction logic for TilePage.xaml
 	/// </summary>
-	public partial class TilePage : Page, PageInterface
+	public partial class TilePage : Page, IPage
 	{
 		public MediaList displayList;
 
@@ -30,6 +30,11 @@ namespace GUI
 		{
 			InitializeComponent();
 			Refresh();
+		}
+
+		public void EnableInput()
+		{
+			throw new NotImplementedException();
 		}
 
 		public void Refresh()

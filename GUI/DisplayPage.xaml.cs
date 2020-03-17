@@ -22,7 +22,7 @@ namespace GUI
 	/// <summary>
 	/// Interaktionslogik für DisplayPage.xaml
 	/// </summary>
-	public partial class DisplayPage : Page, PageInterface
+	public partial class DisplayPage : Page, IPage
 	{
 		private List<FieldInterface> displayFields = new List<FieldInterface>();
 		private Media MyMedia;
@@ -43,6 +43,11 @@ namespace GUI
 				MyMedia.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia);
 			}
 			Refresh();
+		}
+
+		public void EnableInput()
+		{
+			throw new NotImplementedException();
 		}
 
 		public void Refresh()

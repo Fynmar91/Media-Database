@@ -22,7 +22,7 @@ namespace GUI
 	/// <summary>
 	/// Interaction logic for AddPage.xaml
 	/// </summary>
-	public partial class AddPage : Page, PageInterface
+	public partial class AddPage : Page, IPage
 	{
 		private List<InputField> inputFields = new List<InputField>(); 
 

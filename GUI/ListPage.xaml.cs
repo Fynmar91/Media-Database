@@ -19,7 +19,7 @@ namespace GUI
 	/// <summary>
 	/// Interaction logic for ListPage.xaml
 	/// </summary>
-	public partial class ListPage : Page, PageInterface
+	public partial class ListPage : Page, IPage
 	{
 		public MediaList displayList;
 
@@ -28,6 +28,12 @@ namespace GUI
 			InitializeComponent();
 			Refresh();
 		}
+
+		public void EnableInput()
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Refresh()
 		{
 			displayList = new MediaList();

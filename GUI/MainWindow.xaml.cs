@@ -33,7 +33,7 @@ namespace GUI
 				selectedTypeIndex = value;
 				if (activePage != null)
 				{
-					(activePage as PageInterface).Refresh();
+					(activePage as IPage).Refresh();
 				}
 			}
 		}
@@ -75,7 +75,7 @@ namespace GUI
 		{
 			if (activePage != null)
 			{
-				(activePage as PageInterface).Refresh();
+				(activePage as IPage).Refresh();
 			}
 		}
 
