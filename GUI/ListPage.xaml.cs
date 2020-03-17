@@ -29,11 +29,6 @@ namespace GUI
 			Refresh();
 		}
 
-		public void EnableInput()
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Refresh()
 		{
 			displayList = new MediaList();

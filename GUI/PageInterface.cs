@@ -9,6 +9,5 @@ namespace GUI
 	public interface IPage
 	{
 		void Refresh();
-		void EnableInput();
 	}
 }

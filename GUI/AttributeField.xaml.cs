@@ -30,7 +30,6 @@ namespace GUI
 			set { myState = value; Refresh(); }
 		}
 		
-		public int MyProp { get; set; }
 		public MediaProp MyMediaProp { get; set; }
 		public IPage MyPage { get; set; }
 
@@ -51,38 +50,38 @@ namespace GUI
 			}
 		}
 
-		public AttributeField(int state, int prop, MediaProp mediaProp, IPage page)
+		public AttributeField(int state, MediaProp mediaProp, IPage page)
 		{
 			InitializeComponent();
-			MyState = state;
-			MyProp = prop;
 			MyMediaProp = mediaProp;
 			MyPage = page;
+			MyState = state;
 		}
 
 		public void Refresh()
 		{
 			Reset();
+			MyNoError = MyNoError;
 
-			switch (MyProp)
+			if (MyMediaProp is MediaPropTitle)
 			{
-				case 0:
-					Title();
-					break;
-				case 1:
+				Title();
+				if ((MyMediaProp as MediaPropTitle).MyHasSeasons)
+				{
 					Season();
-					break;
-				case 2:
-					Text();
-					break;
-				case 3:
-					Progress();
-					break;
-				case 4:
-					Check();
-					break;
-				default:
-					break;
+				}
+			}
+			else if (MyMediaProp is MediaPropText || MyMediaProp is MediaPropDate)
+			{
+				Text();
+			}
+			else if (MyMediaProp is MediaPropInt)
+			{
+				Progress();
+			}
+			else if (MyMediaProp is MediaPropBool)
+			{
+				Check();
 			}			
 		}
 
@@ -173,6 +172,7 @@ namespace GUI
 					break;
 			}
 		}
+
 		public void Check()
 		{
 			switch (MyState)
@@ -187,6 +187,7 @@ namespace GUI
 					break;
 			}
 		}
+
 		private void ResetBorder()
 		{
 			highlightBox.Visibility = Visibility.Hidden;
@@ -194,17 +195,17 @@ namespace GUI
 
 		private void TextDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyPage.EnableInput(MyMediaProp, MyIndex);
+			MyState = 1;
 		}
 
 		private void ProgressDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyPage.EnableInput(MyMediaProp, MyIndex);
+			MyState = 1;
 		}
 
 		private void CheckDisplay_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			MyPage.EnableInput(MyMediaProp, MyIndex);
+			MyState = 1;
 		}
 
 		

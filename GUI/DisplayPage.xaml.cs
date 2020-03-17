@@ -24,7 +24,7 @@ namespace GUI
 	/// </summary>
 	public partial class DisplayPage : Page, IPage
 	{
-		private List<FieldInterface> displayFields = new List<FieldInterface>();
+		private List<AttributeField> AttributeFields = new List<AttributeField>();
 		private Media MyMedia;
 		private string path = "";
 
@@ -45,66 +45,30 @@ namespace GUI
 			Refresh();
 		}
 
-		public void EnableInput()
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Refresh()
 		{
 			var uri = new Uri(path);
 			var bitmap = new BitmapImage(uri);
 			image.Source = bitmap;
 
-			int index = 0;
-			displayFields.Clear();
-			displayFields.Add(new DisplayField(MyMedia.MyTitle, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyAuthor, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyIsStarted, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyIsFinished, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyRating, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyIsDropped, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyProgress, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyProgressPercentage, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyImageName, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyReleaseDate, this, ++index));
-			displayFields.Add(new DisplayField(MyMedia.MyFirstWatchDate, this, ++index));
+			AttributeFields.Clear();
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyTitle, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyAuthor, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyIsStarted, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyIsFinished, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyRating, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyIsDropped, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyProgress, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyProgressPercentage, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyImageName, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyReleaseDate, this));
+			AttributeFields.Add(new AttributeField(0, MyMedia.MyFirstWatchDate, this));
 
 			displayStack.Children.Clear();
-			foreach (var item in displayFields)
+			foreach (var item in AttributeFields)
 			{
-				displayStack.Children.Add(item as DisplayField);
+				displayStack.Children.Add(item as AttributeField);
 			}
-		}
-
-		public void EnableInput(MediaProp mediaProp, int index)
-		{
-			InputField inputField;
-
-			if (mediaProp is MediaPropText)
-			{
-				inputField = new InputField(mediaProp);
-				displayStack.Children.RemoveAt(index - 1);
-				displayStack.Children.Insert(index - 1, inputField);
-			}
-			else if (mediaProp is MediaPropInt)
-			{
-				inputField = new InputField(mediaProp);
-				displayStack.Children.RemoveAt(index - 1);
-				displayStack.Children.Insert(index - 1, inputField);
-			}
-			else if (mediaProp is MediaPropBool)
-			{
-				inputField = new InputField(mediaProp);
-				displayStack.Children.RemoveAt(index - 1);
-				displayStack.Children.Insert(index - 1, inputField);
-			}
-			else if (mediaProp is MediaPropDate)
-			{
-				inputField = new InputField(mediaProp);
-				displayStack.Children.RemoveAt(index - 1);
-				displayStack.Children.Insert(index - 1, inputField);
-			}
-		}
+		}	
 	}
 }

@@ -31,30 +31,30 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*"></RowDefinition>
 				</Grid.RowDefinitions>
-				<StackPanel>
-				<TextBox x:Name="titleInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
-				<TextBox x:Name="titleDisplay" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False"/>					
-				</StackPanel>
 				<StackPanel Grid.Column="1" >
 					<TextBox x:Name="seasonInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged" Margin="12,0,0,0"/>
 					<TextBox x:Name="seasonDisplay" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False" Margin="12,0,0,0"/>
 				</StackPanel>				
+				<StackPanel>
+				<TextBox x:Name="titleInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
+				<TextBox x:Name="titleDisplay" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False"/>					
+				</StackPanel>
 			</Grid>
 			<!-- -->
-			<TextBox x:Name="textInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
 			<TextBox x:Name="textDisplay" Text="" FontFamily="Consolas" FontSize="16" IsReadOnly="True" IsTabStop="False" MouseDoubleClick="TextDisplay_MouseDoubleClick"/>
+			<TextBox x:Name="textInput" TextWrapping="Wrap" Text="" FontFamily="Consolas" FontSize="16" TextChanged="TextInput_TextChanged"/>
 			<!-- -->
-			<StackPanel x:Name="sliderStack" Orientation="Horizontal">
-				<Slider x:Name="sliderInput" Margin="10,5,0,0" HorizontalAlignment="Left" Height="25" Padding="0" Width="300" ValueChanged="SliderInput_ValueChanged" Maximum="100" SmallChange="1" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
-				<TextBlock x:Name="sliderText" TextWrapping="Wrap" Text="0" FontSize="16" Foreground="#FFBABABA" FontFamily="Consolas" Padding="10,4,0,0"/>
-			</StackPanel>
 			<StackPanel x:Name="progressStack" Orientation="Horizontal">
 				<ProgressBar x:Name="progressDisplay" Margin="2,5" HorizontalAlignment="Left" Height="20" Padding="0" Width="300" Maximum="100" SmallChange="1" MouseDoubleClick="ProgressDisplay_MouseDoubleClick"/>
 				<TextBlock x:Name="progressText" TextWrapping="Wrap" Text="0" FontSize="16" Foreground="#FFBABABA" FontFamily="Consolas" Padding="10,4,0,0"/>
 			</StackPanel>
+			<StackPanel x:Name="sliderStack" Orientation="Horizontal">
+				<Slider x:Name="sliderInput" Margin="10,5,0,0" HorizontalAlignment="Left" Height="25" Padding="0" Width="300" ValueChanged="SliderInput_ValueChanged" Maximum="100" SmallChange="1" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
+				<TextBlock x:Name="sliderText" TextWrapping="Wrap" Text="0" FontSize="16" Foreground="#FFBABABA" FontFamily="Consolas" Padding="10,4,0,0"/>
+			</StackPanel>
 			<!-- -->			
+			<CheckBox x:Name="checkDisplay" Content="" VerticalContentAlignment="Center" FontFamily="Consolas" Focusable="False" MouseDoubleClick="CheckDisplay_MouseDoubleClick" IsTabStop="False"/>
 			<CheckBox x:Name="checkInput" Content="" VerticalContentAlignment="Center" FontFamily="Consolas"/>
-			<CheckBox x:Name="checkDisplay" Content="" VerticalContentAlignment="Center" FontFamily="Consolas" Focusable="False" MouseDoubleClick="CheckDisplay_MouseDoubleClick"/>
 			<!-- -->
 		</StackPanel>
 		<Button x:Name="updateButton" Content="Update" Grid.Column="2" VerticalAlignment="Top" Width="75"/>
