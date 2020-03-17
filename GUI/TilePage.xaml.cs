@@ -22,8 +22,9 @@ namespace GUI
 	/// </summary>
 	public partial class TilePage : Page, IPage
 	{
-		public MediaList displayList;
+		public Media MyMedia { get; set; }
 
+		public MediaList displayList;
 		public List<Tile> tiles = new List<Tile>();
 
 		public TilePage()
@@ -36,7 +37,7 @@ namespace GUI
 		{
 			displayList = new MediaList();
 
-			string filter = MainWindow.MyMainwindow.MyTypeString[MainWindow.MyMainwindow.MySelectedTypeIndex];
+			string filter = MainWindow.MyMainwindow.MyActiveTypeString;
 
 			if (filter != null)
 			{
@@ -47,7 +48,7 @@ namespace GUI
 
 			foreach (var item in MainWindow.MyMainwindow.MyMediaList)
 			{
-				if (filter == "" || item.MyType.MyValue == filter)
+				if (filter == "" || item.MyTitle.MyType.MyValue == filter)
 				{
 					Frame frame = new Frame() { };
 					Tile tile = new Tile(item) { };

@@ -24,6 +24,8 @@ namespace GUI
 	/// </summary>
 	public partial class AddPage : Page, IPage
 	{
+		public Media MyMedia { get; set; }
+
 		private List<AttributeField> AttributeFields = new List<AttributeField>(); 
 
 		public AddPage()
@@ -35,6 +37,8 @@ namespace GUI
 
 		public void Refresh()
 		{
+			MyMedia = new Media();
+			MyMedia.MyTitle.MyType.MyValue = MainWindow.MyMainwindow.MyActiveTypeString;
 			comboBox_MediaChoice.SelectedIndex = MainWindow.MyMainwindow.MySelectedTypeIndex;
 
 			ResetInput();
@@ -90,9 +94,6 @@ namespace GUI
 			}
 
 			// Set Propperties
-			Media media = new Media();
-			media.MyType.MyValue = MainWindow.MyMainwindow.MyActiveTypeString;
-
 			//foreach (var item in AttributeFields)
 			//{
 			//	foreach (var prop in media.MyProperties)
@@ -131,9 +132,9 @@ namespace GUI
 
 			// Download Image
 			Downloader d = new Downloader();
-			media.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, media);
+			MyMedia.MyImageName.MyValue = d.GetImage(MainWindow.MyMainwindow.MySettings.MyImageFolder, MyMedia);
 
-			MainWindow.MyMainwindow.MyMediaList.Add(media);
+			MainWindow.MyMainwindow.MyMediaList.Add(MyMedia);
 			Refresh();
 		}		
 

@@ -25,7 +25,7 @@ namespace GUI
 	public partial class DisplayPage : Page, IPage
 	{
 		private List<AttributeField> AttributeFields = new List<AttributeField>();
-		private Media MyMedia;
+		public Media MyMedia { get; set; }
 		private string path = "";
 
 		public DisplayPage(Media media)

@@ -17,11 +17,11 @@ namespace HelperClasses
 
 			string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
 
-			if (media.MyType.MyValue == "Film" && media.MyReleaseDate.MyValue != null && media.MyReleaseDate.MyValue != "")
+			if (media.MyTitle.MyType.MyValue == "Film" && media.MyReleaseDate.MyValue != null && media.MyReleaseDate.MyValue != "")
 			{
 				searchTerm += "(" + media.MyReleaseDate.MyValue + ")";
 			}
-			else if (media.MyType.MyValue == "Serie" && media.MyTitle.MySeason > 0)
+			else if (media.MyTitle.MyType.MyValue == "Serie" && media.MyTitle.MySeason.MyValue > 0)
 			{
 				searchTerm += media.MyTitle.MySeason;
 			}
@@ -30,28 +30,28 @@ namespace HelperClasses
 				searchTerm = searchTerm.Replace(c.ToString(), "");
 			}
 
-			if (media.MyType.MyValue == "Buch")
+			if (media.MyTitle.MyType.MyValue == "Buch")
 			{
 				DownloadImageGoodReads(searchTerm, folder + searchTerm + ".jpg");
 			}
-			else if (media.MyType.MyValue == "Web-Novel")
+			else if (media.MyTitle.MyType.MyValue == "Web-Novel")
 			{
 				DownloadImageNovelUpdates(searchTerm, folder + searchTerm + ".jpg");
 			}
-			else if (media.MyType.MyValue == "Film")
+			else if (media.MyTitle.MyType.MyValue == "Film")
 			{
 
 				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", false);
 			}
-			else if (media.MyType.MyValue == "Serie")
+			else if (media.MyTitle.MyType.MyValue == "Serie")
 			{
 				DownloadImageIMDB(searchTerm, folder + searchTerm + ".jpg", true);
 			}
-			else if (media.MyType.MyValue == "Anime")
+			else if (media.MyTitle.MyType.MyValue == "Anime")
 			{
 				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
 			}
-			else if (media.MyType.MyValue == "Anime-Film")
+			else if (media.MyTitle.MyType.MyValue == "Anime-Film")
 			{
 				DownloadImageMyAnimeList(searchTerm, folder + searchTerm + ".jpg", true);
 			}
@@ -149,7 +149,7 @@ namespace HelperClasses
 						  select node).ToList();
 
 
-			if (imageNodes[0] != null)
+			if (imageNodes.Count > 0 && imageNodes[0] != null)
 			{
 				string input = imageNodes[0].Attributes["src"].Value.ToString();
 
@@ -175,7 +175,7 @@ namespace HelperClasses
 						  where node.Name == "img" && node.Attributes["class"] != null && node.Attributes["src"] != null
 						  select node).ToList();
 
-			if (imageNodes[0] != null)
+			if (imageNodes.Count > 0 && imageNodes[0] != null)
 			{
 				string input;
 
@@ -225,7 +225,7 @@ namespace HelperClasses
 						  where node.Name == "img" && node.ParentNode.Attributes["href"] != null && node.Attributes["src"] != null
 						  select node).ToList();
 
-			if (imageNodes[0] != null)
+			if (imageNodes.Count > 0 && imageNodes[0] != null)
 			{
 				string input = imageNodes[0].Attributes["src"].Value.ToString();
 
@@ -257,7 +257,7 @@ namespace HelperClasses
 						  where node.Name == "img" && node.Attributes["data-src"] != null 
 						  select node).ToList();
 
-			if (imageNodes.Count > 0)
+			if (imageNodes.Count > 0 && imageNodes[0] != null)
 			{
 				string input = imageNodes[0].Attributes["data-src"].Value.ToString();
 				input = input.Replace("/r/50x70", "");

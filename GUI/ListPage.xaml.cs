@@ -21,6 +21,8 @@ namespace GUI
 	/// </summary>
 	public partial class ListPage : Page, IPage
 	{
+		public Media MyMedia { get; set; }
+
 		public MediaList displayList;
 
 		public ListPage()
@@ -33,11 +35,11 @@ namespace GUI
 		{
 			displayList = new MediaList();
 
-			string filter = MainWindow.MyMainwindow.MyTypeString[MainWindow.MyMainwindow.MySelectedTypeIndex];
+			string filter = MainWindow.MyMainwindow.MyActiveTypeString;
 
 			foreach (var item in MainWindow.MyMainwindow.MyMediaList)
 			{
-				if (filter == "" || item.MyType.MyValue == filter)
+				if (filter == "" || item.MyTitle.MyType.MyValue == filter)
 				{
 					displayList.Add(item);
 				}

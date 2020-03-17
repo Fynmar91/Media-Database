@@ -13,7 +13,6 @@ namespace MediaClass
 		public Media()
 		{
 			MyProperties = new List<MediaProp>();
-			MyProperties.Add(MyType = new MediaPropText("", "Typ:"));
 			MyProperties.Add(MyTitle = new MediaPropTitle("", "Titel:", false, 0));
 			MyProperties.Add(MyAuthor = new MediaPropText("", "Autor:"));
 			MyProperties.Add(MyStudio = new MediaPropText("", "Studio:"));
@@ -30,7 +29,6 @@ namespace MediaClass
 			MyProperties.Add(MyLastWatchDate = new MediaPropDate("", "Wiederholt am:", false));
 		}
 
-		public MediaPropText MyType { get; set; }
 		public MediaPropTitle MyTitle { get; set; }
 		public MediaPropText MyAuthor { get; set; }
 		public MediaPropText MyStudio { get; set; }

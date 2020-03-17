@@ -16,9 +16,9 @@ namespace MediaClass
 			{
 				foreach (var item in this)
 				{
-					if (item.MyType.MyValue == type && item.MyTitle.MyValue == title)
+					if (item.MyTitle.MyType.MyValue == type && item.MyTitle.MyValue == title)
 					{
-						if (hasSeasons && item.MyTitle.MySeason == season)
+						if (hasSeasons && item.MyTitle.MySeason.MyValue == season)
 						{
 							return false;
 						}
